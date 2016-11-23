@@ -193,12 +193,13 @@ html,body{
     display: block;
     color: #333;
     font: 18px/125px "Microsoft YaHei";
-    text-shadow: 1px 1px 10px 20px #333;
+    text-shadow: 1px 1px 1px #ececec;
     transition: .5s background-color,color;
 }
 
 .header .nav-list .cur a,.header .nav-list a:hover {
     color: #fff;
+    text-shadow: none ;
     background-color: #e68417;
 }
 .banner{
@@ -224,4 +225,18 @@ html,body{
     height: 39px;
     text-indent: -9999px;
     background: url(../images/icon-next.png);
+}
+
+.main{
+    margin-top:-350px;
+    position: relative;
+    z-index:100;
+}
+.main .wrapper{
+    background-color: #fff;
+}
+
+.cnt-imglist li{
+    float: left;
+    margin-left: 32px;
 }
