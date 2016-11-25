@@ -215,7 +215,7 @@ html,body{
     width: 20px;
     height: 39px;
     text-indent: -9999px;
-    background: url(../images/icon-prev.png);
+    background: url(../images/icon-prev.png?@spriter);
 }
 .banner .btn-next{
     position: absolute;
@@ -224,7 +224,7 @@ html,body{
     width: 20px;
     height: 39px;
     text-indent: -9999px;
-    background: url(../images/icon-next.png);
+    background: url(../images/icon-next.png?@spriter);
 }
 
 .main{
