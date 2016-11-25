@@ -6,7 +6,7 @@ gulp.task('spriter', function() {
 
     var timestamp = +new Date();
     //需要自动合并雪碧图的样式文件
-    return gulp.src('./public/dev/css/style.css')
+    return gulp.src('./public/dev/css/style.scss')
         .pipe(spriter({
             // 生成的spriter的位置
             'spriteSheet': './public/release/images/sprite.png',

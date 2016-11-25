@@ -172,70 +172,75 @@ html,body{
     left: 0;
     z-index:1000;
     width:100%;
+    .logo {
+        float: left;
+        margin-top: 35px;
+    }
+    .nav-list {
+        float: right;
+        position: relative;
+    }
+    .nav-list li {
+        width: 100px;
+        float: left;
+        text-align: center;
+    }
+    .nav-list a {
+        display: block;
+        color: #333;
+        font: 18px/125px "Microsoft YaHei";
+        text-shadow: 1px 1px 1px #ececec;
+        transition: .5s background-color,color;
+    }
+    .nav-list .cur a,.header .nav-list a:hover {
+        color: #fff;
+        text-shadow: none ;
+        background-color: #e68417;
+    }
 }
 
-.header .logo {
-    float: left;
-    margin-top: 35px;
-}
-
-.header .nav-list {
-    float: right;
-    position: relative;
-}
-
-.header .nav-list li {
-    width: 100px;
-    float: left;
-    text-align: center;
-}
-.header .nav-list a {
-    display: block;
-    color: #333;
-    font: 18px/125px "Microsoft YaHei";
-    text-shadow: 1px 1px 1px #ececec;
-    transition: .5s background-color,color;
-}
-
-.header .nav-list .cur a,.header .nav-list a:hover {
-    color: #fff;
-    text-shadow: none ;
-    background-color: #e68417;
-}
 .banner{
     position: relative;
-}
-.banner .banner-list img{
-    width:100%;
-}
-.banner .btn-prev{
-    position: absolute;
-    left:20px;
-    top:40%;
-    width: 20px;
-    height: 39px;
-    text-indent: -9999px;
-    background: url(../images/icon-prev.png?@spriter);
-}
-.banner .btn-next{
-    position: absolute;
-    right:20px;
-    top:40%;
-    width: 20px;
-    height: 39px;
-    text-indent: -9999px;
-    background: url(../images/icon-next.png?@spriter);
+    .banner-list img{
+        width:100%;
+    }
+    .btn-prev{
+        position: absolute;
+        left:20px;
+        top:40%;
+        width: 20px;
+        height: 39px;
+        text-indent: -9999px;
+        background: url(../images/icon-prev.png?@spriter);
+    }
+    .btn-next{
+        position: absolute;
+        right:20px;
+        top:40%;
+        width: 20px;
+        height: 39px;
+        text-indent: -9999px;
+        background: url(../images/icon-next.png?@spriter);
+    }
 }
 
 .main{
     margin-top:-350px;
     position: relative;
     z-index:100;
-}
-.main .wrapper{
-    background-color: #fff;
+    .wrapper{
+        background-color: #fff;
+    }
 }
 
+.mod-ysjz .tit{
+    color: #e68417;
+    font:60px/34px "Microsoft YaHei";
+}
+.mod-ysjz .tit{
+    color: #e68417;
+    font:60px/34px "Microsoft YaHei";
+}
 .cnt-imglist li{
     float: left;
     margin-left: 32px;
