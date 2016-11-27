@@ -341,20 +341,35 @@ html, body {
     height: 55px;
     border-top: 5px solid;
     background-color: #1c1b1b;
+    cursor: pointer;
 }
-
+.mod-share .tab-nav i{
+    display: block;
+    background: url(../images/sprite.png) no-repeat;
+    height: 31px;
+    width: 38px;
+    margin: 14px auto;
+}
 .mod-share .tab-nav .nav1 {
     border-color: #ff1800;
+}
+.mod-share .tab-nav .nav1 i {
+    background-position: 0 -125px;
+    height: 30px;
 }
 
 .mod-share .tab-nav .nav2 {
     border-color: #60ff00;
 }
-
+.mod-share .tab-nav .nav2 i{
+    background-position: 0 -93px;
+}
 .mod-share .tab-nav .nav3 {
     border-color: #0030ff;
 }
-
+.mod-share .tab-nav .nav3 i {
+    background-position: 0 -155px;
+}
 .mod-share .tab-nav li.cur {
     background-color: #252525;
 }
