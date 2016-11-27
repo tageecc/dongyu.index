@@ -1,0 +1,408 @@
+@charset "utf-8";
+/* CSS Document
+Use for:	重设浏览器默认样式
+Version:	1.0
+Author:		tagee
+*/
+
+/* CSS reset */
+html {
+    background: #fff;
+    color: #000;
+    -webkit-text-size-adjust: 100%;
+    -ms-text-size-adjust: 100%;
+}
+
+/*内外边距通常让各个浏览器样式的表现位置不同*/
+body, div, dl, dt, dd, ul, ol, li, h1, h2, h3, h4, h5, h6, pre, code, form, fieldset, legend, input, textarea, p, blockquote, th, td, hr, button, article, aside, details, figcaption, figure, footer, header, hgroup, menu, nav, section {
+    padding: 0;
+    margin: 0;
+}
+
+table {
+    border-collapse: collapse;
+    border-spacing: 0;
+}
+
+fieldset, img {
+    border: 0;
+}
+
+/* 要注意表单元素并不继承父级 font 的问题 */
+body, button, input, select, textarea {
+    font: 500 14px/1.8 'microsoft yahei', 'simsun', 'Hiragino Sans GB', sans-serif;
+}
+
+input, select, img {
+    vertical-align: middle
+}
+
+input, select {
+    outline: none
+}
+
+input, select, textarea {
+    font-size: 100%;
+}
+
+ul, ol {
+    list-style: none
+}
+
+h1, h2, h3, h4, h5, h6 {
+    font-size: 100%;
+}
+
+address, cite, dfn, em, var {
+    font-style: normal;
+}
+
+/* 去掉 firefox 下此元素的边框 */
+abbr, acronym {
+    border: 0;
+    font-variant: normal;
+}
+
+/* 去除默认边框 */
+fieldset, img {
+    border: 0;
+}
+
+/* 一致的 del 样式 */
+del {
+    text-decoration: line-through;
+}
+
+address, caption, cite, code, dfn, em, th, var {
+    font-style: normal;
+    font-weight: 500;
+}
+
+/* ie6 7 8(q) bug 显示为行内表现 */
+iframe {
+    display: block;
+}
+
+/* 统一上标和下标 */
+sub, sup {
+    font-size: 75%;
+    line-height: 0;
+    position: relative;
+    vertical-align: baseline;
+}
+
+sup {
+    top: -0.5em;
+}
+
+sub {
+    bottom: -0.25em;
+}
+
+/*重排左对齐*/
+caption, th {
+    text-align: left;
+}
+
+/* IE bug fixed: th 不继承 text-align*/
+th {
+    text-align: inherit;
+}
+
+/*清除浮动*/
+.clearfix:after {
+    content: "";
+    height: 0;
+    visibility: hidden;
+    display: block;
+    clear: both;
+}
+
+.clearfix {
+    zoom: 1;
+}
+
+.fl, .fr {
+    display: inline;
+}
+
+.fl {
+    float: left
+}
+
+.fr {
+    float: right
+}
+
+/*默认不显示下划线*/
+ins, a {
+    text-decoration: none;
+}
+
+/*Correct block display not defined in IE6/7/8/9 & ff3,IE需要在js中createElement(tag)*/
+article, aside, details, figcaption, figure, footer, header, hgroup, nav, section, summary {
+    display: block;
+}
+
+/* HTML5 媒体文件跟 img 保持一致 */
+audio, canvas, video {
+    display: inline-block;
+    *display: inline;
+    *zoom: 1;
+}
+
+.mt20 {
+    margin-top: 20px;
+}
+
+/* global */
+.wrapper {
+    width: 1000px;
+    margin: 0 auto;
+    overflow: hidden;
+}
+
+/* 内容 */
+html, body {
+    height: 100%;
+    width: 100%;
+    background-color: #ebebeb;
+}
+
+.header {
+    background-color: rgba(255, 255, 255, .96);
+    height: 125px;
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 1000;
+    width: 100%;
+}
+
+.header .logo {
+    float: left;
+    margin-top: 35px;
+}
+
+.nav-list {
+    float: right;
+    position: relative;
+}
+
+.nav-list li {
+    width: 100px;
+    float: left;
+    text-align: center;
+}
+
+.nav-list a {
+    display: block;
+    color: #333;
+    font: 18px/125px "Microsoft YaHei";
+    text-shadow: 1px 1px 1px #ececec;
+    transition: .5s background-color, color;
+}
+
+.nav-list .cur a, .header .nav-list a:hover {
+    color: #fff;
+    text-shadow: none;
+    background-color: #e68417;
+}
+
+.banner {
+    position: relative;
+}
+
+.banner-list img {
+    width: 100%;
+    height: 800px;
+}
+
+.banner .btn-prev, .btn-next {
+    position: absolute;
+    right: 20px;
+    top: 40%;
+    width: 20px;
+    height: 38px;
+    text-indent: -9999px;
+    background: url(../images/sprite.png);
+}
+
+.banner .btn-prev {
+    left: 20px;
+    background-position: 0 -28px;
+}
+
+.btn-next {
+    background-position: -19px -28px;
+}
+
+.main {
+    margin-top: -341px;
+    position: relative;
+    z-index: 100;
+    margin-bottom: 100px;
+}
+
+.main .wrapper {
+    background-color: #fff;
+    padding-bottom: 30px;
+    box-shadow: 0 0 5px 1px #999;
+}
+
+.mod-glob .mod-hd {
+    padding: 10px 0 20px 28px;
+}
+
+.mod-glob .mod-hd .tit {
+    color: #e68417;
+    font: 60px/1.5 "Microsoft YaHei";
+}
+
+.mod-glob .mod-hd .tit span {
+    color: #999;
+    font-size: 24px;
+    vertical-align: middle;
+}
+
+.mod-ysjz {
+    border-bottom: 1px solid #e68417;
+    padding-bottom: 30px;
+
+}
+
+.mod-news {
+    width: 450px;
+    float: left;
+}
+
+.mod-news .cnt-txtlist {
+    margin-left: 30px;
+}
+
+.cnt-imglist li {
+    float: left;
+    margin-left: 50px;
+}
+
+.cnt-txtlist li {
+    overflow: hidden;
+    width: 380px;
+    border-bottom: 1px dotted #ccc;
+    padding: 0 0 5px 20px;
+    margin-bottom: 5px;
+    background: url(../images/sprite.png) no-repeat 0 -66px;
+}
+
+.cnt-txtlist li:hover {
+    background-position: 0 0;
+    color: #e68417;
+}
+
+.cnt-txtlist li:hover a {
+    color: #e68417;
+}
+
+.cnt-txtlist a {
+    float: left;
+    color: #333;
+    font: 14px/1.5 "Microsoft YaHei";
+}
+
+.cnt-txtlist .date {
+    float: right;
+    font: 14px/1.5 "Microsoft YaHei";
+}
+
+.mod-marquee {
+    float: left;
+    width: 500px;
+    height: 280px;
+    overflow: hidden;
+    position: relative;
+    margin: 30px 0 0 20px;
+}
+
+.mod-marquee .marquee-list, .mod-marquee .marquee-nav {
+    position: absolute;
+    top: 0;
+    left: 0;
+}
+
+.mod-marquee .marquee-list li {
+    float: left;
+}
+
+.mod-share .tab-nav li {
+    float: left;
+    text-indent: -9999px;
+    overflow: hidden;
+    width: 82px;
+    height: 55px;
+    border-top: 5px solid;
+    background-color: #1c1b1b;
+}
+
+.mod-share .tab-nav .nav1 {
+    border-color: #ff1800;
+}
+
+.mod-share .tab-nav .nav2 {
+    border-color: #60ff00;
+}
+
+.mod-share .tab-nav .nav3 {
+    border-color: #0030ff;
+}
+
+.mod-share .tab-nav li.cur {
+    background-color: #252525;
+}
+
+.mod-share .tab-contents {
+    background-color: #252525;
+}
+.mod-share .content{
+    padding:20px 0;
+}
+.mod-share .content1 .tit{
+    font:700 18px/1.5 "Microsoft YaHei";
+    width: 20px;
+    float: left;
+    color: #b9b9b9;
+    margin: 24px;
+}
+.footer {
+    background-color: #313131;
+    padding: 20px 0;
+}
+
+.footer .foot {
+    float: left;
+}
+
+.footer .foot1 {
+    color: #b9b9b9;
+    font: 400 12px/1.5 "Microsoft YaHei";
+    width: 330px;
+}
+
+.footer .foot1 .tit {
+    font-size: 14px;
+    font-weight: 700;
+}
+
+.footer .foot2 {
+    margin-top: 65px;
+    width: 200px;
+}
+
+.footer .foot2 .tit {
+    font: 700 18px/1.5 "Microsoft YaHei";
+    color: #b9b9b9;
+}
+
+.footer .foot2 .txt {
+    font-size: 12px;
+    color: #b9b9b9;
+}
