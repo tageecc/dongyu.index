@@ -69,12 +69,9 @@
                 </div>
                 <div class="mod-bd">
                     <ul class="cnt-txtlist">
-                        <li><a href="#">这是一条新闻标题新闻标题新闻闻标题</a><span class="date">2016-10-10</span></li>
-                        <li><a href="#">这是一条新闻标题新闻标题新闻闻标题</a><span class="date">2016-10-10</span></li>
-                        <li><a href="#">这是一条新闻标题新闻标题新闻闻标题</a><span class="date">2016-10-10</span></li>
-                        <li><a href="#">这是一条新闻标题新闻标题新闻闻标题</a><span class="date">2016-10-10</span></li>
-                        <li><a href="#">这是一条新闻标题新闻标题新闻闻标题</a><span class="date">2016-10-10</span></li>
-                        <li><a href="#">这是一条新闻标题新闻标题新闻闻标题</a><span class="date">2016-10-10</span></li>
+                        <%article&&article.forEach(function(v,i){%>
+                        <li><a target="_blank" href="/article/<%=v._id%>"><%=v.title%></a><span class="date"><%=new Date(v.date).toLocaleString()%></span></li>
+                        <%})%>
                     </ul>
                 </div>
             </div>

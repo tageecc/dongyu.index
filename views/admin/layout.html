@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>编辑</title>
+    <link rel='stylesheet' href='/css/style.css'/>
+    <script src="/lib/jquery.min.js"></script>
+</head>
+<body>
+<div class="header header-active por">
+    <div class="wrapper clearfix">
+        <a class="logo" href="/"><img src="/images/logo.png" alt="东娱传媒"></a>
+        <ul class="nav-list clearfix">
+            <li class="cur"><a href="#" title="首页">首页</a></li>
+            <li><a href="#" title="走进东娱">走进东娱</a></li>
+            <li><a href="#" title="业务板块">业务板块</a></li>
+            <li><a href="#" title="东娱新闻">东娱新闻</a></li>
+            <li><a href="#" title="案例展示">案例展示</a></li>
+        </ul>
+    </div>
+</div>
+<div class="wrapper mt20">
+    <div class="frm-side">
+        <div class="mod-side-nav">
+            <div class="mod-hd"><h2 class="tit"><i class="icon-dun"></i>后台管理中心</h2></div>
+            <div class="mod-bd">
+                <ul class="side-nav-list">
+                    <li><h3 class="tit">文章管理 <b></b></h3>
+                        <ul class="sub-nav-list" style="display: block;">
+                            <li><a class="cur" href="/console-pwd.html">文章修改</a></li>
+                            <li><a href="/console-bind.html">banner修改</a></li>
+                            <li><a href="/console-bind.html">轮播图修改</a></li>
+                        </ul>
+                    </li>
+                    <li><h3 class="tit">文章编辑 <b></b></h3>
+                        <ul class="sub-nav-list" style="display: block;">
+                            <li><a href="/editor">文章新建</a></li>
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    <div class="frm-main">
+        <%-body %>
+    </div>
+</div>
+</body>
+</html>
