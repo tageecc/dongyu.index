@@ -34,31 +34,9 @@
             </div>
             <div class="mod-bd">
                 <ul class="cnt-imglist clearfix">
-                    <li>
-                        <a href="#">
-                            <img src="/images/pic/pic2.jpg" alt="功夫熊猫2">
-                        </a>
-                    </li>
-                    <li>
-                        <a href="#">
-                            <img src="/images/pic/pic2.jpg" alt="功夫熊猫2">
-                        </a>
-                    </li>
-                    <li>
-                        <a href="#">
-                            <img src="/images/pic/pic2.jpg" alt="功夫熊猫2">
-                        </a>
-                    </li>
-                    <li>
-                        <a href="#">
-                            <img src="/images/pic/pic2.jpg" alt="功夫熊猫2">
-                        </a>
-                    </li>
-                    <li>
-                        <a href="#">
-                            <img src="/images/pic/pic2.jpg" alt="功夫熊猫2">
-                        </a>
-                    </li>
+                    <%ysjz&&ysjz.forEach(function(v,i){%>
+                    <li><a target="_blank" href="/article/<%=v._id%>" title="<%=v.title%>"><img width="120" height="220" src="<%=v.headimg%>" alt="<%=v.title%>"></a></li>
+                    <%})%>
                 </ul>
             </div>
         </div>

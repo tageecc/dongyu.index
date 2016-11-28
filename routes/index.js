@@ -4,7 +4,7 @@ var Article = require('../model/Article');
 
 //首页
 router.get('/', function (req, res, next) {
-    var article = [], banner = [], marquee = [];
+    var article = [], banner = [], marquee = [],ysjz=[];
     Article.find({})
         .sort({'type': -1, 'date': 1})
         .exec(function (err, articles) {
@@ -18,15 +18,18 @@ router.get('/', function (req, res, next) {
                         article.push(v);
                     }
                     else if (v.type == 2 && banner.length < 6) {
+                        ysjz.push(v);
+                    }
+                    else if (v.type == 3 && banner.length < 6) {
                         banner.push(v);
                     }
-                    else if (v.type == 3 && marquee.length < 6) {
+                    else if (v.type == 4 && marquee.length < 6) {
                         marquee.push(v);
                     }
                 })
             }
             console.log(banner);
-            res.render('index', {article: article, banner: banner, marquee: marquee});
+            res.render('index', {article: article, banner: banner, marquee: marquee,ysjz:ysjz});
         });
 
 });
