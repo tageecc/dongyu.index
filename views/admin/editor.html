@@ -15,7 +15,7 @@
     </div>
     <a href="javascript:" class="submit" onclick="post();">提交</a>
 </div>
-<div id="temp"></div>
+<div id="temp" style="display: none;"></div>
 <!-- 加载编辑器的容器 -->
 <script id="container" name="content" type="text/plain"></script>
 <!-- 配置文件 -->
@@ -47,8 +47,9 @@
             return false;
         }
         //提交
-        $.post('/article/add', {title: title, type: type, content: txt}, function (res) {
-            console.log(res);
+        $.post('/article/add', {title: title, type: type, content: txt,headimg:img}, function (res) {
+            alert(res.msg);
+            window.location.reload();
         })
     }
 

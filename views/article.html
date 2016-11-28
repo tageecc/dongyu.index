@@ -19,9 +19,9 @@
 </div>
 <div class="wrapper">
     <div class="mod-article">
-        <h1 class="title">这是一篇文章标题~</h1>
-        <p class="txtinfo">发布时间：2016-11-28 &nbsp;&nbsp;&nbsp;&nbsp;浏览量：123</p>
-        <p class="content">这是一篇文章正文，这是一篇文章正文这是一篇文章正文，这是一篇文章正文这是一篇文章正文，这是一篇文章正文这是一篇文章正文，这是一篇文章正文这是一篇文章正文，这是一篇文章正文</p>
+        <h1 class="title"><%=article.title%></h1>
+        <p class="txtinfo">发布时间：<%=article.date%> &nbsp;&nbsp;&nbsp;&nbsp;浏览量：<%=article.view%></p>
+        <p class="content"><%-article.content%></p>
     </div>
 </div>
 

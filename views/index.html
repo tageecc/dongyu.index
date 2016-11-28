@@ -19,9 +19,9 @@
 </div>
 <div class="banner">
     <ul class="banner-list">
-        <li>
-            <img src="/images/pic/pic.jpg" alt="">
-        </li>
+        <%banner&&banner.forEach(function(v,i){%>
+        <li><a target="_blank" href="/article/<%=v._id%>" title="<%=v.title%>"><img src="<%=v.headimg%>" alt=""></a></li>
+        <%})%>
     </ul>
     <a href="javascript:" class="btn-prev">上一页</a>
     <a href="javascript:" class="btn-next">下一页</a>
@@ -70,16 +70,16 @@
                 <div class="mod-bd">
                     <ul class="cnt-txtlist">
                         <%article&&article.forEach(function(v,i){%>
-                        <li><a target="_blank" href="/article/<%=v._id%>"><%=v.title%></a><span class="date"><%=new Date(v.date).toLocaleString()%></span></li>
+                        <li><a target="_blank" href="/article/<%=v._id%>"><%=v.title%></a><span class="date"><%=v.date%></span></li>
                         <%})%>
                     </ul>
                 </div>
             </div>
             <div class="mod-marquee">
                 <ul class="marquee-list clearfix">
-                    <li><a href="#"><img src="http://placehold.it/500x280" alt=""></a></li>
-                    <li><a href="#"><img src="http://placehold.it/500x280" alt=""></a></li>
-                    <li><a href="#"><img src="http://placehold.it/500x280" alt=""></a></li>
+                    <%marquee&&marquee.forEach(function(v,i){%>
+                    <li><a target="_blank" href="/article/<%=v._id%>" title="<%=v.title%>"><img width="500" height="280" src="<%=v.headimg%>" alt=""></a></li>
+                    <%})%>
                 </ul>
                 <ul class="marquee-nav clearfix">
                     <li class="cur"></li>

@@ -435,7 +435,9 @@ html, body {
 .mod-article .content {
     margin-top: 10px;
 }
-
+.mod-article .content img{
+    display: block;
+}
 .footer {
     background-color: #313131;
     padding: 20px 0;

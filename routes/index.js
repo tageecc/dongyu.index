@@ -13,7 +13,6 @@ router.get('/', function (req, res, next) {
                 return false;
             }
             if (articles && articles.length > 0) {
-                console.log(articles);
                 articles.forEach(function (v, i) {
                     if (v.type == 1 && article.length < 6) {
                         article.push(v);
@@ -26,7 +25,7 @@ router.get('/', function (req, res, next) {
                     }
                 })
             }
-            console.log(article);
+            console.log(banner);
             res.render('index', {article: article, banner: banner, marquee: marquee});
         });
 
@@ -34,7 +33,13 @@ router.get('/', function (req, res, next) {
 
 //详情页
 router.get('/article/:id', function (req, res, next) {
-    res.render('article', {});
+    console.log(req.params.id);
+    Article.findOneAndUpdate({_id:req.params.id},{'$inc':{view:1}},function (err, article) {
+        if(err){
+            return false;
+        }
+        res.render('article', {article:article});
+    });
 });
 
 //添加文章
