@@ -1,5 +1,16 @@
 <% layout('admin/layout.html') %>
 
+<div class="mod-search">
+    <form action="/article/search" method="post">
+        <input class="submit" type="submit" value="搜索">
+        <%if(search){%>
+        <input class="input" type="text" name="key" value="<%=search%>" autocomplete="off" required>
+        <span class="tip">为您找到 <%=search%> 相关结果 <%=totalPages*perPage%> 个</span>
+        <%}else{%>
+        <input type="text" name="key" autocomplete="off" required>
+        <%}%>
+    </form>
+</div>
 <div class="mod-article-list">
     <table>
         <thead>
@@ -11,17 +22,32 @@
         </tr>
         </thead>
         <tbody>
+        <%article&&article.forEach(function(v,i){%>
         <tr>
-            <%article&&article.forEach(function(v,i){%>
             <td><%=(i+1)%></td>
             <td class="title"><a href="/article/<%=v._id%>" target="_blank" title="<%=v.title%>"><%=v.title%></a></td>
             <td><%=v.date%></td>
             <td>
-                <a href="javascript:" data-id="<%=v._id%>" class="btn btn-editor">编辑</a>
-                <a href="javascript:" data-id="<%=v._id%>" class="btn btn-remove">删除</a>
+                <a href="/article/editor/<%=v._id%>" data-id="<%=v._id%>" data-title="<%=v.title%>" class="btn btn-editor">编辑</a>
+                <a href="javascript:" data-id="<%=v._id%>" data-title="<%=v.title%>" class="btn btn-remove">删除</a>
             </td>
-            <%})%>
         </tr>
+        <%})%>
         </tbody>
     </table>
+    <% include ../pager.html %>
 </div>
+
+<script>
+    //删除
+    $('.btn-remove').on('click', function () {
+        var _this = $(this);
+        var title = _this.data('title');
+        if (confirm("确定删除" + title + "吗？")) {
+            $.post('/article/remove/' + _this.data('id'), function (res) {
+                alert(res.msg);
+                window.location.reload();
+            })
+        }
+    });
+</script>

@@ -60,7 +60,7 @@ router.get('/login', function (req, res, next) {
 });
 //登陆
 router.post('/login', function (req, res, next) {
-    console.log(req.body.username,req.body.password);
+    console.log(req.body.username, req.body.password);
     if (req.body.username == '' || req.body.password == '') {
         res.render('error', {message: '用户名或密码错误，请重试！'});
         return false;
@@ -95,6 +95,50 @@ router.post('/article/add', adminRequired, function (req, res, next) {
 
     });
 });
+//编辑文章
+router.get('/article/editor/:id', adminRequired, function (req, res, next) {
+    Article.findOne({_id: req.params.id}, function (err, article) {
+        if (err) return false;
+        console.log(article);
+        res.render('admin/editor', {cur: 'editor', article: article});
+    });
+});
+//编辑文章
+router.post('/article/editor/:id', adminRequired, function (req, res, next) {
+    Article.update({_id: req.params.id}, req.body, function (err) {
+        if (err) {
+            res.json({code: -1, msg: '数据库错误！'});
+            return false;
+        }
+        res.json({code: 1, msg: '更新成功！'})
+
+    });
+});
+router.post('/article/search', adminRequired, function (req, res, next) {
+    var perPage = 10, curPage = req.query.page ? req.query.page : 1;
+    var regex = new RegExp(req.body.key, 'i');
+    Article.find({$or: [{title: regex}, {age: regex}]})
+        .sort({'date': -1})
+        .skip((curPage - 1) * perPage)
+        .limit(perPage)
+        .exec(function (err, articles) {
+            if (err)return false;
+
+            Article.count(function (err, count) {
+                var totalPages = Math.ceil(count / perPage);
+                res.render('admin/list', {
+                    cur: 'article_list',
+                    article: articles,
+                    perPage: perPage,
+                    curPage: curPage,
+                    totalPages: totalPages,
+                    _url: '/admin/article/list',
+                    search:req.body.key
+                });
+            });
+        });
+
+});
 router.post('/article/remove/:id', adminRequired, function (req, res, next) {
     Article.remove({_id: req.params.id}, function (err) {
         if (err) {
@@ -105,18 +149,31 @@ router.post('/article/remove/:id', adminRequired, function (req, res, next) {
     })
 });
 
-//后台编辑
+//后台编辑页面
 router.get('/admin/editor', adminRequired, function (req, res, next) {
-    res.render('admin/editor', {cur: 'editor'});
+    res.render('admin/editor', {cur: 'editor', article: null});
 });
 //后台文章列表
 router.get('/admin/article/list', adminRequired, function (req, res, next) {
+    var perPage = 10, curPage = req.query.page ? req.query.page : 1;
     Article.find({})
         .sort({'date': -1})
+        .skip((curPage - 1) * perPage)
+        .limit(perPage)
         .exec(function (err, articles) {
             if (err)return false;
-            res.render('admin/list', {cur: 'article_list', article: articles});
 
+            Article.count(function (err, count) {
+                var totalPages = Math.ceil(count / perPage);
+                res.render('admin/list', {
+                    cur: 'article_list',
+                    article: articles,
+                    perPage: perPage,
+                    curPage: curPage,
+                    totalPages: totalPages,
+                    _url: '/admin/article/list'
+                });
+            });
         });
 });
 module.exports = router;

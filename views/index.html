@@ -60,9 +60,9 @@
                     <%})%>
                 </ul>
                 <ul class="marquee-nav clearfix">
-                    <li class="cur"></li>
+                    <%marquee&&marquee.forEach(function(v,i){%>
                     <li></li>
-                    <li></li>
+                    <%})%>
                 </ul>
             </div>
         </div>
@@ -115,5 +115,51 @@
         </div>
     </div>
 </div>
+<script src="/lib/jquery.min.js"></script>
+<script src="/lib/ue.marquee.js"></script>
+<script>
+
+    var slideCarousel1 = ue.slideCarousel({
+        target : '.banner',
+        list : ".banner .banner-list",//滚动对象 一般为 ul
+        items : '.banner .banner-list li', //滚动的详细列表
+        delay : 3000,//切换间隔时间
+        speed : 600,//切换速度
+        autoplay : true,
+        loop : true,
+        prev : ".banner .btn-prev",
+        next : ".banner .btn-next",
+        mode : ue.slideCarousel.H,//V表示竖直方向滚动 H表示水平方向滚动
+    });
+
+    var slideCarousel2 = ue.slideCarousel({
+        target : '.mod-marquee',
+        list : ".mod-marquee .marquee-list",//滚动对象 一般为 ul
+        items : '.mod-marquee .marquee-list li', //滚动的详细列表
+        delay : 3000,//切换间隔时间
+        speed : 600,//切换速度
+        autoplay : true,
+        loop : true,
+        mode : ue.slideCarousel.H,
+        thumbnails : ".mod-marquee .marquee-nav li",
+        trigger : "mouseover",
+        beforeSlide : function(){
+            var that = this;
+
+            that.items.find(".title,.mask").stop({gotoEnd : true}).animate({
+                bottom : 50
+            }, 300);
+        },
+
+        afterSlide : function(){
+            var that = this;
+
+            that.items.eq(that.active).stop({gotoEnd : true}).find(".title,.mask").animate({
+                bottom : 80
+            }, 300)
+        }
+    });
+
+</script>
 </body>
 </html>

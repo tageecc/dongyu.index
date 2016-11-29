@@ -3,34 +3,46 @@
 <div class="mod-article-post">
     <div class="form-group clearfix">
         <label class="title" for="title">标题 : </label>
-        <input class="title" name="title" id="title" type="text" placeholder="请输入标题" required>
+        <input class="title" name="title" id="title" type="text" placeholder="请输入标题" value="<%if(article){%><%=article.title%><%}%>" required>
     </div>
     <div class="form-group clearfix">
         <label for="type">文章类型 : </label>
+        <%if(article){%>
+        <select name="type" id="type">
+            <option value="1" <%if(article.type==1){%>selected="selected"<%}%> >新闻列表</option>
+            <option value="2" <%if(article.type==2){%>selected="selected"<%}%> >影视巨制</option>
+            <option value="3" <%if(article.type==3){%>selected="selected"<%}%> >banner图</option>
+            <option value="4" <%if(article.type==4){%>selected="selected"<%}%> >轮播图</option>
+        </select>
+        <%}else{%>
         <select name="type" id="type">
             <option value="1" selected="selected">新闻列表</option>
             <option value="2">影视巨制</option>
             <option value="3">banner图</option>
             <option value="4">轮播图</option>
         </select>
+        <%}%>
+
     </div>
     <a href="javascript:" class="submit" onclick="post();">提交</a>
 </div>
 <div id="temp" style="display: none;"></div>
 <!-- 加载编辑器的容器 -->
-<script id="container" name="content" type="text/plain"></script>
+<script id="container" name="content" type="text/plain"><%if(article){%><%-article.content%><%}%></script>
 <!-- 配置文件 -->
 <script type="text/javascript" src="/lib/ueditor/ueditor.config.js"></script>
 <!-- 编辑器源码文件 -->
 <script type="text/javascript" src="/lib/ueditor/ueditor.all.js"></script>
 <!-- 实例化编辑器 -->
 <script type="text/javascript">
+    var _id = "<%if(article){%><%=article._id%><%}%>";
+
     var ue = UE.getEditor('container', {
         autoHeightEnabled: false,
         initialFrameHeight: 560
     });
     function post() {
-        var txt = ue.getPlainTxt(), img = '', type = $('#type').val(), title = $('#title').val();
+        var txt = ue.getContent(), img = '', type = $('#type').val(), title = $('#title').val();
         console.log(txt);
         //文章内容或标题
         if ($.trim(txt) == '' || $.trim(title) == '') {
@@ -48,7 +60,8 @@
             return false;
         }
         //提交
-        $.post('/article/add', {title: title, type: type, content: txt,headimg:img}, function (res) {
+        var _url =_id?'/article/editor/'+_id:'/article/add';
+        $.post(_url, {title: title, type: type, content: txt,headimg:img}, function (res) {
             alert(res.msg);
             window.location.reload();
         })

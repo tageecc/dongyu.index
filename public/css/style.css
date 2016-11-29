@@ -689,3 +689,86 @@ html, body {
     color: #fefefe;
     border: 1px solid #e68317;
 }
+
+.mod-pager, .mod-pager ul {
+    zoom: 1;
+    position: relative;
+    float: left;
+}
+
+.mod-pager {
+    padding: 20px 0;
+    font-size: 12px;
+    line-height: 36px;
+    left: 50%;
+}
+
+.mod-pager ul {
+    right: 50%;
+}
+
+.mod-pager li {
+    display: inline;
+}
+
+.mod-pager a, .mod-pager span {
+    transition: .15s all;
+    font: 500 12px/30px microsoft yahei;
+    letter-spacing: normal;
+    word-spacing: normal;
+    margin: 0 3px;
+    overflow: hidden;
+    float: left;
+    display: inline;
+    padding: 0 13px;
+    color: #7f7f7f;
+    background: #fff;
+    height: 30px;
+    border: 1px solid #e2e2e2;
+    border-radius: 5px;
+}
+
+.mod-pager span, .mod-pager a:hover {
+    color: #fff;
+    background-color: #e68417;
+}
+
+.mod-search {
+    padding: 10px 5px;
+}
+
+.mod-search input {
+    display: inline-block;
+    padding: 3px 12px;
+    font-size: 14px;
+    line-height: 20px;
+    color: #555;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, .075);
+    box-shadow: inset 0 1px 1px rgba(0, 0, 0, .075);
+}
+
+.mod-search .input {
+    width: 80px;
+    transition: all ease-in-out .25s;
+}
+
+.mod-search .input:focus {
+    width: 300px;
+}
+
+.mod-search .submit {
+    background-color: #e68417;
+    border-color: #eea236;
+    color: #fefefe;
+    cursor: pointer;
+}
+
+.mod-search .submit:hover {
+    background-color: #eea236;
+}
+
+.mod-search .tip {
+    float: right;
+}
