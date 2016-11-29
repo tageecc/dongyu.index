@@ -27,7 +27,7 @@
     }
     %>
     <%if(curPage!=totalPages){%>
-        <li><a href="<%=_url%>?page=<%=(curPage+1)%>" class="" data-page="<%=(curPage+1)%>">下一页</a></li>
+        <li><a href="<%=_url%>?page=<%=(parseInt(curPage)+1)%>" class="" data-page="<%=(parseInt(curPage)+1)%>">下一页</a></li>
         <li><a href="<%=_url%>?page=<%=totalPages%>" class="" data-page="<%=totalPages%>">末页</a></li>
     <%}%>
     </ul>

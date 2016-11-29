@@ -227,8 +227,14 @@ html, body {
 
 .banner {
     position: relative;
+    height: 800px;
+    overflow: hidden;
 }
 
+.banner-list li{
+    float: left;
+    width:100%;
+}
 .banner-list img {
     width: 100%;
     height: 800px;
@@ -744,18 +750,13 @@ html, body {
     line-height: 20px;
     color: #555;
     border: 1px solid #ccc;
-    border-radius: 4px;
-    -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, .075);
-    box-shadow: inset 0 1px 1px rgba(0, 0, 0, .075);
 }
 
 .mod-search .input {
-    width: 80px;
+    width: 150px;
     transition: all ease-in-out .25s;
-}
-
-.mod-search .input:focus {
-    width: 300px;
+    margin-left:-5px;
+    border-radius:0 3px 3px 0;
 }
 
 .mod-search .submit {
@@ -763,6 +764,7 @@ html, body {
     border-color: #eea236;
     color: #fefefe;
     cursor: pointer;
+    border-radius:3px 0 0 3px;
 }
 
 .mod-search .submit:hover {
@@ -771,4 +773,8 @@ html, body {
 
 .mod-search .tip {
     float: right;
+}
+
+.mod-search .tip span{
+    color: #e68417;
 }

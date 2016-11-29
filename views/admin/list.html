@@ -5,7 +5,7 @@
         <input class="submit" type="submit" value="搜索">
         <%if(search){%>
         <input class="input" type="text" name="key" value="<%=search%>" autocomplete="off" required>
-        <span class="tip">为您找到 <%=search%> 相关结果 <%=totalPages*perPage%> 个</span>
+        <span class="tip">为您找到 <span><%=search%></span> 相关结果 <%=(curPage-1)*perPage+article.length%> 个</span>
         <%}else{%>
         <input type="text" name="key" autocomplete="off" required>
         <%}%>
@@ -24,7 +24,7 @@
         <tbody>
         <%article&&article.forEach(function(v,i){%>
         <tr>
-            <td><%=(i+1)%></td>
+            <td><%=(curPage-1)*perPage+(i+1)%></td>
             <td class="title"><a href="/article/<%=v._id%>" target="_blank" title="<%=v.title%>"><%=v.title%></a></td>
             <td><%=v.date%></td>
             <td>

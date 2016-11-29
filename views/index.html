@@ -18,9 +18,10 @@
     </div>
 </div>
 <div class="banner">
-    <ul class="banner-list">
+    <ul class="banner-list clearfix">
         <%banner&&banner.forEach(function(v,i){%>
-        <li><a target="_blank" href="/article/<%=v._id%>" title="<%=v.title%>"><img src="<%=v.headimg%>" alt=""></a></li>
+        <li><a target="_blank" href="/article/<%=v._id%>" title="<%=v.title%>"><img src="<%=v.headimg%>" alt=""></a>
+        </li>
         <%})%>
     </ul>
     <a href="javascript:" class="btn-prev">上一页</a>
@@ -35,7 +36,10 @@
             <div class="mod-bd">
                 <ul class="cnt-imglist clearfix">
                     <%ysjz&&ysjz.forEach(function(v,i){%>
-                    <li><a target="_blank" href="/article/<%=v._id%>" title="<%=v.title%>"><img width="120" height="220" src="<%=v.headimg%>" alt="<%=v.title%>"></a></li>
+                    <li><a target="_blank" href="/article/<%=v._id%>" title="<%=v.title%>"><img width="120" height="220"
+                                                                                                src="<%=v.headimg%>"
+                                                                                                alt="<%=v.title%>"></a>
+                    </li>
                     <%})%>
                 </ul>
             </div>
@@ -48,7 +52,8 @@
                 <div class="mod-bd">
                     <ul class="cnt-txtlist">
                         <%article&&article.forEach(function(v,i){%>
-                        <li><a target="_blank" href="/article/<%=v._id%>"><%=v.title%></a><span class="date"><%=v.date%></span></li>
+                        <li><a target="_blank" href="/article/<%=v._id%>"><%=v.title%></a><span
+                                class="date"><%=v.date%></span></li>
                         <%})%>
                     </ul>
                 </div>
@@ -56,7 +61,9 @@
             <div class="mod-marquee">
                 <ul class="marquee-list clearfix">
                     <%marquee&&marquee.forEach(function(v,i){%>
-                    <li><a target="_blank" href="/article/<%=v._id%>" title="<%=v.title%>"><img width="500" height="280" src="<%=v.headimg%>" alt=""></a></li>
+                    <li><a target="_blank" href="/article/<%=v._id%>" title="<%=v.title%>"><img width="500" height="280"
+                                                                                                src="<%=v.headimg%>"
+                                                                                                alt=""></a></li>
                     <%})%>
                 </ul>
                 <ul class="marquee-nav clearfix">
@@ -116,50 +123,41 @@
     </div>
 </div>
 <script src="/lib/jquery.min.js"></script>
-<script src="/lib/ue.marquee.js"></script>
+<script src="/lib/ks.marquee.js"></script>
 <script>
-
-    var slideCarousel1 = ue.slideCarousel({
-        target : '.banner',
-        list : ".banner .banner-list",//滚动对象 一般为 ul
-        items : '.banner .banner-list li', //滚动的详细列表
-        delay : 3000,//切换间隔时间
-        speed : 600,//切换速度
-        autoplay : true,
-        loop : true,
-        prev : ".banner .btn-prev",
-        next : ".banner .btn-next",
-        mode : ue.slideCarousel.H,//V表示竖直方向滚动 H表示水平方向滚动
-    });
-
-    var slideCarousel2 = ue.slideCarousel({
-        target : '.mod-marquee',
-        list : ".mod-marquee .marquee-list",//滚动对象 一般为 ul
-        items : '.mod-marquee .marquee-list li', //滚动的详细列表
-        delay : 3000,//切换间隔时间
-        speed : 600,//切换速度
-        autoplay : true,
-        loop : true,
-        mode : ue.slideCarousel.H,
-        thumbnails : ".mod-marquee .marquee-nav li",
-        trigger : "mouseover",
-        beforeSlide : function(){
-            var that = this;
-
-            that.items.find(".title,.mask").stop({gotoEnd : true}).animate({
-                bottom : 50
-            }, 300);
+    (function () {
+        var w = $(window).width() < 1000 ? 1000 : $(window).width();
+        $('.banner .banner-list li').width(w);
+    })();
+    ue.marquee({
+        target: '.banner .banner-list',
+        items: '.banner .banner-list li',
+        delay: 3000,
+        speed: 500,
+        prevbtn: '.banner .btn-prev',
+        nextbtn: '.banner .btn-next',
+        scrollnum: 1,
+        autoplay: true,
+        beforeSlide: function () {
         },
-
-        afterSlide : function(){
-            var that = this;
-
-            that.items.eq(that.active).stop({gotoEnd : true}).find(".title,.mask").animate({
-                bottom : 80
-            }, 300)
-        }
+        loop: 1,
+        mode: 1
     });
-
+    ue.marquee({
+        target: ".mod-marquee .marquee-list",
+        items: ".mod-marquee .marquee-list li",
+        delay: 3000,
+        speed: 500,
+        prevbtn: '.banner .btn-prev',
+        nextbtn: '.banner .btn-next',
+        gotobtn: ".mod-marquee .marquee-nav li",
+        scrollnum: 1,
+        autoplay: true,
+        beforeSlide: function () {
+        },
+        loop: 1,
+        mode: 1
+    });
 </script>
 </body>
 </html>

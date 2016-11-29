@@ -11,6 +11,10 @@ var ArticleSchema = new mongoose.Schema({
     date: {
         type: String,
         default: new Date().toLocaleString().replace(/(\d{4}).(\d{1,2}).(\d{1,2})/mg, "$1-$2-$3").substr(0,10)
+    },
+    create_at:{
+        type:Date,
+        default:new Date()
     }
 });
 module.exports = mongoose.model('Article', ArticleSchema);

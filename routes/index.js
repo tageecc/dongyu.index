@@ -16,7 +16,7 @@ var adminRequired = function (req, res, next) {
 router.get('/', function (req, res, next) {
     var article = [], banner = [], marquee = [], ysjz = [];
     Article.find({})
-        .sort({'type': -1, 'date': 1})
+        .sort({'create_at': -1})
         .exec(function (err, articles) {
             if (err) {
                 console.log(err);
@@ -115,7 +115,7 @@ router.post('/article/editor/:id', adminRequired, function (req, res, next) {
     });
 });
 router.post('/article/search', adminRequired, function (req, res, next) {
-    var perPage = 10, curPage = req.query.page ? req.query.page : 1;
+    var perPage = req.query.perPage ? req.query.perPage:10, curPage = req.query.page ? req.query.page : 1;
     var regex = new RegExp(req.body.key, 'i');
     Article.find({$or: [{title: regex}, {age: regex}]})
         .sort({'date': -1})
@@ -133,7 +133,7 @@ router.post('/article/search', adminRequired, function (req, res, next) {
                     curPage: curPage,
                     totalPages: totalPages,
                     _url: '/admin/article/list',
-                    search:req.body.key
+                    search: req.body.key
                 });
             });
         });
@@ -155,7 +155,7 @@ router.get('/admin/editor', adminRequired, function (req, res, next) {
 });
 //后台文章列表
 router.get('/admin/article/list', adminRequired, function (req, res, next) {
-    var perPage = 10, curPage = req.query.page ? req.query.page : 1;
+    var perPage = req.query.perPage ? req.query.perPage:10, curPage = req.query.page ? req.query.page : 1;
     Article.find({})
         .sort({'date': -1})
         .skip((curPage - 1) * perPage)
@@ -171,7 +171,8 @@ router.get('/admin/article/list', adminRequired, function (req, res, next) {
                     perPage: perPage,
                     curPage: curPage,
                     totalPages: totalPages,
-                    _url: '/admin/article/list'
+                    _url: '/admin/article/list',
+                    search: null
                 });
             });
         });
