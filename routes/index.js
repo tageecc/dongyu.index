@@ -18,10 +18,7 @@ router.get('/', function (req, res, next) {
     Article.find({})
         .sort({'create_at': -1})
         .exec(function (err, articles) {
-            if (err) {
-                console.log(err);
-                return false;
-            }
+            if (err) return false;
             if (articles && articles.length > 0) {
                 articles.forEach(function (v, i) {
                     if (v.type == 1 && article.length < 6) {
@@ -38,7 +35,6 @@ router.get('/', function (req, res, next) {
                     }
                 })
             }
-            console.log(banner);
             res.render('index', {article: article, banner: banner, marquee: marquee, ysjz: ysjz});
         });
 
@@ -46,7 +42,6 @@ router.get('/', function (req, res, next) {
 
 //详情页
 router.get('/article/:id', function (req, res, next) {
-    console.log(req.params.id);
     Article.findOneAndUpdate({_id: req.params.id}, {'$inc': {view: 1}}, function (err, article) {
         if (err) {
             return false;
@@ -60,7 +55,6 @@ router.get('/login', function (req, res, next) {
 });
 //登陆
 router.post('/login', function (req, res, next) {
-    console.log(req.body.username, req.body.password);
     if (req.body.username == '' || req.body.password == '') {
         res.render('error', {message: '用户名或密码错误，请重试！'});
         return false;
@@ -99,7 +93,6 @@ router.post('/article/add', adminRequired, function (req, res, next) {
 router.get('/article/editor/:id', adminRequired, function (req, res, next) {
     Article.findOne({_id: req.params.id}, function (err, article) {
         if (err) return false;
-        console.log(article);
         res.render('admin/editor', {cur: 'editor', article: article});
     });
 });
@@ -114,17 +107,18 @@ router.post('/article/editor/:id', adminRequired, function (req, res, next) {
 
     });
 });
+//搜索
 router.post('/article/search', adminRequired, function (req, res, next) {
-    var perPage = req.query.perPage ? req.query.perPage:10, curPage = req.query.page ? req.query.page : 1;
+    var perPage = req.query.perPage ? req.query.perPage : 10, curPage = req.query.page ? req.query.page : 1;
     var regex = new RegExp(req.body.key, 'i');
     Article.find({$or: [{title: regex}, {age: regex}]})
-        .sort({'date': -1})
+        .sort({'create_at': -1})
         .skip((curPage - 1) * perPage)
         .limit(perPage)
         .exec(function (err, articles) {
             if (err)return false;
 
-            Article.count(function (err, count) {
+            Article.count({$or: [{title: regex}]}, function (err, count) {
                 var totalPages = Math.ceil(count / perPage);
                 res.render('admin/list', {
                     cur: 'article_list',
@@ -155,9 +149,9 @@ router.get('/admin/editor', adminRequired, function (req, res, next) {
 });
 //后台文章列表
 router.get('/admin/article/list', adminRequired, function (req, res, next) {
-    var perPage = req.query.perPage ? req.query.perPage:10, curPage = req.query.page ? req.query.page : 1;
+    var perPage = req.query.perPage ? req.query.perPage : 10, curPage = req.query.page ? req.query.page : 1;
     Article.find({})
-        .sort({'date': -1})
+        .sort({'create_at': -1})
         .skip((curPage - 1) * perPage)
         .limit(perPage)
         .exec(function (err, articles) {
