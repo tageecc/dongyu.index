@@ -4,7 +4,7 @@ var UserSchema = new mongoose.Schema({
     password:String,
     date: {
         type: Date,
-        default: new Date().toLocaleString().replace(/(\d{4}).(\d{1,2}).(\d{1,2})/mg, "$1-$2-$3")
+        default: new Date()
     }
 });
 module.exports = mongoose.model('User', UserSchema);

@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>编辑</title>
+    <title>东娱传媒 | 后台管理</title>
     <link rel='stylesheet' href='/css/style.css'/>
     <script src="/lib/jquery.min.js"></script>
 </head>
@@ -26,14 +26,12 @@
                 <ul class="side-nav-list">
                     <li><h3 class="tit">文章管理 <b></b></h3>
                         <ul class="sub-nav-list" style="display: block;">
-                            <li><a class="cur" href="/console-pwd.html">文章修改</a></li>
-                            <li><a href="/console-bind.html">banner修改</a></li>
-                            <li><a href="/console-bind.html">轮播图修改</a></li>
+                            <li><a class="<%if(cur=='article_list'){%>cur<%}%>" href="/admin/article/list">文章列表</a></li>
                         </ul>
                     </li>
                     <li><h3 class="tit">文章编辑 <b></b></h3>
                         <ul class="sub-nav-list" style="display: block;">
-                            <li><a href="/editor">文章新建</a></li>
+                            <li><a class="<%if(cur=='editor'){%>cur<%}%>" href="/admin/editor">创建文章</a></li>
                         </ul>
                     </li>
                 </ul>

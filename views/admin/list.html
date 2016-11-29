@@ -1,0 +1,27 @@
+<% layout('admin/layout.html') %>
+
+<div class="mod-article-list">
+    <table>
+        <thead>
+        <tr>
+            <th>#</th>
+            <th class="title">标题</th>
+            <th>日期</th>
+            <th>操作</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr>
+            <%article&&article.forEach(function(v,i){%>
+            <td><%=(i+1)%></td>
+            <td class="title"><a href="/article/<%=v._id%>" target="_blank" title="<%=v.title%>"><%=v.title%></a></td>
+            <td><%=v.date%></td>
+            <td>
+                <a href="javascript:" data-id="<%=v._id%>" class="btn btn-editor">编辑</a>
+                <a href="javascript:" data-id="<%=v._id%>" class="btn btn-remove">删除</a>
+            </td>
+            <%})%>
+        </tr>
+        </tbody>
+    </table>
+</div>
