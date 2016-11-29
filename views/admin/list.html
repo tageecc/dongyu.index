@@ -28,8 +28,8 @@
             <td class="title"><a href="/article/<%=v._id%>" target="_blank" title="<%=v.title%>"><%=v.title%></a></td>
             <td><%=v.date%></td>
             <td>
-                <a href="/article/editor/<%=v._id%>" data-id="<%=v._id%>" data-title="<%=v.title%>" class="btn btn-editor">编辑</a>
-                <a href="javascript:" data-id="<%=v._id%>" data-title="<%=v.title%>" class="btn btn-remove">删除</a>
+                <a href="/article/editor/<%=v._id%>" data-id="<%=v._id%>" data-title="<%=v.title%>" class="btn btn-editor"><i class="fa fa-external-link"></i> 编辑</a>
+                <a href="javascript:" data-id="<%=v._id%>" data-title="<%=v.title%>" class="btn btn-remove"><i class="fa fa-trash-o fa-lg"></i> 删除</a>
             </td>
         </tr>
         <%})%>
