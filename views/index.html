@@ -6,21 +6,12 @@
 </head>
 <body>
 <div class="header">
-    <div class="wrapper clearfix">
-        <a class="logo" href="/"><img src="/images/logo.png" alt="东娱传媒"></a>
-        <ul class="nav-list clearfix">
-            <li class="cur"><a href="#" title="首页">首页</a></li>
-            <li><a href="#" title="走进东娱">走进东娱</a></li>
-            <li><a href="#" title="业务板块">业务板块</a></li>
-            <li><a href="#" title="东娱新闻">东娱新闻</a></li>
-            <li><a href="#" title="案例展示">案例展示</a></li>
-        </ul>
-    </div>
+    <% include header.html%>
 </div>
 <div class="banner">
     <ul class="banner-list clearfix">
         <%banner&&banner.forEach(function(v,i){%>
-        <li><a target="_blank" href="/article/<%=v._id%>" title="<%=v.title%>"><img src="<%=v.headimg%>" alt=""></a>
+        <li><a target="_blank" href="/article/id/<%=v._id%>" title="<%=v.title%>"><img src="<%=v.headimg%>" alt=""></a>
         </li>
         <%})%>
     </ul>
@@ -36,7 +27,7 @@
             <div class="mod-bd">
                 <ul class="cnt-imglist clearfix">
                     <%ysjz&&ysjz.forEach(function(v,i){%>
-                    <li><a target="_blank" href="/article/<%=v._id%>" title="<%=v.title%>"><img width="120" height="220"
+                    <li><a target="_blank" href="/article/id/<%=v._id%>" title="<%=v.title%>"><img width="120" height="220"
                                                                                                 src="<%=v.headimg%>"
                                                                                                 alt="<%=v.title%>"></a>
                     </li>
@@ -52,7 +43,7 @@
                 <div class="mod-bd">
                     <ul class="cnt-txtlist">
                         <%article&&article.forEach(function(v,i){%>
-                        <li><a target="_blank" href="/article/<%=v._id%>"><%=v.title%></a><span
+                        <li><a target="_blank" href="/article/id/<%=v._id%>"><%=v.title%></a><span
                                 class="date"><%=v.date%></span></li>
                         <%})%>
                     </ul>
@@ -61,7 +52,7 @@
             <div class="mod-marquee">
                 <ul class="marquee-list clearfix">
                     <%marquee&&marquee.forEach(function(v,i){%>
-                    <li><a target="_blank" href="/article/<%=v._id%>" title="<%=v.title%>"><img width="500" height="280"
+                    <li><a target="_blank" href="/article/id/<%=v._id%>" title="<%=v.title%>"><img width="500" height="280"
                                                                                                 src="<%=v.headimg%>"
                                                                                                 alt=""></a></li>
                     <%})%>
@@ -75,53 +66,7 @@
         </div>
     </div>
 </div>
-<div class="footer">
-    <div class="wrapper">
-        <div class="foot foot1">
-            <a class="logo" href="/"><img src="/images/logo.png" alt="东娱传媒"></a>
-            <p class="tit mt20">东娱文化传媒有限公司</p>
-            <p class="txt">福建省厦门市观音山营运中心塔埔东路166号</p>
-            <p class="tit mt20">邮编 \ 362100</p>
-            <p class="tit">电话 \ 123456789</p>
-            <p class="tit">传真 \ 123456789</p>
-
-            <p class="txt mt20">CopyRight© 2014 - 2016</p>
-        </div>
-        <div class="foot foot2">
-            <p class="tit">友情链接</p>
-            <ul>
-                <li><a href="#" class="txt">东娱传媒有限公司</a></li>
-                <li><a href="#" class="txt">东娱传媒有限公司</a></li>
-                <li><a href="#" class="txt">东娱传媒有限公司</a></li>
-                <li><a href="#" class="txt">东娱传媒有限公司</a></li>
-                <li><a href="#" class="txt">东娱传媒有限公司</a></li>
-            </ul>
-        </div>
-        <div class="foot foot2">
-            <p class="tit">合作伙伴</p>
-            <ul>
-                <li><a href="#" class="txt">东娱传媒有限公司</a></li>
-                <li><a href="#" class="txt">东娱传媒有限公司</a></li>
-                <li><a href="#" class="txt">东娱传媒有限公司</a></li>
-                <li><a href="#" class="txt">东娱传媒有限公司</a></li>
-                <li><a href="#" class="txt">东娱传媒有限公司</a></li>
-            </ul>
-        </div>
-        <div class="foot mod-share">
-            <ul class="tab-nav clearfix">
-                <li class="nav1 cur"><i></i></li>
-                <li class="nav2"><i></i></li>
-                <li class="nav3"><i></i></li>
-            </ul>
-            <div class="tab-contents">
-                <div class="content content1">
-                    <p class="tit">关注我们</p>
-                    <img src="/images/qr.jpg" alt="">
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
+<%include footer.html%>
 <script src="/lib/jquery.min.js"></script>
 <script src="/lib/ks.marquee.js"></script>
 <script>

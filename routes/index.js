@@ -41,13 +41,36 @@ router.get('/', function (req, res, next) {
 });
 
 //详情页
-router.get('/article/:id', function (req, res, next) {
+router.get('/article/id/:id', function (req, res, next) {
     Article.findOneAndUpdate({_id: req.params.id}, {'$inc': {view: 1}}, function (err, article) {
         if (err) {
             return false;
         }
         res.render('article', {article: article});
     });
+});
+//列表页
+router.get('/article/list', function (req, res, next) {
+    var perPage = req.query.perPage ? req.query.perPage : 10, curPage = req.query.page ? req.query.page : 1;
+    Article.find({})
+        .sort({'create_at': -1})
+        .skip((curPage - 1) * perPage)
+        .limit(perPage)
+        .exec(function (err, articles) {
+            if (err)return false;
+
+            Article.count({}, function (err, count) {
+                var totalPages = Math.ceil(count / perPage);
+                res.render('list', {
+                    article: articles,
+                    perPage: perPage,
+                    curPage: curPage,
+                    totalPages: totalPages,
+                    _url: '/article/list'
+                });
+            });
+        });
+
 });
 //登陆页
 router.get('/login', function (req, res, next) {

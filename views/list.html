@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>东娱传媒</title>
+    <link rel='stylesheet' href='/css/style.css'/>
+</head>
+<body>
+<div class="header header-active por">
+    <% include header.html%>
+</div>
+<div class="wrapper">
+    <div class="mod-txtlist">
+        <div class="tit">新闻列表</div>
+        <ul class="cnt-txtlist">
+            <%article.forEach(function(v,i){%>
+            <li>
+                <a href="/article/<%=v._id%>" target="_blank" title="<%=v.title%>"><%=v.title%></a><span class="date"><%v.date%></span>
+            </li>
+            <%})%>
+        </ul>
+    </div>
+</div>
+<% include footer.html%>
+</body>
+</html>

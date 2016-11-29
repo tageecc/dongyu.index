@@ -1,31 +1,3 @@
-<!DOCTYPE html>
-<html>
-<head>
-    <title>东娱传媒</title>
-    <link rel='stylesheet' href='/css/style.css'/>
-</head>
-<body>
-<div class="header header-active por">
-    <% include header.html%>
-</div>
-<div class="wrapper">
-    <div class="mod-login">
-        <form action="/login" method="post" onsubmit="javascript:$('#password').val(MD5($('#password').val()));">
-            <div class="form-group">
-                <label for="username">账号:</label>
-                <input type="text" name="username" id="username" required autocomplete="off">
-            </div>
-            <div class="form-group">
-                <label for="password">密码:</label>
-                <input type="password" name="password" id="password" required>
-            </div>
-            <div class="form-group">
-                <input class="submit" type="submit" value="登陆">
-            </div>
-        </form>
-    </div>
-</div>
-
 <div class="footer">
     <div class="wrapper">
         <div class="foot foot1">
@@ -73,9 +45,3 @@
         </div>
     </div>
 </div>
-<script src="/lib/jquery.min.js"></script>
-<script src="/lib/md5.js"></script>
-<script>
-</script>
-</body>
-</html>

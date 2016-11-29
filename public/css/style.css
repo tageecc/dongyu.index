@@ -252,11 +252,11 @@ html, body {
 
 .banner .btn-prev {
     left: 20px;
-    background-position: 0 -28px;
+    background-position: 0 -34px;
 }
 
 .btn-next {
-    background-position: -19px -28px;
+    background-position: -19px -34px;
 }
 
 .main {
@@ -313,11 +313,11 @@ html, body {
     border-bottom: 1px dotted #ccc;
     padding: 0 0 5px 20px;
     margin-bottom: 5px;
-    background: url(../images/sprite.png) no-repeat 0 -66px;
+    background: url(../images/sprite.png) no-repeat 0 -82px;
 }
 
 .cnt-txtlist li:hover {
-    background-position: 0 0;
+    background-position: 0 -3px;
     color: #e68417;
 }
 
@@ -765,6 +765,7 @@ html, body {
     color: #fefefe;
     cursor: pointer;
     border-radius:3px 0 0 3px;
+    margin-right:-4px;
 }
 
 .mod-search .submit:hover {
