@@ -226,7 +226,9 @@ html, body {
 .header-active .nav-list a {
     line-height: 75px;
 }
-
+.mod-menu{
+    display: none;
+}
 .banner {
     position: relative;
     height: 800px;
@@ -845,25 +847,68 @@ html, body {
     .wrapper {
         width: 100%;
     }
-
+    .main{
+        margin-bottom:0;
+    }
+    .header{
+        position: absolute;
+    }
     .header .logo {
         margin-left: 20px;
     }
 
+    .mod-menu{
+        display: block;
+        position: absolute;
+        right: 10%;
+        top:30%;
+    }
+    .mod-menu .line {
+        width: 50px;
+        height: 5px;
+        background-color: #f1cd81;
+        display: block;
+        margin: 8px auto;
+        -webkit-transition: all 0.3s ease-in-out;
+        -o-transition: all 0.3s ease-in-out;
+        transition: all 0.3s ease-in-out;
+    }
+    .mod-menu.is-active .line:nth-child(1) {
+        -webkit-transform: translateY(13px) rotate(45deg);
+        -ms-transform: translateY(13px) rotate(45deg);
+        -o-transform: translateY(13px) rotate(45deg);
+        transform: translateY(13px) rotate(45deg);
+    }
+    .mod-menu.is-active .line:nth-child(2) {
+        opacity: 0;
+    }
+    .mod-menu.is-active .line:nth-child(3) {
+        -webkit-transform: translateY(-13px) rotate(-45deg);
+        -ms-transform: translateY(-13px) rotate(-45deg);
+        -o-transform: translateY(-13px) rotate(-45deg);
+        transform: translateY(-13px) rotate(-45deg);
+    }
     .header .nav-list {
         display: none;
+        width:100%;
+        padding:30px 0 20px;
+        background-color: #fff;
     }
-
+    .nav-list li{
+        width:100%;
+    }
     .banner-list li img {
         margin: 0;
     }
-
+    .nav-list a{
+        font:20px/1.5 "Microsoft YaHei";
+    }
     .mod-glob .mod-hd .tit {
-        font-size: 40px;
+        font-size: 1.5rem;
     }
 
     .mod-glob .mod-hd .tit span {
-        display: block;
+        font-size:.75rem;
     }
     .cnt-imglist li{
         margin: 0 3% 30px 1%;
@@ -884,5 +929,20 @@ html, body {
     }
     .mod-share{
         margin-top: 20px;
+    }
+    .mod-news {
+        width:100%;
+    }
+    .mod-news .cnt-txtlist{
+        margin-left:10px;
+    }
+    .cnt-txtlist li{
+        width:90%;
+    }
+    .mod-marquee{
+        margin:0;
+    }
+    .mod-ysjz .marquee-holder{
+        height: 200px;
     }
 }
