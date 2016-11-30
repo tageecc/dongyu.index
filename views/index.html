@@ -31,7 +31,7 @@
                     <%ysjz&&ysjz.forEach(function(v,i){%>
                     <li>
                         <a target="_blank" href="/article/id/<%=v._id%>" title="<%=v.title%>">
-                            <img width="120" height="220" src="<%=v.headimg%>" alt="<%=v.title%>">
+                            <img width="160" height="200" src="<%=v.headimg%>" alt="<%=v.title%>">
                         </a>
                     </li>
                     <%})%>
@@ -82,7 +82,7 @@
     ue.marquee({
         target: '.banner .banner-list',
         items: '.banner .banner-list li',
-        delay: 3000,
+        delay: 4000,
         speed: 500,
         prevbtn: '.banner .btn-prev',
         nextbtn: '.banner .btn-next',
@@ -96,7 +96,7 @@
     ue.marquee({
         target: ".mod-marquee .marquee-list",
         items: ".mod-marquee .marquee-list li",
-        delay: 3000,
+        delay: 4000,
         speed: 500,
         gotobtn: ".mod-marquee .marquee-nav li",
         scrollnum: 1,
@@ -106,6 +106,15 @@
         loop: 1,
         mode: 1
     });
+
+    $(document).scroll(function () {
+        if ($(document).scrollTop() != 0) {
+            $('.header').addClass('header-active');
+        } else {
+            $('.header').removeClass('header-active');
+        }
+    });
+
 </script>
 </body>
 </html>

@@ -43,7 +43,6 @@
     });
     function post() {
         var txt = ue.getContent(), img = '', type = $('#type').val(), title = $('#title').val();
-        console.log(txt);
         //文章内容或标题
         if ($.trim(txt) == '' || $.trim(title) == '') {
             alert('文章内容或标题不能为空！');
