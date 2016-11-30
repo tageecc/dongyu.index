@@ -357,46 +357,27 @@ html, body {
 
 .mod-share .tab-nav li {
     float: left;
-    text-indent: -9999px;
     overflow: hidden;
     width: 82px;
     height: 55px;
     border-top: 5px solid;
     background-color: #1c1b1b;
     cursor: pointer;
-}
-
-.mod-share .tab-nav i {
-    display: block;
-    background: url(../images/sprite.png) no-repeat;
-    height: 31px;
-    width: 38px;
-    margin: 14px auto;
+    color: #fff5d4;
+    text-align: center;
+    font:30px/55px "Microsoft YaHei";
 }
 
 .mod-share .tab-nav .nav1 {
     border-color: #ff1800;
 }
 
-.mod-share .tab-nav .nav1 i {
-    background-position: 0 -125px;
-    height: 30px;
-}
-
 .mod-share .tab-nav .nav2 {
     border-color: #60ff00;
 }
 
-.mod-share .tab-nav .nav2 i {
-    background-position: 0 -93px;
-}
-
 .mod-share .tab-nav .nav3 {
     border-color: #0030ff;
-}
-
-.mod-share .tab-nav .nav3 i {
-    background-position: 0 -155px;
 }
 
 .mod-share .tab-nav li.cur {
@@ -779,3 +760,23 @@ html, body {
 .mod-search .tip span{
     color: #e68417;
 }
+.mod-txtlist{
+    min-height: 520px;
+    margin:30px auto;
+}
+.mod-txtlist .tit{
+    color: #333;
+    font-size: 24px;
+    vertical-align: middle;
+    margin-bottom: 10px;
+}
+.mod-txtlist  .cnt-txtlist li{
+    height: 30px;
+    width:auto;
+    padding:5px 0 5px 20px;
+    background-position: 0 -78px;
+}
+.mod-txtlist  .cnt-txtlist li:hover{
+    background-position: 0 2px;
+}
+.mod-txtlist  .cnt-txtlist a

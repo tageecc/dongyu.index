@@ -2,6 +2,7 @@
 <html>
 <head>
     <title>东娱传媒</title>
+    <link rel="stylesheet" href="/lib/font-awesome/css/font-awesome.min.css">
     <link rel='stylesheet' href='/css/style.css'/>
 </head>
 <body>
@@ -10,14 +11,15 @@
 </div>
 <div class="wrapper">
     <div class="mod-txtlist">
-        <div class="tit">新闻列表</div>
+        <div class="tit"><i class="fa fa-globe" aria-hidden="true"></i> 东娱新闻</div>
         <ul class="cnt-txtlist">
             <%article.forEach(function(v,i){%>
             <li>
-                <a href="/article/<%=v._id%>" target="_blank" title="<%=v.title%>"><%=v.title%></a><span class="date"><%v.date%></span>
+                <a href="/article/<%=v._id%>" target="_blank" title="<%=v.title%>"><%=v.title%></a><span class="date"><%=v.date%></span>
             </li>
             <%})%>
         </ul>
+        <% include pager.html %>
     </div>
 </div>
 <% include footer.html%>
