@@ -12,7 +12,8 @@
 <div class="banner">
     <ul class="banner-list clearfix">
         <%banner&&banner.forEach(function(v,i){%>
-        <li><a target="_blank" href="/article/id/<%=v._id%>" title="<%=v.title%>"><img src="<%=v.headimg%>" alt=""></a>
+        <li>
+            <a target="_blank" href="/article/id/<%=v._id%>" title="<%=v.title%>"><img src="<%=v.headimg%>" alt=""></a>
         </li>
         <%})%>
     </ul>
@@ -28,9 +29,10 @@
             <div class="mod-bd">
                 <ul class="cnt-imglist clearfix">
                     <%ysjz&&ysjz.forEach(function(v,i){%>
-                    <li><a target="_blank" href="/article/id/<%=v._id%>" title="<%=v.title%>"><img width="120" height="220"
-                                                                                                src="<%=v.headimg%>"
-                                                                                                alt="<%=v.title%>"></a>
+                    <li>
+                        <a target="_blank" href="/article/id/<%=v._id%>" title="<%=v.title%>">
+                            <img width="120" height="220" src="<%=v.headimg%>" alt="<%=v.title%>">
+                        </a>
                     </li>
                     <%})%>
                 </ul>
@@ -53,9 +55,11 @@
             <div class="mod-marquee">
                 <ul class="marquee-list clearfix">
                     <%marquee&&marquee.forEach(function(v,i){%>
-                    <li><a target="_blank" href="/article/id/<%=v._id%>" title="<%=v.title%>"><img width="500" height="280"
-                                                                                                src="<%=v.headimg%>"
-                                                                                                alt=""></a></li>
+                    <li>
+                        <a target="_blank" href="/article/id/<%=v._id%>" title="<%=v.title%>">
+                            <img width="500" height="280" src="<%=v.headimg%>" alt="">
+                        </a>
+                    </li>
                     <%})%>
                 </ul>
                 <ul class="marquee-nav clearfix">

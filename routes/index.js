@@ -166,6 +166,10 @@ router.post('/article/remove/:id', adminRequired, function (req, res, next) {
     })
 });
 
+router.get('/admin', function (req, res, next) {
+    res.redirect('/admin/article/list');
+});
+
 //后台编辑页面
 router.get('/admin/editor', adminRequired, function (req, res, next) {
     res.render('admin/editor', {cur: 'editor', article: null});
