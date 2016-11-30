@@ -13,3 +13,11 @@
         <li><a href="#" title="案例展示">案例展示</a></li>
     </ul>
 </div>
+
+<script src="/lib/jquery.min.js"></script>
+<script>
+    $(".mod-menu").click(function(){
+        $(this).toggleClass("is-active");
+        $('.header .nav-list').slideToggle();
+    });
+</script>

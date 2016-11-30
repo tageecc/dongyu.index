@@ -891,7 +891,8 @@ html, body {
     .header .nav-list {
         display: none;
         width:100%;
-        padding:30px 0 20px;
+        padding:20px 0 20px;
+        margin-top: 10px;
         background-color: #fff;
     }
     .nav-list li{
@@ -944,5 +945,8 @@ html, body {
     }
     .mod-ysjz .marquee-holder{
         height: 200px;
+    }
+    .mod-txtlist .cnt-txtlist li{
+        margin:0 10px;
     }
 }
