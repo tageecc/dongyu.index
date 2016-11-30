@@ -65,6 +65,7 @@
                     <li>
                         <a target="_blank" href="/article/id/<%=v._id%>" title="<%=v.title%>">
                             <img width="500" height="280" src="<%=v.headimg%>" alt="">
+                            <span class="tit"><%=v.title%></span>
                         </a>
                     </li>
                     <%})%>
@@ -106,8 +107,9 @@
         speed: 500,
         gotobtn: ".mod-marquee .marquee-nav li",
         scrollnum: 1,
-        autoplay: true,
-        beforeSlide: function () {
+        autoplay: false,
+        beforeSlide: function (a) {
+            console.log(a);
         },
         loop: 1,
         mode: 1
