@@ -2,7 +2,8 @@
 <html>
 <head>
     <title>东娱传媒</title>
-    <meta name="viewport" content="width=device-width,initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no"/>
+    <meta name="viewport"
+          content="width=device-width,initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no"/>
     <link rel="stylesheet" href="/lib/font-awesome/css/font-awesome.min.css">
     <link rel='stylesheet' href='/css/style.css'/>
 
@@ -108,13 +109,12 @@
         gotobtn: ".mod-marquee .marquee-nav li",
         scrollnum: 1,
         autoplay: false,
-        beforeSlide: function (a) {
-            console.log(a);
+        afterSlide: function () {
+            console.log(arguments);
         },
         loop: 1,
         mode: 1
     });
-
     ue.marquee({
         target: ".mod-ysjz .cnt-imglist",
         items: ".mod-ysjz .cnt-imglist li",
@@ -137,7 +137,6 @@
             $('.header').removeClass('header-active');
         }
     });
-
 
 </script>
 </body>
