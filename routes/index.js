@@ -24,7 +24,7 @@ router.get('/', function (req, res, next) {
                     if (v.type == 1 && article.length < 6) {
                         article.push(v);
                     }
-                    else if (v.type == 2 && banner.length < 6) {
+                    else if (v.type == 2 /*&& ysjz.length < 6*/) {
                         ysjz.push(v);
                     }
                     else if (v.type == 3 && banner.length < 6) {

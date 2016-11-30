@@ -192,7 +192,7 @@ html, body {
 .nav-list {
     float: right;
     position: relative;
-    z-index:1000;
+    z-index: 1000;
 }
 
 .nav-list li {
@@ -233,16 +233,17 @@ html, body {
     overflow: hidden;
 }
 
-.banner-list li{
+.banner-list li {
     float: left;
-    width:100%;
+    width: 100%;
 }
+
 .banner-list img {
-    width:100%;
+    width: 100%;
     margin-top: -400px;
 }
 
-.banner .btn-prev, .btn-next {
+.banner .btn-prev, .banner .btn-next {
     position: absolute;
     right: 20px;
     top: 40%;
@@ -257,12 +258,12 @@ html, body {
     background-position: 0 -34px;
 }
 
-.btn-next {
+.banner .btn-next {
     background-position: -19px -34px;
 }
 
 .main {
-    margin-top: -341px;
+    margin-top: -260px;
     position: relative;
     z-index: 100;
     margin-bottom: 100px;
@@ -291,8 +292,39 @@ html, body {
 
 .mod-ysjz {
     border-bottom: 1px solid #e68417;
-    padding-bottom: 30px;
 
+}
+
+.mod-ysjz .mod-bd {
+    position: relative;
+}
+
+.mod-ysjz .btn-prev, .mod-ysjz .btn-next {
+    position: absolute;
+    right: 5px;
+    top: 50%;
+    background: #e68417;
+    font-size: 14px;
+    line-height: 30px;
+    width: 20px;
+    height: 30px;
+    display: block;
+    color: #fff5d4;
+    border-radius: 0 30px 30px 0;
+    text-align: center;
+    margin-top: -20px;
+}
+
+.mod-ysjz .btn-prev {
+    left: 5px;
+    border-radius: 30px 0 0 30px;
+}
+
+.mod-ysjz .marquee-holder {
+    margin-left: 25px;
+    height: 225px;
+    width: 950px;
+    overflow: hidden;
 }
 
 .mod-news {
@@ -306,7 +338,7 @@ html, body {
 
 .cnt-imglist li {
     float: left;
-    margin-left: 34px;
+    margin: 0 12px 30px 7px;
 }
 
 .cnt-txtlist li {
@@ -352,28 +384,33 @@ html, body {
     top: 0;
     left: 0;
 }
-.mod-marquee .marquee-nav{
+
+.mod-marquee .marquee-nav {
     position: absolute;
-    bottom:10px;
+    bottom: 10px;
     left: 10px;
 }
+
 .mod-marquee .marquee-list li {
     float: left;
 }
-.mod-marquee .marquee-nav li{
+
+.mod-marquee .marquee-nav li {
     float: left;
-    width:10px;
-    height:10px;
+    width: 10px;
+    height: 10px;
     cursor: pointer;
     border-radius: 5px;
     margin-right: 10px;
     transition: all .25s;
     background-color: #fff;
 }
-.mod-marquee .marquee-nav li.cur{
-    width:30px;
+
+.mod-marquee .marquee-nav li.cur {
+    width: 30px;
     background-color: #e68417;
 }
+
 .mod-share .tab-nav li {
     float: left;
     overflow: hidden;
@@ -384,7 +421,7 @@ html, body {
     cursor: pointer;
     color: #fff5d4;
     text-align: center;
-    font:30px/55px "Microsoft YaHei";
+    font: 30px/55px "Microsoft YaHei";
 }
 
 .mod-share .tab-nav .nav1 {
@@ -755,8 +792,8 @@ html, body {
 .mod-search .input {
     width: 150px;
     transition: all ease-in-out .25s;
-    margin-left:-5px;
-    border-radius:0 3px 3px 0;
+    margin-left: -5px;
+    border-radius: 0 3px 3px 0;
 }
 
 .mod-search .submit {
@@ -764,8 +801,8 @@ html, body {
     border-color: #eea236;
     color: #fefefe;
     cursor: pointer;
-    border-radius:3px 0 0 3px;
-    margin-right:-4px;
+    border-radius: 3px 0 0 3px;
+    margin-right: -4px;
 }
 
 .mod-search .submit:hover {
@@ -776,25 +813,76 @@ html, body {
     float: right;
 }
 
-.mod-search .tip span{
+.mod-search .tip span {
     color: #e68417;
 }
-.mod-txtlist{
+
+.mod-txtlist {
     min-height: 520px;
-    margin:30px auto;
+    margin: 30px auto;
 }
-.mod-txtlist .tit{
+
+.mod-txtlist .tit {
     color: #333;
     font-size: 24px;
     vertical-align: middle;
     margin-bottom: 10px;
 }
-.mod-txtlist  .cnt-txtlist li{
+
+.mod-txtlist .cnt-txtlist li {
     height: 30px;
-    width:auto;
-    padding:5px 0 5px 20px;
+    width: auto;
+    padding: 5px 0 5px 20px;
     background-position: 0 -78px;
 }
-.mod-txtlist  .cnt-txtlist li:hover{
+
+.mod-txtlist .cnt-txtlist li:hover {
     background-position: 0 2px;
+}
+
+/*移动适配*/
+@media screen and ( max-width: 480px ) {
+    .wrapper {
+        width: 100%;
+    }
+
+    .header .logo {
+        margin-left: 20px;
+    }
+
+    .header .nav-list {
+        display: none;
+    }
+
+    .banner-list li img {
+        margin: 0;
+    }
+
+    .mod-glob .mod-hd .tit {
+        font-size: 40px;
+    }
+
+    .mod-glob .mod-hd .tit span {
+        display: block;
+    }
+    .cnt-imglist li{
+        margin: 0 3% 30px 1%;
+    }
+    .footer{
+        text-align: center;
+    }
+    .footer .foot{
+        float: none;
+        display: inline-block;
+    }
+    .footer .foot1{
+        width: 240px;
+    }
+    .footer .foot2{
+        width:50%;
+        margin-top: 20px;
+    }
+    .mod-share{
+        margin-top: 20px;
+    }
 }

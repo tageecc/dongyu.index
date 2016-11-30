@@ -2,8 +2,10 @@
 <html>
 <head>
     <title>东娱传媒</title>
+    <meta name="viewport" content="width=device-width,initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no"/>
     <link rel="stylesheet" href="/lib/font-awesome/css/font-awesome.min.css">
     <link rel='stylesheet' href='/css/style.css'/>
+
 </head>
 <body>
 <div class="header">
@@ -27,15 +29,20 @@
                 <h3 class="tit">影视巨制 · <span>FILM AND TELEVISION</span></h3>
             </div>
             <div class="mod-bd">
-                <ul class="cnt-imglist clearfix">
-                    <%ysjz&&ysjz.forEach(function(v,i){%>
-                    <li>
-                        <a target="_blank" href="/article/id/<%=v._id%>" title="<%=v.title%>">
-                            <img width="160" height="200" src="<%=v.headimg%>" alt="<%=v.title%>">
-                        </a>
-                    </li>
-                    <%})%>
-                </ul>
+                <div class="marquee-holder">
+                    <ul class="cnt-imglist clearfix">
+                        <%ysjz&&ysjz.forEach(function(v,i){%>
+                        <li>
+                            <a target="_blank" href="/article/id/<%=v._id%>" title="<%=v.title%>">
+                                <img width="140" height="190" src="<%=v.headimg%>" alt="<%=v.title%>">
+                            </a>
+                        </li>
+                        <%})%>
+                    </ul>
+                </div>
+
+                <a href="javascript:" class="btn-prev"><i class="fa fa-chevron-left" aria-hidden="true"></i></a>
+                <a href="javascript:" class="btn-next"><i class="fa fa-chevron-right" aria-hidden="true"></i></a>
             </div>
         </div>
         <div class="clearfix">
@@ -101,6 +108,21 @@
         gotobtn: ".mod-marquee .marquee-nav li",
         scrollnum: 1,
         autoplay: true,
+        beforeSlide: function () {
+        },
+        loop: 1,
+        mode: 1
+    });
+
+    ue.marquee({
+        target: ".mod-ysjz .cnt-imglist",
+        items: ".mod-ysjz .cnt-imglist li",
+        delay: 4000,
+        speed: 500,
+        prevbtn: '.mod-ysjz .btn-prev',
+        nextbtn: '.mod-ysjz .btn-next',
+        scrollnum: 1,
+        autoplay: false,
         beforeSlide: function () {
         },
         loop: 1,
