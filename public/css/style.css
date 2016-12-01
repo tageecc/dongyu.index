@@ -275,6 +275,7 @@ html, body {
 
 .main .wrapper {
     background-color: #fff;
+    background-color: rgba(255,255,255,.9);
     padding-bottom: 30px;
     box-shadow: 0 0 5px 1px #999;
 }
