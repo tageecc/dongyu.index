@@ -110,11 +110,14 @@
         scrollnum: 1,
         autoplay: false,
         afterSlide: function () {
-            console.log(arguments);
+            this.target.find('.tit').slideUp();
+            this.current.find('.tit').slideDown();
         },
         loop: 1,
         mode: 1
     });
+    $('.mod-marquee .marquee-nav li:eq(1)').trigger('click');
+
     ue.marquee({
         target: ".mod-ysjz .cnt-imglist",
         items: ".mod-ysjz .cnt-imglist li",
@@ -124,8 +127,6 @@
         nextbtn: '.mod-ysjz .btn-next',
         scrollnum: 1,
         autoplay: false,
-        beforeSlide: function () {
-        },
         loop: 1,
         mode: 1
     });
