@@ -49,6 +49,14 @@ router.get('/article/id/:id', function (req, res, next) {
         res.render('article', {article: article});
     });
 });
+router.get('/article/title/:title', function (req, res, next) {
+    Article.findOneAndUpdate({title: req.params.title,type:5}, {'$inc': {view: 1}}, function (err, article) {
+        if (err) {
+            return false;
+        }
+        res.render('article', {article: article});
+    });
+});
 //列表页
 router.get('/article/list', function (req, res, next) {
     var perPage = req.query.perPage ? req.query.perPage : 10, curPage = req.query.page ? req.query.page : 1;

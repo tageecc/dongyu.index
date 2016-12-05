@@ -10,16 +10,18 @@
         <%if(article){%>
         <select name="type" id="type">
             <option value="1" <%if(article.type==1){%>selected="selected"<%}%> >新闻列表</option>
-            <option value="2" <%if(article.type==2){%>selected="selected"<%}%> >影视巨制</option>
-            <option value="3" <%if(article.type==3){%>selected="selected"<%}%> >banner图</option>
-            <option value="4" <%if(article.type==4){%>selected="selected"<%}%> >轮播图</option>
+            <option value="2" <%if(article.type==2){%>selected="selected"<%}%> >东娱作品</option>
+            <option value="3" <%if(article.type==3){%>selected="selected"<%}%> >首页头图</option>
+            <option value="4" <%if(article.type==4){%>selected="selected"<%}%> >图片轮播</option>
+            <option value="5" <%if(article.type==5){%>selected="selected"<%}%> >二级栏目页面</option>
         </select>
         <%}else{%>
         <select name="type" id="type">
             <option value="1" selected="selected">新闻列表</option>
-            <option value="2">影视巨制</option>
-            <option value="3">banner图</option>
-            <option value="4">轮播图</option>
+            <option value="2">东娱作品</option>
+            <option value="3">首页头图</option>
+            <option value="4">图片轮播</option>
+            <option value="5">二级栏目页面</option>
         </select>
         <%}%>
 
@@ -54,8 +56,8 @@
             img = $(this).attr("src");
             return false;
         });
-        if (img == '' && type != 1) {
-            alert('轮播图或banner图需文章内有图片！');
+        if (img == '' && (type ==2||type ==3||type ==4)) {
+            alert('图片轮播、首页头图、东娱作品需文章内有图片！');
             return false;
         }
         //提交
