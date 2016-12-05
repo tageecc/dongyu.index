@@ -116,7 +116,7 @@ router.post('/article/add', adminRequired, function (req, res, next) {
 router.get('/article/editor/:id', adminRequired, function (req, res, next) {
     Article.findOne({_id: req.params.id}, function (err, article) {
         if (err) return false;
-        res.render('admin/editor', {cur: 'editor', article: article});
+        res.render('admin/editor', {cur: 'article_editor', article: article});
     });
 });
 //编辑文章
@@ -166,33 +166,39 @@ router.post('/article/remove/:id', adminRequired, function (req, res, next) {
     })
 });
 
+//后台编辑页面
+router.get('/admin/editor', adminRequired, function (req, res, next) {
+    res.render('admin/editor', {cur: 'article_editor', article: null});
+});
 router.get('/admin', function (req, res, next) {
     res.redirect('/admin/article/list');
 });
-
-//后台编辑页面
-router.get('/admin/editor', adminRequired, function (req, res, next) {
-    res.render('admin/editor', {cur: 'editor', article: null});
-});
 //后台文章列表
 router.get('/admin/article/list', adminRequired, function (req, res, next) {
-    var perPage = req.query.perPage ? req.query.perPage : 10, curPage = req.query.page ? req.query.page : 1;
-    Article.find({})
+    var perPage = req.query.perPage ? req.query.perPage : 10,
+        curPage = req.query.page ? req.query.page : 1,
+        type = req.query.type ? req.query.type : 1;
+    var _cur = '';
+    if (type == 1) _cur = 'article_xwdt';
+    else if (type == 2) _cur = 'article_dyzp';
+    else if (type == 3) _cur = 'article_sytt';
+    else _cur = 'article_tplb';
+    Article.find({type: type})
         .sort({'create_at': -1})
         .skip((curPage - 1) * perPage)
         .limit(perPage)
         .exec(function (err, articles) {
             if (err)return false;
 
-            Article.count(function (err, count) {
+            Article.count({type: type}, function (err, count) {
                 var totalPages = Math.ceil(count / perPage);
                 res.render('admin/list', {
-                    cur: 'article_list',
+                    cur: _cur,
                     article: articles,
                     perPage: perPage,
                     curPage: curPage,
                     totalPages: totalPages,
-                    _url: '/admin/article/list',
+                    _url: '',
                     search: null
                 });
             });

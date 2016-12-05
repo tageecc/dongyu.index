@@ -2,7 +2,7 @@ var mongoose = require('mongoose');
 var ArticleSchema = new mongoose.Schema({
     title: String,
     content: String,
-    type: Number,// 1 新闻动态 ,2 影视巨制 ,3 banner, 4 图片轮播
+    type: Number,// 1 新闻动态 ,2 东娱作品 ,3 banner, 4 图片轮播, 5 二级栏目
     headimg: String,// 图片
     view: {
         type: Number,

@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>东娱传媒</title>
+    <title>东娱传媒 | <%=article.title%></title>
     <meta name="viewport" content="width=device-width,initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no"/>
     <link rel="stylesheet" href="/lib/font-awesome/css/font-awesome.min.css">
     <link rel='stylesheet' href='/css/style.css'/>
@@ -13,8 +13,10 @@
 
 <div class="wrapper">
     <div class="mod-article">
+        <%if(article.type!=5){%>
         <h1 class="title"><%=article.title%></h1>
         <p class="txtinfo">发布时间： <%=article.date%> &nbsp;&nbsp;&nbsp;&nbsp;浏览量：<%=article.view%></p>
+        <%}%>
         <p class="content"><%-article.content%></p>
     </div>
 </div>

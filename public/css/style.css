@@ -163,7 +163,7 @@ audio, canvas, video {
 .wrapper {
     width: 1000px;
     margin: 0 auto;
-    overflow: hidden;
+    position: relative;
 }
 
 /* 内容 */
@@ -182,6 +182,7 @@ html, body {
     z-index: 1000;
     width: 100%;
     transition: .23s all;
+    border-bottom: 2px solid #e68417;
 }
 
 .header .logo {
@@ -223,7 +224,6 @@ html, body {
 .header-active .logo {
     margin-top: 10px;
 }
-
 .header-active .nav-list a {
     line-height: 75px;
 }
@@ -245,7 +245,6 @@ html, body {
 
 .banner-list img {
     width: 100%;
-    margin-top: -400px;
 }
 
 .banner .btn-prev, .banner .btn-next {
@@ -275,11 +274,20 @@ html, body {
 }
 
 .main .wrapper {
-    background-color: #fff;
+    background-color: rgba(255,255,255,.8);
     padding-bottom: 30px;
-    box-shadow: 0 0 5px 1px #999;
 }
-
+.main .wrapper .box-bg{
+    width:100%;
+    height: 430px;
+    position: absolute;
+    bottom:0;
+    left: 0;
+    box-shadow: -5px 6px 10px #aaa, /*左边阴影*/
+    0 0 0 #aaa, /*顶部阴影*/
+    0 6px 10px #aaa, /*底部阴影*/
+    5px 6px 10px #aaa; /*右边阴影*/
+}
 .mod-glob .mod-hd {
     padding: 10px 0 20px 28px;
 }
@@ -335,6 +343,7 @@ html, body {
 .mod-news {
     width: 450px;
     float: left;
+    position: relative;
 }
 
 .mod-news .cnt-txtlist {
@@ -434,7 +443,7 @@ html, body {
     overflow: hidden;
     width: 82px;
     height: 55px;
-    border-top: 5px solid;
+    border-top: 5px solid #e68417;
     background-color: #1c1b1b;
     cursor: pointer;
     color: #b9b9b9;
@@ -442,17 +451,6 @@ html, body {
     font: 30px/55px "Microsoft YaHei";
 }
 
-.mod-share .tab-nav .nav1 {
-    border-color: #ff1800;
-}
-
-.mod-share .tab-nav .nav2 {
-    border-color: #60ff00;
-}
-
-.mod-share .tab-nav .nav3 {
-    border-color: #0030ff;
-}
 
 .mod-share .tab-nav li.cur {
     background-color: #252525;
@@ -501,7 +499,9 @@ html, body {
     background-color: #313131;
     padding: 20px 0;
 }
-
+.footer .wrapper{
+    overflow: hidden;
+}
 .footer .foot {
     float: left;
 }
