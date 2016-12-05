@@ -127,6 +127,16 @@ router.get('/article/editor/:id', adminRequired, function (req, res, next) {
         res.render('admin/editor', {cur: 'article_editor', article: article});
     });
 });
+router.get('/article/editor/title/:title', adminRequired, function (req, res, next) {
+    var _cur='';
+    if(req.params.title=='走进东娱')_cur='column_zjdy';
+    else if(req.params.title=='业务板块')_cur='column_ywbk';
+    else _cur='column_alzs';
+    Article.findOne({_id: req.params.title,type:5}, function (err, article) {
+        if (err) return false;
+        res.render('admin/editor', {cur: _cur, article: article});
+    });
+});
 //编辑文章
 router.post('/article/editor/:id', adminRequired, function (req, res, next) {
     Article.update({_id: req.params.id}, req.body, function (err) {
@@ -138,6 +148,7 @@ router.post('/article/editor/:id', adminRequired, function (req, res, next) {
 
     });
 });
+
 //搜索
 router.post('/article/search', adminRequired, function (req, res, next) {
     var perPage = req.query.perPage ? req.query.perPage : 10, curPage = req.query.page ? req.query.page : 1;
