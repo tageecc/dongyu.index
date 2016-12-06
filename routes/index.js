@@ -128,13 +128,13 @@ router.get('/article/editor/:id', adminRequired, function (req, res, next) {
     });
 });
 router.get('/article/editor/title/:title', adminRequired, function (req, res, next) {
-    var _cur='';
-    if(req.params.title=='走进东娱')_cur='column_zjdy';
-    else if(req.params.title=='业务板块')_cur='column_ywbk';
-    else _cur='column_alzs';
-    Article.findOne({_id: req.params.title,type:5}, function (err, article) {
+    var _tit='';
+    if(req.params.title=='column_zjdy')_tit='走进东娱';
+    else if(req.params.title=='column_ywbk')_tit='业务板块';
+    else _tit='案例展示';
+    Article.findOne({title: _tit,type:5}, function (err, article) {
         if (err) return false;
-        res.render('admin/editor', {cur: _cur, article: article});
+        res.render('admin/editor', {cur: req.params.title, article: article});
     });
 });
 //编辑文章

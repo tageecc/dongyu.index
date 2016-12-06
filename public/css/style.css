@@ -476,7 +476,9 @@ html, body {
     margin: 20px 0;
     min-height: 540px;
 }
-
+.mod-article img{
+    max-width: 100%;
+}
 .mod-article .title {
     text-align: center;
     font: 20px/1.5 "Microsoft YaHei";
@@ -869,36 +871,39 @@ html, body {
     }
 
     .header {
+        height: 70px;
         position: absolute;
     }
 
     .header .logo {
-        margin-left: 20px;
+        margin:16px;
     }
-
+    .header .logo img{
+        width: 130px;
+    }
     .mod-menu {
         display: block;
         position: absolute;
         right: 10%;
-        top: 30%;
+        top: 16px;
     }
 
     .mod-menu .line {
-        width: 50px;
-        height: 5px;
+        width: 30px;
+        height: 2px;
         background-color: #f1cd81;
         display: block;
-        margin: 8px auto;
+        margin: 5px auto;
         -webkit-transition: all 0.3s ease-in-out;
         -o-transition: all 0.3s ease-in-out;
         transition: all 0.3s ease-in-out;
     }
 
     .mod-menu.is-active .line:nth-child(1) {
-        -webkit-transform: translateY(13px) rotate(45deg);
-        -ms-transform: translateY(13px) rotate(45deg);
-        -o-transform: translateY(13px) rotate(45deg);
-        transform: translateY(13px) rotate(45deg);
+        -webkit-transform: translateY(10px) rotate(45deg);
+        -ms-transform: translateY(10px) rotate(45deg);
+        -o-transform: translateY(10px) rotate(45deg);
+        transform: translateY(10px) rotate(45deg);
     }
 
     .mod-menu.is-active .line:nth-child(2) {
@@ -906,10 +911,10 @@ html, body {
     }
 
     .mod-menu.is-active .line:nth-child(3) {
-        -webkit-transform: translateY(-13px) rotate(-45deg);
-        -ms-transform: translateY(-13px) rotate(-45deg);
-        -o-transform: translateY(-13px) rotate(-45deg);
-        transform: translateY(-13px) rotate(-45deg);
+        -webkit-transform: translateY(-5) rotate(-45deg);
+        -ms-transform: translateY(-5px) rotate(-45deg);
+        -o-transform: translateY(-5px) rotate(-45deg);
+        transform: translateY(-5px) rotate(-45deg);
     }
 
     .header .nav-list {
