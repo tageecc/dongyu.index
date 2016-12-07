@@ -883,7 +883,7 @@ html, body {
     }
 
     .main {
-        margin-bottom: 12px;
+        margin-bottom: 0;
         margin-top: 0;
     }
 
@@ -935,7 +935,9 @@ html, body {
         -o-transform: translateY(-5px) rotate(-45deg);
         transform: translateY(-5px) rotate(-45deg);
     }
-
+    .main .wrapper .box-bg{
+        display: none;
+    }
     .header .nav-list {
         display: none;
         width: 100%;

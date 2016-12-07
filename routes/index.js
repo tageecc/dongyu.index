@@ -6,7 +6,7 @@ var User = require('../model/User');
 var adminRequired = function (req, res, next) {
     var user = req.session.user;
     if (!user) {
-        res.render('login');
+        res.render('login',{cur:'index'});
         return false;
     }
     next()
@@ -46,7 +46,7 @@ router.get('/article/id/:id', function (req, res, next) {
         if (err) {
             return false;
         }
-        res.render('article', {article: article});
+        res.render('article', {article: article,cur:'index'});
     });
 });
 router.get('/article/title/:title', function (req, res, next) {
@@ -87,7 +87,7 @@ router.get('/article/list', function (req, res, next) {
 });
 //登陆页
 router.get('/login', function (req, res, next) {
-    res.render('login');
+    res.render('login',{cur:'index'});
 });
 //登陆
 router.post('/login', function (req, res, next) {
@@ -192,7 +192,7 @@ router.post('/article/remove/:id', adminRequired, function (req, res, next) {
 
 //后台编辑页面
 router.get('/admin/editor', adminRequired, function (req, res, next) {
-    res.render('admin/editor', {cur: 'article_editor', article: null});
+    res.render('admin/editor', {cur: 'article_editor', article: null,});
 });
 router.get('/admin', function (req, res, next) {
     res.redirect('/admin/article/list');
