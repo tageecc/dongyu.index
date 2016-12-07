@@ -772,7 +772,7 @@ html, body {
 }
 
 .mod-pager {
-    padding: 20px 0;
+    margin: 20px 0;
     font-size: 12px;
     line-height: 36px;
     left: 50%;
@@ -851,7 +851,7 @@ html, body {
 
 .mod-txtlist {
     min-height: 520px;
-    margin: 30px auto;
+    margin: 30px auto 50px;
 }
 
 .mod-txtlist .tit {
@@ -940,7 +940,6 @@ html, body {
         display: none;
         width: 100%;
         padding: 20px 0 20px;
-        margin-top: 10px;
         background-color: #fff;
     }
 

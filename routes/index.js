@@ -35,7 +35,7 @@ router.get('/', function (req, res, next) {
                     }
                 })
             }
-            res.render('index', {article: article, banner: banner, marquee: marquee, ysjz: ysjz});
+            res.render('index', {article: article, banner: banner, marquee: marquee, ysjz: ysjz,cur:'index'});
         });
 
 });
@@ -50,11 +50,15 @@ router.get('/article/id/:id', function (req, res, next) {
     });
 });
 router.get('/article/title/:title', function (req, res, next) {
-    Article.findOneAndUpdate({title: req.params.title,type:5}, {'$inc': {view: 1}}, function (err, article) {
+    var _tit = '';
+    if(req.params.title=='zjdy') _tit='走进东娱';
+    else if(req.params.title=='ywbk') _tit='业务板块';
+    else _tit='案例展示';
+    Article.findOneAndUpdate({title: _tit,type:5}, {'$inc': {view: 1}}, function (err, article) {
         if (err) {
             return false;
         }
-        res.render('article', {article: article});
+        res.render('article', {article: article,cur:req.params.title});
     });
 });
 //列表页
@@ -74,7 +78,8 @@ router.get('/article/list', function (req, res, next) {
                     perPage: perPage,
                     curPage: curPage,
                     totalPages: totalPages,
-                    _url: '/article/list'
+                    _url: '/article/list',
+                    cur:'list'
                 });
             });
         });
