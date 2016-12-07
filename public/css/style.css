@@ -354,7 +354,10 @@ html, body {
     float: left;
     margin: 0 12px 30px 7px;
 }
-
+.cnt-imglist li img{
+    width: 140px;
+    height: 190px;
+}
 .cnt-txtlist li {
     overflow: hidden;
     width: 380px;
@@ -865,9 +868,12 @@ html, body {
     .wrapper {
         width: 100%;
     }
-
+    .main .wrapper{
+        padding-bottom:0;
+    }
     .main {
-        margin-bottom: 0;
+        margin-bottom: 12px;
+        margin-top: 0;
     }
 
     .header {
@@ -928,9 +934,13 @@ html, body {
     .nav-list li {
         width: 100%;
     }
-
+    .banner{
+        height: 300px;
+    }
     .banner-list li img {
         margin: 0;
+        width:auto;
+        height: 300px;
     }
 
     .nav-list a {
@@ -948,25 +958,51 @@ html, body {
     .footer {
         text-align: center;
     }
-
+    .footer .wrapper{
+        width: 320px;
+    }
     .footer .foot {
-        float: none;
         display: inline-block;
     }
 
     .footer .foot1 {
-        width: 240px;
+        width: 150px;
+        margin-left:15px;
     }
-
+    .footer .foot1 .tit{
+        font-size:12px;
+    }
+    .footer .foot1 .txt{
+        font-size:10px;
+    }
+    .footer .foot1 .logo img{
+        width: 100px;
+    }
     .footer .foot2 {
-        width: 42%;
-        margin-top: 20px;
+        display: none;
+        /*width: 42%;*/
+        /*margin-top: 20px;*/
     }
 
     .mod-share {
-        margin-top: 20px;
+        margin-top: 47px;
+        margin-left:15px;
     }
-
+    .mod-share .tab-nav li{
+        width: 40px;
+        height: 30px;
+        font: 17px/30px "Microsoft YaHei";
+    }
+    .mod-share .content1 .tit{
+        font-size:12px;
+        margin: 3px 2px;
+    }
+    .mod-share .tab-contents img{
+        width: 80px;
+    }
+    .mod-share .content{
+        padding:10px 0;
+    }
     .mod-news {
         width: 100%;
     }
@@ -977,17 +1013,30 @@ html, body {
 
     .cnt-txtlist li {
         width: 90%;
+        padding-bottom:1px;
     }
-
+    .cnt-txtlist a{
+        font-size: 12px;
+    }
+    .cnt-txtlist .date{
+        font-size:12px;
+    }
     .mod-marquee {
         margin: 0;
+        width:100%;
     }
 
     .mod-ysjz .marquee-holder {
-        height: 200px;
-        width: 313px;
+        height: 110px;
+        width: 88%;
     }
-
+    .cnt-imglist li{
+        margin:0 2px 0;
+    }
+    .cnt-imglist li img{
+        width: 70px;
+        height: 95px;
+    }
     .mod-txtlist .cnt-txtlist li {
         margin: 0 10px;
     }
