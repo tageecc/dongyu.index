@@ -964,9 +964,11 @@ html, body {
     }
 
     .mod-glob .mod-hd .tit {
-        font-size: 1.5rem;
+        font-size: 1rem;
     }
-
+    .mod-glob .mod-hd{
+        padding-bottom: 10px;
+    }
     .mod-glob .mod-hd .tit span {
         font-size: .75rem;
     }
