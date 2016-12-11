@@ -4,6 +4,7 @@ var ArticleSchema = new mongoose.Schema({
     content: String,
     type: Number,// 1 新闻动态 ,2 东娱作品 ,3 banner, 4 图片轮播, 5 二级栏目
     headimg: String,// 图片
+    video:String,
     view: {
         type: Number,
         default: 0

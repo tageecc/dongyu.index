@@ -54,23 +54,25 @@
                 <div class="mod-bd">
                     <ul class="cnt-txtlist">
                         <%article&&article.forEach(function(v,i){%>
-                        <li><a target="_blank" href="/article/id/<%=v._id%>"><%=v.title%></a><span
+                        <li><a target="_blank" title="<%=v.title%>" href="/article/id/<%=v._id%>"><%=v.title%></a><span
                                 class="date"><%=v.date%></span></li>
                         <%})%>
                     </ul>
                 </div>
             </div>
             <div class="mod-marquee">
-                <ul class="marquee-list clearfix">
-                    <%marquee&&marquee.forEach(function(v,i){%>
-                    <li>
-                        <a target="_blank" href="/article/id/<%=v._id%>" title="<%=v.title%>">
-                            <img width="500" height="280" src="<%=v.headimg%>" alt="">
-                            <span class="tit"><%=v.title%></span>
-                        </a>
-                    </li>
-                    <%})%>
-                </ul>
+                <div class="marquee-holder">
+                    <ul class="marquee-list clearfix">
+                        <%marquee&&marquee.forEach(function(v,i){%>
+                        <li>
+                            <a target="_blank" href="/article/id/<%=v._id%>" title="<%=v.title%>">
+                                <%-v.video%>
+                            </a>
+                        </li>
+                        <%})%>
+                    </ul>
+                </div>
+
                 <ul class="marquee-nav clearfix">
                     <%marquee&&marquee.forEach(function(v,i){%>
                     <li></li>
@@ -109,8 +111,10 @@
         gotobtn: ".mod-marquee .marquee-nav li",
         scrollnum: 1,
         autoplay: false,
-        afterSlide: function () {
+        beforeSlide:function () {
             this.target.find('.tit').slideUp();
+        },
+        afterSlide: function () {
             this.current.find('.tit').slideDown();
         },
         loop: 1,

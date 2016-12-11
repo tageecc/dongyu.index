@@ -3,25 +3,34 @@
 <div class="mod-article-post">
     <div class="form-group clearfix">
         <label class="title" for="title">标题 : </label>
-        <input class="title" name="title" id="title" type="text" placeholder="请输入标题" value="<%if(article){%><%=article.title%><%}%>" required>
+        <input class="title" name="title" id="title" type="text" placeholder="请输入标题"
+        <%if(article&&article.type==5){%>disabled<%}%> value="<%if(article){%><%=article.title%><%}%>" required>
     </div>
     <div class="form-group clearfix">
         <label for="type">文章类型 : </label>
         <%if(article){%>
-        <select name="type" id="type">
-            <option value="1" <%if(article.type==1){%>selected="selected"<%}%> >新闻列表</option>
-            <option value="2" <%if(article.type==2){%>selected="selected"<%}%> >东娱作品</option>
-            <option value="3" <%if(article.type==3){%>selected="selected"<%}%> >首页头图</option>
-            <option value="4" <%if(article.type==4){%>selected="selected"<%}%> >图片轮播</option>
-            <!--<option value="5" <%if(article.type==5){%>selected="selected"<%}%> >二级栏目页面</option>-->
+        <%if(article.type==5){%>
+        <select name="type" id="type" disabled>
+            <option value="5" selected="selected">二级栏目页面</option>
         </select>
+        <%}else{%>
+        <select name="type" id="type">
+            <option value="1"
+            <%if(article.type==1){%>selected="selected"<%}%> >新闻列表</option>
+            <option value="2"
+            <%if(article.type==2){%>selected="selected"<%}%> >东娱作品</option>
+            <option value="3"
+            <%if(article.type==3){%>selected="selected"<%}%> >首页头图</option>
+            <option value="4"
+            <%if(article.type==4){%>selected="selected"<%}%> >视频轮播</option>
+        </select>
+        <%}%>
         <%}else{%>
         <select name="type" id="type">
             <option value="1" selected="selected">新闻列表</option>
             <option value="2">东娱作品</option>
             <option value="3">首页头图</option>
-            <option value="4">图片轮播</option>
-            <!--<option value="5">二级栏目页面</option>-->
+            <option value="4">视频轮播</option>
         </select>
         <%}%>
 
@@ -44,7 +53,7 @@
         initialFrameHeight: 560
     });
     function post() {
-        var txt = ue.getContent(), img = '', type = $('#type').val(), title = $('#title').val();
+        var txt = ue.getContent(), img = '', video = '', type = $('#type').val(), title = $('#title').val();
         //文章内容或标题
         if ($.trim(txt) == '' || $.trim(title) == '') {
             alert('文章内容或标题不能为空！');
@@ -56,13 +65,25 @@
             img = $(this).attr("src");
             return false;
         });
-        if (img == '' && (type ==2||type ==3||type ==4)) {
-            alert('图片轮播、首页头图、东娱作品需文章内有图片！');
+        // 视频地址
+        if (type == 4) {
+            $('#temp embed,#temp video').each(function () {
+                $(this).attr({'width':'500','height':'280'});
+                video = this.outerHTML;
+                return false;
+            });
+            if (video == '') {
+                alert('视频轮播未检测到视频，请重新编辑文章！');
+                return false;
+            }
+        }
+        if (img == '' && (type == 2 || type == 3)) {
+            alert('首页头图、东娱作品需文章内有图片！');
             return false;
         }
         //提交
-        var _url =_id?'/article/editor/'+_id:'/article/add';
-        $.post(_url, {title: title, type: type, content: txt,headimg:img}, function (res) {
+        var _url = _id ? '/article/editor/' + _id : '/article/add';
+        $.post(_url, {title: title, type: type, content: txt, headimg: img, video: video}, function (res) {
             alert(res.msg);
             window.location.reload();
         })
