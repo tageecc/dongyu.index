@@ -470,7 +470,7 @@ html, body {
 .mod-share{
     position: relative;
     float: right;
-    margin-right: 20px;
+    margin:15px 20px 0 0;
 }
 .mod-share .tab-nav{
     position: relative;
@@ -512,7 +512,7 @@ html, body {
 }
 .mod-article {
     margin: 20px 0;
-    min-height: 723px;
+    min-height: 699px;
 }
 
 .mod-article p {
@@ -557,11 +557,10 @@ html, body {
 
 .footer .foot .tit {
     font-size: 14px;
-    font-weight: 700;
 }
 
 .footer .foot .logo {
-    margin: 15px 20px 0 10px;
+    margin: 25px 20px 0 10px;
 }
 .footer .foot .logo img{
     width: 150px;
@@ -879,7 +878,7 @@ html, body {
 }
 
 .mod-txtlist {
-    min-height: 683px;
+    min-height: 659px;
     margin: 30px auto 50px;
 }
 
