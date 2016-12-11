@@ -111,11 +111,8 @@
         gotobtn: ".mod-marquee .marquee-nav li",
         scrollnum: 1,
         autoplay: false,
-        beforeSlide:function () {
-            this.target.find('.tit').slideUp();
-        },
         afterSlide: function () {
-            this.current.find('.tit').slideDown();
+            this.target.html(this.target.html());
         },
         loop: 1,
         mode: 1
