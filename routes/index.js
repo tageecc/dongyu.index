@@ -6,7 +6,7 @@ var User = require('../model/User');
 var adminRequired = function (req, res, next) {
     var user = req.session.user;
     if (!user) {
-        res.render('login',{cur:'index'});
+        res.render('login', {cur: 'index'});
         return false;
     }
     next()
@@ -15,8 +15,8 @@ var adminRequired = function (req, res, next) {
 //首页
 router.get('/', function (req, res, next) {
     var article = [], banner = [], marquee = [], ysjz = [];
-    Article.find({})
-        .sort({'create_at': -1})
+    Article.find({'is_top': true})
+        .sort({'is_top_create_at': -1})
         .exec(function (err, articles) {
             if (err) return false;
             if (articles && articles.length > 0) {
@@ -35,7 +35,31 @@ router.get('/', function (req, res, next) {
                     }
                 })
             }
-            res.render('index', {article: article, banner: banner, marquee: marquee, ysjz: ysjz,cur:'index'});
+
+            Article.find({'is_top': false})
+                .sort({'create_at': -1})
+                .exec(function (err, articles) {
+                    if (err) return false;
+                    if (articles && articles.length > 0) {
+                        articles.forEach(function (v, i) {
+                            if (v.type == 1 && article.length < 6) {
+                                article.push(v);
+                            }
+                            else if (v.type == 2 /*&& ysjz.length < 6*/) {
+                                ysjz.push(v);
+                            }
+                            else if (v.type == 3 && banner.length < 6) {
+                                banner.push(v);
+                            }
+                            else if (v.type == 4 && marquee.length < 6) {
+                                marquee.push(v);
+                            }
+
+
+                        })
+                    }
+                    res.render('index', {article: article, banner: banner, marquee: marquee, ysjz: ysjz, cur: 'index'});
+                });
         });
 
 });
@@ -46,19 +70,19 @@ router.get('/article/id/:id', function (req, res, next) {
         if (err) {
             return false;
         }
-        res.render('article', {article: article,cur:'index'});
+        res.render('article', {article: article, cur: 'index'});
     });
 });
 router.get('/article/title/:title', function (req, res, next) {
     var _tit = '';
-    if(req.params.title=='zjdy') _tit='走进东娱';
-    else if(req.params.title=='ywbk') _tit='业务板块';
-    else _tit='案例展示';
-    Article.findOneAndUpdate({title: _tit,type:5}, {'$inc': {view: 1}}, function (err, article) {
+    if (req.params.title == 'zjdy') _tit = '走进东娱';
+    else if (req.params.title == 'ywbk') _tit = '业务板块';
+    else _tit = '案例展示';
+    Article.findOneAndUpdate({title: _tit, type: 5}, {'$inc': {view: 1}}, function (err, article) {
         if (err) {
             return false;
         }
-        res.render('article', {article: article,cur:req.params.title});
+        res.render('article', {article: article, cur: req.params.title, user: req.session.user});
     });
 });
 //列表页
@@ -79,7 +103,7 @@ router.get('/article/list', function (req, res, next) {
                     curPage: curPage,
                     totalPages: totalPages,
                     _url: '/article/list',
-                    cur:'list'
+                    cur: 'list'
                 });
             });
         });
@@ -87,7 +111,7 @@ router.get('/article/list', function (req, res, next) {
 });
 //登陆页
 router.get('/login', function (req, res, next) {
-    res.render('login',{cur:'index'});
+    res.render('login', {cur: 'index'});
 });
 //登陆
 router.post('/login', function (req, res, next) {
@@ -116,6 +140,11 @@ router.post('/article/add', adminRequired, function (req, res, next) {
         res.json({code: -1, msg: '参数错误！'});
         return false;
     }
+    if (req.body.is_top) {
+        req.body.is_top_create_at = Date.now();
+    } else {
+        req.body.is_top_create_at = 0;
+    }
     Article.create(req.body, function (err) {
         if (err) {
             res.json({code: -1, msg: '数据库错误！'});
@@ -129,23 +158,29 @@ router.post('/article/add', adminRequired, function (req, res, next) {
 router.get('/article/editor/:id', adminRequired, function (req, res, next) {
     Article.findOne({_id: req.params.id}, function (err, article) {
         if (err) return false;
-        res.render('admin/editor', {cur: 'article_editor', article: article});
+        res.render('admin/editor', {cur: 'article_editor', article: article, user: req.session.user});
     });
 });
 router.get('/article/editor/title/:title', adminRequired, function (req, res, next) {
-    var _tit='';
-    if(req.params.title=='column_zjdy')_tit='走进东娱';
-    else if(req.params.title=='column_ywbk')_tit='业务板块';
-    else _tit='案例展示';
-    Article.findOne({title: _tit,type:5}, function (err, article) {
+    var _tit = '';
+    if (req.params.title == 'column_zjdy') _tit = '走进东娱';
+    else if (req.params.title == 'column_ywbk') _tit = '业务板块';
+    else _tit = '案例展示';
+    Article.findOne({title: _tit, type: 5}, function (err, article) {
         if (err) return false;
-        res.render('admin/editor', {cur: req.params.title, article: article});
+        res.render('admin/editor', {cur: req.params.title, article: article, user: req.session.user});
     });
 });
 //编辑文章
 router.post('/article/editor/:id', adminRequired, function (req, res, next) {
+    if (req.body.is_top) {
+        req.body.is_top_create_at = Date.now();
+    } else {
+        req.body.is_top_create_at = 0;
+    }
     Article.update({_id: req.params.id}, req.body, function (err) {
         if (err) {
+            console.log(err);
             res.json({code: -1, msg: '数据库错误！'});
             return false;
         }
@@ -192,7 +227,7 @@ router.post('/article/remove/:id', adminRequired, function (req, res, next) {
 
 //后台编辑页面
 router.get('/admin/editor', adminRequired, function (req, res, next) {
-    res.render('admin/editor', {cur: 'article_editor', article: null,});
+    res.render('admin/editor', {cur: 'article_editor', article: null, user: req.session.user});
 });
 router.get('/admin', function (req, res, next) {
     res.redirect('/admin/article/list');

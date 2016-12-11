@@ -31,9 +31,15 @@
             <option value="2">东娱作品</option>
             <option value="3">首页头图</option>
             <option value="4">视频轮播</option>
+            <%if(user&&user.isadmin){%>
+            <option value="5">二级栏目页面</option>
+            <%}%>
         </select>
         <%}%>
-
+    </div>
+    <div class="form-group clearfix">
+        <label for="isTop">文章置顶 : </label>
+        <input class="isTop" name="isTop" id="isTop" type="checkbox" <%if(article&&article.is_top){%>checked<%}%>>
     </div>
     <a href="javascript:" class="submit" onclick="post();"><i class="fa fa-check-square-o"></i> 提交</a>
 </div>
@@ -50,10 +56,10 @@
 
     var ue = UE.getEditor('container', {
         autoHeightEnabled: false,
-        initialFrameHeight: 560
+        initialFrameHeight: 540
     });
     function post() {
-        var txt = ue.getContent(), img = '', video = '', type = $('#type').val(), title = $('#title').val();
+        var txt = ue.getContent(), img = '', video = '', type = $('#type').val(), title = $('#title').val(),is_top=$('#isTop').is(':checked');
         //文章内容或标题
         if ($.trim(txt) == '' || $.trim(title) == '') {
             alert('文章内容或标题不能为空！');
@@ -83,7 +89,7 @@
         }
         //提交
         var _url = _id ? '/article/editor/' + _id : '/article/add';
-        $.post(_url, {title: title, type: type, content: txt, headimg: img, video: video}, function (res) {
+        $.post(_url, {title: title, type: type, content: txt, headimg: img, video: video,is_top:is_top}, function (res) {
             alert(res.msg);
             window.location.reload();
         })
