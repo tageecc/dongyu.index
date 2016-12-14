@@ -216,7 +216,17 @@ html, body {
     text-shadow: none;
     background-color: #e68417;
 }
-
+.nav-list .sub-list{
+    display: none;
+    background-color: #fff;
+}
+.nav-list .sub-list li{
+    line-height: 45px;
+}
+.nav-list .sub-list a{
+    line-height: 75px;
+    font-size: 16px;
+}
 .header-active {
     height: 75px;
 }
