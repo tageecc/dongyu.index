@@ -31,7 +31,7 @@
             <ul class="sub-list clearfix">
                 <li><a href="#">影视作品</a></li>
                 <li><a href="#">艺人代言</a></li>
-                <li><a href="#" style="line-height: 40px;">演唱会及大型活动</a></li>
+                <li><a href="#" style="line-height: 40px;">演唱会、活动</a></li>
             </ul>
         </li>
         <li class="<%if(cur=='list'){%>cur<%}%>">
@@ -54,6 +54,6 @@
         $('.header .nav-list').slideToggle();
     });
     $('.nav-list>li').hover(function () {
-        $(this).find('.sub-list').slideToggle('fast');
+        $(this).find('.sub-list').stop().slideToggle('fast');
     })
 </script>

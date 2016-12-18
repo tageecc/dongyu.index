@@ -1,5 +1,6 @@
 var express = require('express');
 var router = express.Router();
+var eventproxy = require('eventproxy');
 var Article = require('../model/Article');
 var User = require('../model/User');
 
@@ -165,6 +166,7 @@ router.get('/article/editor/title/:title', adminRequired, function (req, res, ne
     var _tit = '';
     if (req.params.title == 'column_zjdy') _tit = '走进东娱';
     else if (req.params.title == 'column_ywbk') _tit = '业务板块';
+    else if (req.params.title == 'column_lxwm') _tit = '联系我们';
     else _tit = '案例展示';
     Article.findOne({title: _tit, type: 5}, function (err, article) {
         if (err) return false;
@@ -241,6 +243,7 @@ router.get('/admin/article/list', adminRequired, function (req, res, next) {
     if (type == 1) _cur = 'article_xwdt';
     else if (type == 2) _cur = 'article_dyzp';
     else if (type == 3) _cur = 'article_sytt';
+    else if (type == 6) _cur = 'article_sjlmy';
     else _cur = 'article_tplb';
     Article.find({type: type})
         .sort({'create_at': -1})
@@ -262,5 +265,41 @@ router.get('/admin/article/list', adminRequired, function (req, res, next) {
                 });
             });
         });
+});
+
+// 三级栏目归档
+router.get('/article/column/column_avg', adminRequired, function (req, res, next) {
+    Article.find({"type": {"$in": [5, 6]}})
+        .exec(function (err, articles) {
+            if (err)return false;
+            var main_artivcle = [], sub_article = [];
+            articles.map(function (v, i) {
+                if (v.type == 5) main_artivcle.push(v);
+                if (v.type == 6) sub_article.push(v);
+            });
+            res.render('admin/column', {
+                cur: 'column_avg',
+                main_artivcle: main_artivcle,
+                sub_article: sub_article,
+                _url: '',
+                search: null
+            });
+
+        });
+});
+// 三级栏目归档
+router.post('/article/column/avg', adminRequired, function (req, res, next) {
+    console.log(req.body.node);
+    var ep = new eventproxy();
+    ep.after('update_column', req.body.node.length, function () {
+        res.json({code:1,msg:'aa'});
+    });
+
+    req.body.node.map(function (i,v) {
+        Article.update({_id:v.parent},{'$set':{'sub_article':v.child}},function (err) {
+            if(err) console.log(res);
+            else ep.emit('update_column');
+        })
+    });
 });
 module.exports = router;

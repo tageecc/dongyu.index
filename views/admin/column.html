@@ -1,0 +1,63 @@
+<% layout('admin/layout.html') %>
+<div class="clearfix">
+    <div class="main-article-list">
+        <h3>栏目列表</h3>
+        <ul>
+            <%main_artivcle.map(function(v,i){%>
+            <li class="<%if(i==0){%>active<%}%>" data-id="<%=v._id%>">
+                <h3><%=v.title%></h3>
+                <ul>
+                    <%v.sub_article.map(function(_v,_i){%>
+                    <li data-id="<%=_v._id%>"><%=_v.title%></li>
+                    <%})%>
+                </ul>
+            </li>
+            <%})%>
+        </ul>
+    </div>
+    <div class="sub-article-list">
+        <h3>未归档栏目</h3>
+        <ul>
+            <%sub_article.map(function(v,i){%>
+            <li data-id="<%=v._id%>"><%=v.title%> <span class="add">+</span></li>
+            <%})%>
+        </ul>
+    </div>
+</div>
+<a href="javascript:" class="btn-save">保存</a>
+<script>
+    $('.main-article-list>ul>li').on('click', function () {
+        $(this).addClass('active').siblings().removeClass('active');
+    });
+    $(document).on('click', '.main-article-list .active>ul>li', function () {
+        $(this).find('span').text('+');
+        $('.sub-article-list>ul').append(this.outerHTML);
+        $(this).remove();
+    });
+    $(document).on('click', '.sub-article-list>ul>li', function () {
+        $(this).find('span').text('-');
+        $('.main-article-list .active>ul').append(this.outerHTML);
+        $(this).remove();
+    });
+    $('.btn-save').on('click', function () {
+        var parentNode = [];
+        $('.main-article-list>ul>li').map(function (i, v) {
+            var tempNode = [];
+            $(v).find('li').map(function (_i, _v) {
+                tempNode.push($(_v).attr('data-id'))
+            });
+            parentNode.push({parent: $(v).attr('data-id'), child: tempNode});
+        });
+        $.ajax({
+            url: '/article/column/avg',
+            method: 'POST',
+            data: {
+                node: parentNode
+            },
+            dataType: 'json',
+            success: function (res) {
+                console.log(res);
+            }
+        });
+    })
+</script>

@@ -12,6 +12,7 @@
     "debug": "~2.2.0",
     "ejs": "~2.5.2",
     "ejs-mate": "^2.3.0",
+    "eventproxy": "^0.3.5",
     "express": "~4.14.0",
     "express-session": "^1.14.2",
     "morgan": "~1.7.0",

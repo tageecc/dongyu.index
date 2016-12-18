@@ -1,8 +1,10 @@
 var mongoose = require('mongoose');
+var Schema = mongoose.Schema;
 var ArticleSchema = new mongoose.Schema({
     title: String,
     content: String,
-    type: Number,// 1 新闻动态 ,2 东娱作品 ,3 banner, 4 图片轮播, 5 二级栏目
+    type: Number,// 1 新闻动态 ,2 东娱作品 ,3 banner, 4 图片轮播, 5 二级栏目, 6 sub_article
+    sub_article:[{type: Schema.Types.ObjectId, ref: 'Article'}],
     headimg: String,// 图片
     video: String,// 视频标签
     is_top: {
