@@ -56,7 +56,11 @@
             },
             dataType: 'json',
             success: function (res) {
-                console.log(res);
+                if(res.code==1){
+                    window.location.reload();
+                }else{
+                    alert(res.message);
+                }
             }
         });
     })

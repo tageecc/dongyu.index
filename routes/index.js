@@ -270,6 +270,7 @@ router.get('/admin/article/list', adminRequired, function (req, res, next) {
 // 三级栏目归档
 router.get('/article/column/column_avg', adminRequired, function (req, res, next) {
     Article.find({"type": {"$in": [5, 6]}})
+        .populate('sub_article')
         .exec(function (err, articles) {
             if (err)return false;
             var main_artivcle = [], sub_article = [];
@@ -277,6 +278,22 @@ router.get('/article/column/column_avg', adminRequired, function (req, res, next
                 if (v.type == 5) main_artivcle.push(v);
                 if (v.type == 6) sub_article.push(v);
             });
+
+            //删除已归档
+            main_artivcle.map(function (v, i) {
+                v.sub_article.map(function (vv, ii) {
+                    sub_article.map(function (sub, index) {
+
+                        if (sub._id + '' == vv._id + '') {
+                            console.log(sub_article);
+                            sub_article.splice(index, 1);
+                            console.log(sub_article);
+                            return false;
+                        }
+                    })
+                })
+            });
+
             res.render('admin/column', {
                 cur: 'column_avg',
                 main_artivcle: main_artivcle,
@@ -289,17 +306,33 @@ router.get('/article/column/column_avg', adminRequired, function (req, res, next
 });
 // 三级栏目归档
 router.post('/article/column/avg', adminRequired, function (req, res, next) {
-    console.log(req.body.node);
     var ep = new eventproxy();
     ep.after('update_column', req.body.node.length, function () {
-        res.json({code:1,msg:'aa'});
+        res.json({code: 1, msg: 'aa'});
     });
 
-    req.body.node.map(function (i,v) {
-        Article.update({_id:v.parent},{'$set':{'sub_article':v.child}},function (err) {
-            if(err) console.log(res);
-            else ep.emit('update_column');
-        })
+    req.body.node.map(function (v, i) {
+        if (v.child) {
+            var ep2 = new eventproxy();
+            ep2.after('node_article', v.child.length, function (nodes) {
+                Article.update({_id: v.parent}, {'$set': {'sub_article': nodes}}, function (err) {
+                    if (err) console.log(res);
+                    else ep.emit('update_column');
+                })
+            });
+
+            v.child.map(function (vv, ii) {
+                Article.findOne({_id: vv}, function (err, article) {
+                    ep2.emit('node_article', article);
+                })
+            });
+        }
+        else {
+            Article.update({_id: v.parent}, {'$set': {'sub_article': []}}, function (err) {
+                if (err) console.log(res);
+                else ep.emit('update_column');
+            })
+        }
     });
 });
 module.exports = router;
