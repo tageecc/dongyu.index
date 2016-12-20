@@ -8,7 +8,7 @@
 <div class="header header-active por">
     <% include header.html%>
 </div>
-<div class="wrapper">
+<div class="wrapper" style="min-height: 739px;">
     <div class="mod-login">
         <form action="/login" method="post" onsubmit="javascript:$('#password').val(MD5($('#password').val()));">
             <div class="form-group">
@@ -26,53 +26,8 @@
     </div>
 </div>
 
-<div class="footer">
-    <div class="wrapper">
-        <div class="foot foot1">
-            <a class="logo" href="/"><img src="/images/logo.png" alt="东娱传媒"></a>
-            <p class="tit mt20">东娱文化传媒有限公司</p>
-            <p class="txt">福建省厦门市观音山营运中心塔埔东路166号</p>
-            <p class="tit mt20">邮编 \ 362100</p>
-            <p class="tit">电话 \ 123456789</p>
-            <p class="tit">传真 \ 123456789</p>
+<%include footer.html%>
 
-            <p class="txt mt20">CopyRight© 2014 - 2016</p>
-        </div>
-        <div class="foot foot2">
-            <p class="tit">友情链接</p>
-            <ul>
-                <li><a href="#" class="txt">东娱传媒有限公司</a></li>
-                <li><a href="#" class="txt">东娱传媒有限公司</a></li>
-                <li><a href="#" class="txt">东娱传媒有限公司</a></li>
-                <li><a href="#" class="txt">东娱传媒有限公司</a></li>
-                <li><a href="#" class="txt">东娱传媒有限公司</a></li>
-            </ul>
-        </div>
-        <div class="foot foot2">
-            <p class="tit">合作伙伴</p>
-            <ul>
-                <li><a href="#" class="txt">东娱传媒有限公司</a></li>
-                <li><a href="#" class="txt">东娱传媒有限公司</a></li>
-                <li><a href="#" class="txt">东娱传媒有限公司</a></li>
-                <li><a href="#" class="txt">东娱传媒有限公司</a></li>
-                <li><a href="#" class="txt">东娱传媒有限公司</a></li>
-            </ul>
-        </div>
-        <div class="foot mod-share">
-            <ul class="tab-nav clearfix">
-                <li class="nav1 cur"><i></i></li>
-                <li class="nav2"><i></i></li>
-                <li class="nav3"><i></i></li>
-            </ul>
-            <div class="tab-contents">
-                <div class="content content1">
-                    <p class="tit">关注我们</p>
-                    <img src="/images/qr.jpg" alt="">
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
 <script src="/lib/jquery.min.js"></script>
 <script src="/lib/md5.js"></script>
 <script>

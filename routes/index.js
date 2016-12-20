@@ -17,11 +17,13 @@ var adminRequired = function (req, res, next) {
 router.get('/', function (req, res, next) {
     var article = [], banner = [], marquee = [], ysjz = [];
     Article.find({'is_top': true})
-        .sort({'is_top_create_at': -1})
+        .populate('sub_article')
+        .sort({'is_top_create_at': -1, 'order': 1})
         .exec(function (err, articles) {
             if (err) return false;
             if (articles && articles.length > 0) {
                 articles.forEach(function (v, i) {
+
                     if (v.type == 1 && article.length < 6) {
                         article.push(v);
                     }
@@ -39,6 +41,7 @@ router.get('/', function (req, res, next) {
 
             Article.find({'is_top': false})
                 .sort({'create_at': -1})
+                .populate('sub_article')
                 .exec(function (err, articles) {
                     if (err) return false;
                     if (articles && articles.length > 0) {
@@ -55,14 +58,22 @@ router.get('/', function (req, res, next) {
                             else if (v.type == 4 && marquee.length < 6) {
                                 marquee.push(v);
                             }
-
-
                         })
                     }
                     res.render('index', {article: article, banner: banner, marquee: marquee, ysjz: ysjz, cur: 'index'});
                 });
         });
 
+});
+// 获取顶部列表
+router.get('/get/article/top/', function (req, res, next) {
+    Article.find({'type': 5})
+        .populate('sub_article')
+        .sort({'order': 1})
+        .exec(function (err, articles) {
+            if (err) return false;
+            res.json({code: 1, article: articles})
+        });
 });
 
 //详情页
@@ -75,21 +86,23 @@ router.get('/article/id/:id', function (req, res, next) {
     });
 });
 router.get('/article/title/:title', function (req, res, next) {
-    var _tit = '';
-    if (req.params.title == 'zjdy') _tit = '走进东娱';
-    else if (req.params.title == 'ywbk') _tit = '业务板块';
-    else _tit = '案例展示';
-    Article.findOneAndUpdate({title: _tit, type: 5}, {'$inc': {view: 1}}, function (err, article) {
-        if (err) {
-            return false;
-        }
-        res.render('article', {article: article, cur: req.params.title, user: req.session.user});
-    });
+    // var _tit = '';
+    // if (req.params.title == 'zjdy') _tit = '走进东娱';
+    // else if (req.params.title == 'ywbk') _tit = '业务板块';
+    // else _tit = '案例展示';
+    Article.findOneAndUpdate({_id: req.params.title, type: 5}, {'$inc': {view: 1}})
+        .populate('sub_article')
+        .exec(function (err, articles) {
+            if (err) {
+                return false;
+            }
+            res.render('article2', {article: articles, user: req.session.user});
+        });
 });
 //列表页
 router.get('/article/list', function (req, res, next) {
     var perPage = req.query.perPage ? req.query.perPage : 10, curPage = req.query.page ? req.query.page : 1;
-    Article.find({})
+    Article.find({type: 1})
         .sort({'create_at': -1})
         .skip((curPage - 1) * perPage)
         .limit(perPage)
@@ -271,6 +284,7 @@ router.get('/admin/article/list', adminRequired, function (req, res, next) {
 router.get('/article/column/column_avg', adminRequired, function (req, res, next) {
     Article.find({"type": {"$in": [5, 6]}})
         .populate('sub_article')
+        .sort({'order': 1})
         .exec(function (err, articles) {
             if (err)return false;
             var main_artivcle = [], sub_article = [];
@@ -285,9 +299,7 @@ router.get('/article/column/column_avg', adminRequired, function (req, res, next
                     sub_article.map(function (sub, index) {
 
                         if (sub._id + '' == vv._id + '') {
-                            console.log(sub_article);
                             sub_article.splice(index, 1);
-                            console.log(sub_article);
                             return false;
                         }
                     })
@@ -315,7 +327,7 @@ router.post('/article/column/avg', adminRequired, function (req, res, next) {
         if (v.child) {
             var ep2 = new eventproxy();
             ep2.after('node_article', v.child.length, function (nodes) {
-                Article.update({_id: v.parent}, {'$set': {'sub_article': nodes}}, function (err) {
+                Article.update({_id: v.parent}, {'$set': {'sub_article': nodes, 'order': v.order}}, function (err) {
                     if (err) console.log(res);
                     else ep.emit('update_column');
                 })
@@ -328,7 +340,7 @@ router.post('/article/column/avg', adminRequired, function (req, res, next) {
             });
         }
         else {
-            Article.update({_id: v.parent}, {'$set': {'sub_article': []}}, function (err) {
+            Article.update({_id: v.parent}, {'$set': {'sub_article': [], 'order': v.order}}, function (err) {
                 if (err) console.log(res);
                 else ep.emit('update_column');
             })

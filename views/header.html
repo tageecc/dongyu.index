@@ -5,55 +5,43 @@
         <span class="line"></span>
         <span class="line"></span>
     </div>
-    <ul class="nav-list clearfix">
-        <li class="<%if(cur=='index'){%>cur<%}%>"><a href="/">首页</a></li>
-        <li class="<%if(cur=='zjdy'){%>cur<%}%>">
-            <a href="/article/title/zjdy">走进东娱</a>
-            <ul class="sub-list clearfix">
-                <li><a href="#">公司简介</a></li>
-                <li><a href="#">组织架构</a></li>
-                <li><a href="#">公司荣誉</a></li>
-                <li><a href="#">公司优势</a></li>
-            </ul>
-        </li>
-        <li class="<%if(cur=='ywbk'){%>cur<%}%>">
-            <a href="/article/title/ywbk">业务板块</a>
-            <ul class="sub-list clearfix">
-                <li><a href="#">明星经纪</a></li>
-                <li><a href="#">版权合作</a></li>
-                <li><a href="#">广告代理</a></li>
-                <li><a href="#">广告植入</a></li>
-            </ul>
-        </li>
-        <li class="<%if(cur=='list'){%>cur<%}%>"><a href="/article/list">东娱新闻</a></li>
-        <li class="<%if(cur=='alzs'){%>cur<%}%>">
-            <a href="/article/title/alzs">案例展示</a>
-            <ul class="sub-list clearfix">
-                <li><a href="#">影视作品</a></li>
-                <li><a href="#">艺人代言</a></li>
-                <li><a href="#" style="line-height: 40px;">演唱会、活动</a></li>
-            </ul>
-        </li>
-        <li class="<%if(cur=='list'){%>cur<%}%>">
-            <a href="/article/list">联系我们</a>
-            <ul class="sub-list clearfix">
-                <li><a href="#">联系方式</a></li>
-                <li><a href="#">人才招聘</a></li>
-                <li><a href="#">项目投稿</a></li>
-                <li><a href="#">在线留言</a></li>
-            </ul>
-        </li>
-
+    <ul class="nav-list clearfix j-nav-list">
+        <li><a href="/">首页</a></li>
     </ul>
 </div>
 
 <script src="/lib/jquery.min.js"></script>
 <script>
-    $(".mod-menu").click(function(){
+    $(".mod-menu").click(function () {
         $(this).toggleClass("is-active");
         $('.header .nav-list').slideToggle();
     });
-    $('.nav-list>li').hover(function () {
-        $(this).find('.sub-list').stop().slideToggle('fast');
-    })
+    $(document).on('mouseenter', '.nav-list>li', function () {
+        $(this).find('.sub-list').stop().slideDown('fast');
+    });
+    $(document).on('mouseout', '.nav-list>li', function () {
+        $(this).find('.sub-list').stop().slideUp('fast');
+    });
+    $.getJSON('/get/article/top/', function (res) {
+        //获取url id
+        var strs = window.location.href.split('/');
+        var temp = '', flag = false;
+        res.article.map(function (v, i) {
+            if (strs[strs.length - 1] == v._id) {
+                temp += '<li class="cur"><a href="/article/title/' + v._id + '">' + v.title + '</a><ul class="sub-list clearfix">';
+                flag = true;
+            } else {
+                temp += '<li><a href="/article/title/' + v._id + '">' + v.title + '</a><ul class="sub-list clearfix">';
+            }
+            v.sub_article.map(function (_v, _i) {
+                temp += '<li><a href="/article/id/' + _v._id + '">' + _v.title + '</a></li>';
+            });
+            temp += '</ul></li>';
+        });
+        $('.j-nav-list').append(temp);
+
+        if (!flag) {
+            $('.j-nav-list li').eq(0).addClass('cur');
+        }
+    });
 </script>

@@ -953,16 +953,60 @@ html, body {
     border-top: 1px dotted #ccc;
     transition: .25s all;
 }
-
-.main-article-list li.active h3{
+.main-article-list li h3{
+    position: relative;
+    zoom: 1;
+}
+.main-article-list li h3 i{
+    font-style: normal;
+    position: absolute;
+    font-weight: 700;
+    left: -25px;
+    top: 0;
+}
+.main-article-list li.active h3 {
     background-color: #e37416;
     line-height: 36px;
 }
-.main-article-list h3+ul{
+
+.main-article-list h3 + ul {
     margin-left: 10px;
 }
-.sub-article-list .add,.main-article-list .add{
+
+.sub-article-list .add, .main-article-list .add {
     float: right;
+}
+
+.article_column {
+    margin-top: 20px;
+}
+.article_column .mod-article,.article_column .mod-article .content{
+    margin-top:0;
+}
+.article_column .mod-article p {
+    background-color: #fff !important;
+}
+
+.article_column .mod-side-nav .mod-hd {
+    border-bottom: 1px solid #efefef;
+}
+
+.article_column .mod-side-nav .sub-nav-list a{
+    font-size:14px;
+    margin-top: 10px;
+}
+.column-avg .btn-save{
+    float: left;
+    padding: 10px 20px;
+    box-shadow: inset 0 -4px 0 #af630e;
+    border: 0;
+    color: #fff;
+    background-color: #e68417;
+    font-size: 18px;
+    line-height: 1.3333333;
+    border-radius: 6px;
+    transition: .25s all;
+    margin-top: 20px;
 }
 /*移动适配*/
 /*@media screen and ( max-width: 480px ) {*/

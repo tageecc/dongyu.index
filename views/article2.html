@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>东娱传媒 | <%=article.title%></title>
+    <meta charset="utf-8">
+    <meta name="renderer" content="webkit|ie-comp|ie-stand">
+    <meta content="always" name="referrer">
+    <meta name="keywords" content="东娱传媒">
+    <meta name="description" content="东娱传媒">
+    <meta name="viewport" content="width=1000" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="format-detection" content="telephone=no" />
+    <link rel="stylesheet" href="/lib/font-awesome/css/font-awesome.min.css">
+    <link rel='stylesheet' href='/css/style.css'/>
+</head>
+<body>
+<div class="header header-active por">
+    <% include header.html%>
+</div>
+<div class="wrapper clearfix article_column">
+    <div class="frm-side">
+        <div class="mod-side-nav">
+            <div class="mod-hd"><h2 class="tit"><i class="icon-dun"></i><%=article.title%></h2></div>
+            <div class="mod-bd">
+                <ul class="side-nav-list">
+                    <li>
+                        <ul class="sub-nav-list">
+                            <%article.sub_article.map(function(v,i){%>
+                            <li><a class="" href="/article/id/<%=v._id%>"><%=v.title%></a></li>
+                            <%})%>
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    <div class="frm-main">
+        <div class="mod-article">
+            <%if(article.type!=5){%>
+            <h1 class="title"><%=article.title%></h1>
+            <p class="txtinfo">发布时间： <%=article.date%> &nbsp;&nbsp;&nbsp;&nbsp;浏览量：<%=article.view%></p>
+            <%}%>
+            <%-article.content%>
+        </div>
+    </div>
+</div>
+
+<% include footer.html%>
+
+</body>
+</html>

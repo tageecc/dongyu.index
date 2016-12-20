@@ -1,11 +1,11 @@
 <% layout('admin/layout.html') %>
-<div class="clearfix">
+<div class="column-avg clearfix">
     <div class="main-article-list">
         <h3>栏目列表</h3>
         <ul>
             <%main_artivcle.map(function(v,i){%>
             <li class="<%if(i==0){%>active<%}%>" data-id="<%=v._id%>">
-                <h3><%=v.title%></h3>
+                <h3><i>∧</i><%=v.title%></h3>
                 <ul>
                     <%v.sub_article.map(function(_v,_i){%>
                     <li data-id="<%=_v._id%>"><%=_v.title%></li>
@@ -23,10 +23,10 @@
             <%})%>
         </ul>
     </div>
+    <a href="javascript:" class="btn-save">保存</a>
 </div>
-<a href="javascript:" class="btn-save">保存</a>
 <script>
-    $('.main-article-list>ul>li').on('click', function () {
+    $(document).on('click', '.main-article-list>ul>li', function () {
         $(this).addClass('active').siblings().removeClass('active');
     });
     $(document).on('click', '.main-article-list .active>ul>li', function () {
@@ -39,6 +39,11 @@
         $('.main-article-list .active>ul').append(this.outerHTML);
         $(this).remove();
     });
+    $(document).on('click', '.main-article-list h3 i', function () {
+        var li = $(this).parents('li'), ul = $(this).parents('ul');
+        $(this).parents('li').remove();
+        ul.prepend(li);
+    });
     $('.btn-save').on('click', function () {
         var parentNode = [];
         $('.main-article-list>ul>li').map(function (i, v) {
@@ -46,7 +51,7 @@
             $(v).find('li').map(function (_i, _v) {
                 tempNode.push($(_v).attr('data-id'))
             });
-            parentNode.push({parent: $(v).attr('data-id'), child: tempNode});
+            parentNode.push({parent: $(v).attr('data-id'),order:$(v).index(), child: tempNode});
         });
         $.ajax({
             url: '/article/column/avg',
@@ -56,9 +61,9 @@
             },
             dataType: 'json',
             success: function (res) {
-                if(res.code==1){
+                if (res.code == 1) {
                     window.location.reload();
-                }else{
+                } else {
                     alert(res.message);
                 }
             }

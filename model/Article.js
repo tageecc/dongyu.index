@@ -7,6 +7,10 @@ var ArticleSchema = new mongoose.Schema({
     sub_article:[{type: Schema.Types.ObjectId, ref: 'Article'}],
     headimg: String,// 图片
     video: String,// 视频标签
+    order:{ //排序
+        type: Number,
+        default: 0
+    },
     is_top: {
         type: Boolean,
         default: false
