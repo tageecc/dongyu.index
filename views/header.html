@@ -16,11 +16,17 @@
         $(this).toggleClass("is-active");
         $('.header .nav-list').slideToggle();
     });
-    $(document).on('mouseenter', '.nav-list>li', function () {
+    $(document).on('mouseenter', '.nav-list li', function () {
         $(this).find('.sub-list').stop().slideDown('fast');
     });
-    $(document).on('mouseout', '.nav-list>li', function () {
+    $(document).on('mouseout', '.nav-list li', function () {
         $(this).find('.sub-list').stop().slideUp('fast');
+    });
+    $(document).on('mouseenter', '.sub-list', function () {
+        $(this).stop().slideDown('fast');
+    });
+    $(document).on('mouseenter', '.sub-list li', function () {
+        $(this).parent().stop().slideDown('fast');
     });
     $.getJSON('/get/article/top/', function (res) {
         //获取url id
