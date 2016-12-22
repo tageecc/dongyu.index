@@ -604,7 +604,7 @@ html, body {
 
 .frm-main, .frm-side {
     float: left;
-    height: 790px;
+    /*height: 790px;*/
     background-color: #fff;
     border-radius: 5px;
 }

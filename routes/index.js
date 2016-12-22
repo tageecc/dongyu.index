@@ -103,7 +103,7 @@ router.get('/article/title/:title', function (req, res, next) {
 router.get('/article/list', function (req, res, next) {
     var perPage = req.query.perPage ? req.query.perPage : 10, curPage = req.query.page ? req.query.page : 1;
     Article.find({type: 1})
-        .sort({'create_at': -1})
+        .sort({'is_top_create_at': -1,'create_at': -1})
         .skip((curPage - 1) * perPage)
         .limit(perPage)
         .exec(function (err, articles) {
