@@ -198,7 +198,7 @@ html, body {
 }
 
 .nav-list li {
-    width: 100px;
+    width: 110px;
     float: left;
     text-align: center;
     position: relative;
@@ -207,7 +207,7 @@ html, body {
 .nav-list a {
     display: block;
     color: #333;
-    font: 18px/125px "Microsoft YaHei";
+    font: 16px/127px "Microsoft YaHei";
     text-shadow: 1px 1px 1px #ececec;
     transition: .23s all;
 }
@@ -222,7 +222,7 @@ html, body {
     display: none;
     background-color: #fff;
     position: absolute;
-    width: 100px;
+    width: 110px;
     border-radius: 0 0 10px 10px;
     box-shadow: 0 4px 0 0 #ccc;
 }
@@ -391,10 +391,12 @@ html, body {
     width: 140px;
     height: 190px;
 }
-
+.cnt-txtlist{
+    padding: 20px;
+}
 .cnt-txtlist li {
     overflow: hidden;
-    width: 380px;
+    /*width: 380px;*/
     border-bottom: 1px dotted #ccc;
     padding: 0 0 5px 20px;
     margin-bottom: 5px;
@@ -414,7 +416,7 @@ html, body {
     float: left;
     color: #333;
     font: 14px/1.5 "Microsoft YaHei";
-    width: 300px;
+    width: 660px;
     overflow: hidden;
     text-overflow: ellipsis;
     white-space: nowrap;
@@ -614,6 +616,7 @@ html, body {
     margin-left: 10px;
     padding: 10px;
     position: relative;
+    min-height: 808px;
 }
 
 .frm-side {

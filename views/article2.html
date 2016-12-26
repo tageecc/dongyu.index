@@ -20,13 +20,13 @@
 <div class="wrapper clearfix article_column">
     <div class="frm-side">
         <div class="mod-side-nav">
-            <div class="mod-hd"><h2 class="tit"><i class="icon-dun"></i><%=article.title%></h2></div>
+            <div class="mod-hd"><h2 class="tit"><i class="icon-dun"></i><%=type_tit%></h2></div>
             <div class="mod-bd">
                 <ul class="side-nav-list">
                     <li>
                         <ul class="sub-nav-list">
-                            <%article.sub_article.map(function(v,i){%>
-                            <li><a class="" href="/article/id/<%=v._id%>"><%=v.title%></a></li>
+                            <%column_list.map(function(v,i){%>
+                            <li><a class="<%if(type2==i+1){%>cur<%}%>" href="/article/column/<%=type1+String(i+1)%>"><%=v%></a></li>
                             <%})%>
                         </ul>
                     </li>
@@ -35,13 +35,22 @@
         </div>
     </div>
     <div class="frm-main">
+        <%if(article.length==1){ article=article[0];%>
         <div class="mod-article">
-            <%if(article.type!=5){%>
             <h1 class="title"><%=article.title%></h1>
-            <p class="txtinfo">发布时间： <%=article.date%> &nbsp;&nbsp;&nbsp;&nbsp;浏览量：<%=article.view%></p>
-            <%}%>
+            <p class="txtinfo">发布时间： <%=article.date%></p>
             <%-article.content%>
         </div>
+        <%}else{%>
+        <ul class="cnt-txtlist">
+            <%article.forEach(function(v,i){%>
+            <li>
+                <a href="/article/id/<%=v._id%>" target="_blank" title="<%=v.title%>"><%=v.title%></a><span class="date"><%=v.date%></span>
+            </li>
+            <%})%>
+        </ul>
+        <%}%>
+
     </div>
 </div>
 
