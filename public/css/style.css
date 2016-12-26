@@ -649,7 +649,12 @@ html, body {
     overflow: hidden;
     height: 0;
 }
-
+/*.mod-side-nav .sub-nav-list{*/
+    /*display: none;*/
+/*}*/
+/*.mod-side-nav .cur .sub-nav-list{*/
+     /*display: block;*/
+ /*}*/
 .mod-side-nav .sub-nav-list a {
     display: block;
     color: #666;

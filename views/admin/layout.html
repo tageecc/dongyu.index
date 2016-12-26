@@ -16,27 +16,60 @@
             <div class="mod-hd"><h2 class="tit"><i class="icon-dun"></i>后台管理中心</h2></div>
             <div class="mod-bd">
                 <ul class="side-nav-list">
-                    <li><h3 class="tit">文章分类 <b></b></h3>
+                    <li class="cur"><h3 class="tit">文章编辑 <b></b></h3>
                         <ul class="sub-nav-list">
-                            <li><a class="<%if(cur=='article_sytt'){%>cur<%}%>" href="/admin/article/list?type=3">首页头图</a></li>
-                            <li><a class="<%if(cur=='article_dyzp'){%>cur<%}%>" href="/admin/article/list?type=2">东娱作品</a></li>
-                            <li><a class="<%if(cur=='article_xwdt'){%>cur<%}%>" href="/admin/article/list?type=1">新闻动态</a></li>
-                            <li><a class="<%if(cur=='article_tplb'){%>cur<%}%>" href="/admin/article/list?type=4">视频轮播</a></li>
-                            <li><a class="<%if(cur=='article_sjlmy'){%>cur<%}%>" href="/admin/article/list?type=6">三级栏目页</a></li>
+                            <li><a class="<%if(cur=='article_editor'){%>cur<%}%>" href="/admin/editor">新建文章</a></li>
                         </ul>
                     </li>
-                    <li><h3 class="tit">文章编辑 <b></b></h3>
+                    <li><h3 class="tit">走进东娱 <b></b></h3>
                         <ul class="sub-nav-list">
-                            <li><a class="<%if(cur=='article_editor'){%>cur<%}%>" href="/admin/editor">创建文章</a></li>
-                            <li><a class="<%if(cur=='column_zjdy'){%>cur<%}%>" href="/article/editor/title/column_zjdy">走进东娱</a></li>
-                            <li><a class="<%if(cur=='column_ywbk'){%>cur<%}%>" href="/article/editor/title/column_ywbk">业务板块</a></li>
-                            <li><a class="<%if(cur=='column_alzs'){%>cur<%}%>" href="/article/editor/title/column_alzs">案例展示</a></li>
-                            <li><a class="<%if(cur=='column_lxwm'){%>cur<%}%>" href="/article/editor/title/column_lxwm">联系我们</a></li>
+                            <li><a class="<%if(cur=='article_sytt'){%>cur<%}%>"
+                                   href="/admin/article/list?type=3">公司简介</a></li>
+                            <li><a class="<%if(cur=='article_dyzp'){%>cur<%}%>"
+                                   href="/admin/article/list?type=2">组织架构</a></li>
+                            <li><a class="<%if(cur=='article_tplb'){%>cur<%}%>"
+                                   href="/admin/article/list?type=4">公司荣誉</a></li>
+                            <li><a class="<%if(cur=='article_tplb'){%>cur<%}%>"
+                                   href="/admin/article/list?type=4">公司优势</a></li>
                         </ul>
                     </li>
-                    <li><h3 class="tit">栏目编辑 <b></b></h3>
+                    <li><h3 class="tit">东娱新闻 <b></b></h3>
                         <ul class="sub-nav-list">
-                            <li><a class="<%if(cur=='column_avg'){%>cur<%}%>" href="/article/column/column_avg">栏目归档</a></li>
+                            <li><a class="<%if(cur=='article_editor'){%>cur<%}%>" href="/admin/editor">公司新闻</a></li>
+                        </ul>
+                    </li>
+                    <li><h3 class="tit">案例展示 <b></b></h3>
+                        <ul class="sub-nav-list">
+                            <li><a class="<%if(cur=='column_avg'){%>cur<%}%>"
+                                   href="/article/column/column_avg">影视作品</a></li>
+                            <li><a class="<%if(cur=='column_avg'){%>cur<%}%>" href="/article/column/column_avg">艺人代言</a>
+                            </li>
+                            <li><a class="<%if(cur=='column_avg'){%>cur<%}%>" href="/article/column/column_avg">演唱会、活动</a>
+                            </li>
+                        </ul>
+                    </li>
+                    <li><h3 class="tit">业务板块 <b></b></h3>
+                        <ul class="sub-nav-list">
+                            <li><a class="<%if(cur=='column_avg'){%>cur<%}%>" href="/article/column/column_avg">明星经纪</a>
+                            </li>
+                            <li><a class="<%if(cur=='column_avg'){%>cur<%}%>" href="/article/column/column_avg">版权合作</a>
+                            </li>
+                            <li><a class="<%if(cur=='column_avg'){%>cur<%}%>" href="/article/column/column_avg">广告代理</a>
+                            </li>
+                            <li><a class="<%if(cur=='column_avg'){%>cur<%}%>" href="/article/column/column_avg">广告植入</a>
+                            </li>
+                        </ul>
+                    </li>
+                    <li><h3 class="tit">联系我们 <b></b></h3>
+                        <ul class="sub-nav-list">
+                            <li><a class="<%if(cur=='column_avg'){%>cur<%}%>" href="/article/column/column_avg">联系方式</a>
+                            </li>
+                            <li><a class="<%if(cur=='column_avg'){%>cur<%}%>" href="/article/column/column_avg">人才招聘</a>
+                            </li>
+                            <li><a class="<%if(cur=='column_avg'){%>cur<%}%>" href="/article/column/column_avg">项目投稿</a>
+                            </li>
+                            <li><a class="<%if(cur=='column_avg'){%>cur<%}%>" href="/article/column/column_avg">在线留言</a>
+                            </li>
                         </ul>
                     </li>
                 </ul>
@@ -47,5 +80,10 @@
         <%-body %>
     </div>
 </div>
+<script>
+//    $('.side-nav-list .tit').on('click',function () {
+//        $(this).parent().addClass('cur').siblings().removeClass('cur');
+//    });
+</script>
 </body>
 </html>
