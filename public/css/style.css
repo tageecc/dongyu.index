@@ -371,7 +371,9 @@ html, body {
 .mod-news .cnt-txtlist {
     margin-left: 30px;
 }
-
+.mod-news .cnt-txtlist a{
+    width: 275px;
+}
 .mod-news .more {
     float: right;
     margin-right: 18px;
