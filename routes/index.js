@@ -89,42 +89,59 @@ router.get('/article/column/:id', function (req, res, next) {
                 type1 == 3 ? '案例展示' :
                     type1 == 4 ? '业务板块' :
                         type1 == 5 ? '联系我们' : '';
-    Article.find({column_type: '' + type1 + type2})
+    Article.find({column_type: '' + type1 + type2,'is_top': true})
+        .sort({'is_top_create_at': -1, 'create_at': -1})
         .exec(function (err, articles) {
             if (err) {
                 return false;
             }
-            res.render('article2', {
-                article: articles,
-                type1: type1,
-                type2: type2,
-                type_tit: type_tit,
-                column_list: colunm_name_zh[type1 - 1],
-                user: req.session.user
-            });
+            Article.find({column_type: '' + type1 + type2,'is_top': false})
+                .sort({'is_top_create_at': -1, 'create_at': -1})
+                .exec(function (err, article) {
+                    if (err) {
+                        return false;
+                    }
+                    articles=articles.concat(article);
+                    res.render('article2', {
+                        article: articles,
+                        type1: type1,
+                        type2: type2,
+                        type_tit: type_tit,
+                        column_list: colunm_name_zh[type1 - 1],
+                        user: req.session.user
+                    });
+                });
         });
 });
 //列表页
 router.get('/article/list', function (req, res, next) {
     var perPage = req.query.perPage ? req.query.perPage : 10, curPage = req.query.page ? req.query.page : 1;
-    Article.find({type: 1})
+    Article.find({type: 1, 'is_top': true})
         .sort({'is_top_create_at': -1, 'create_at': -1})
         .skip((curPage - 1) * perPage)
         .limit(perPage)
         .exec(function (err, articles) {
             if (err)return false;
 
-            Article.count({}, function (err, count) {
-                var totalPages = Math.ceil(count / perPage);
-                res.render('list', {
-                    article: articles,
-                    perPage: perPage,
-                    curPage: curPage,
-                    totalPages: totalPages,
-                    _url: '/article/list',
-                    cur: 'list'
+            Article.find({type: 1, 'is_top': false})
+                .sort({'is_top_create_at': -1, 'create_at': -1})
+                .skip((curPage - 1) * perPage)
+                .limit(perPage)
+                .exec(function (err, article) {
+                    if (err)return false;
+                    articles = articles.concat(article);
+                    Article.count({type: 1}, function (err, count) {
+                        var totalPages = Math.ceil(count / perPage);
+                        res.render('list', {
+                            article: articles,
+                            perPage: perPage,
+                            curPage: curPage,
+                            totalPages: totalPages,
+                            _url: '/article/list',
+                            cur: 'list'
+                        });
+                    });
                 });
-            });
         });
 });
 //登陆页
