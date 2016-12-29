@@ -44,9 +44,11 @@
         <%}else{%>
         <ul class="cnt-txtlist">
             <%article.forEach(function(v,i){%>
+            <%if(v.type!=4){%>
             <li>
                 <a href="/article/id/<%=v._id%>" target="_blank" title="<%=v.title%>"><%=v.title%></a><span class="date"><%=v.date%></span>
             </li>
+            <%}%>
             <%})%>
         </ul>
         <%}%>
