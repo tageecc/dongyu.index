@@ -311,7 +311,7 @@ html, body {
 }
 
 .mod-glob .mod-hd {
-    padding: 10px 0 20px 28px;
+    padding: 10px 0 0 28px;
 }
 
 .mod-glob .mod-hd .tit {
@@ -369,7 +369,10 @@ html, body {
 }
 
 .mod-news .cnt-txtlist {
-    margin-left: 30px;
+    margin: -10px 0 0 10px;
+}
+.mod-news .cnt-txtlist li{
+    padding-bottom:3px;
 }
 .mod-news .cnt-txtlist a{
     width: 275px;
