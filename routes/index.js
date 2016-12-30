@@ -14,8 +14,8 @@ var adminRequired = function (req, res, next) {
 };
 
 //首页栏目名
-var colunm_name = [['gsjj', 'zzjg', 'gsry', 'gsys'], ['gsxw'], ['yszp', 'yrdy', 'ychhd'], ['mxjj', 'bqhz', 'ggdl', 'ggzr'], ['lxfs', 'rczp', 'xmtg', 'zxly']];
-var colunm_name_zh = [['公司简介', '组织架构', '公司荣誉', '公司优势'], ['公司新闻'], ['影视作品', '艺人代言', '演唱会、活动'], ['明星经纪', '版权合作', '广告代理', '广告植入'], ['联系方式', '人才招聘', '项目投稿', '在线留言']];
+var colunm_name = [['gsjj', 'zzjg', 'gsry', 'gsys'], ['gsxw'], ['yszp', 'yrdy', 'ychhd'], ['mxjj', 'bqhz', 'ggdl', 'ggzr'], ['lxfs', 'rczp', 'xmtg']];
+var colunm_name_zh = [['公司简介', '组织架构', '公司荣誉', '公司优势'], ['公司新闻'], ['影视作品', '艺人代言', '演唱会、活动'], ['明星经纪', '版权合作', '广告代理', '广告植入'], ['联系方式', '人才招聘', '项目投稿']];
 
 //首页
 router.get('/', function (req, res, next) {

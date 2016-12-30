@@ -15,7 +15,6 @@
     "eventproxy": "^0.3.5",
     "express": "~4.14.0",
     "express-session": "^1.14.2",
-    "flv.js": "^1.1.0",
     "morgan": "~1.7.0",
     "serve-favicon": "~2.3.0",
     "ueditor": "^1.2.0"
