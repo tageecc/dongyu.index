@@ -489,7 +489,8 @@ html, body {
     border-radius: 50%;
     margin-right: 10px;
     transition: all .25s;
-    border:1px solid #e68417;
+    border:2px solid #e68417;
+    font-family: "Microsoft YaHei";
     background-color: #fff;
     counter-increment: chapter;
     counter-reset: section;
