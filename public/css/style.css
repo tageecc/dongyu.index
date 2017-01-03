@@ -489,11 +489,12 @@ html, body {
     border-radius: 50%;
     margin-right: 10px;
     transition: all .25s;
-    background-color: #e68417;
+    border:1px solid #e68417;
+    background-color: #fff;
     counter-increment: chapter;
     counter-reset: section;
     position: relative;
-    color: #fff;
+    color: #e68417;
 }
 .mod-marquee .marquee-nav li:before{
     content: counter(chapter);
@@ -505,8 +506,9 @@ html, body {
 }
 .mod-marquee .marquee-nav li.cur {
     /*width: 30px;*/
-    background-color: #9c5910;
-    color: #fff5d4;
+    background-color: #e68417;
+    color: #fff;
+    border-color: #e68417;
 }
 
 .mod-share {
