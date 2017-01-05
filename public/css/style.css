@@ -1038,6 +1038,22 @@ html, body {
     transition: .25s all;
     margin-top: 20px;
 }
+.btn-histroy{
+    display: block;
+    width: 100px;
+    height: 30px;
+    border-radius: 5px;
+    border:1px solid #e68417;
+    color: #e68417;
+    text-align: center;
+    line-height: 30px;
+    margin:20px auto;
+    transition: all .25s;
+}
+.btn-histroy:hover{
+    color: #fff;
+    background-color: #e68417;
+}
 /*移动适配*/
 /*@media screen and ( max-width: 480px ) {*/
 /*.wrapper {*/
