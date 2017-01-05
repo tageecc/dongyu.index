@@ -122,6 +122,7 @@
         autoplay: false,
         afterSlide: function () {
             this.target.html(this.target.html());
+            this.target.find('video')[0].play();
         },
         loop: 1,
         mode: 1

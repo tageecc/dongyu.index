@@ -460,14 +460,13 @@ html, body {
 
 .mod-marquee .marquee-nav {
     position: absolute;
-    bottom: -20px;
+    bottom: -30px;
     right: -10px;
 }
 
 .mod-marquee .marquee-list li {
     float: left;
 }
-
 .mod-marquee .marquee-list .tit {
     position: absolute;
     bottom: 0;
@@ -484,17 +483,34 @@ html, body {
 
 .mod-marquee .marquee-nav li {
     float: left;
-    width: 10px;
-    height: 10px;
+    width: 20px;
+    height: 20px;
     cursor: pointer;
-    border-radius: 5px;
+    border-radius: 50%;
     margin-right: 10px;
     transition: all .25s;
-    background-color: #e68417;
+    border:2px solid #e68417;
+    font-family: "Microsoft YaHei";
+    background-color: #fff;
+    font-weight:700;
+    counter-increment: chapter;
+    counter-reset: section;
+    position: relative;
+    color: #e68417;
 }
-
+.mod-marquee .marquee-nav li:before{
+    content: counter(chapter);
+    position: absolute;
+    text-align: center;
+    width: 20px;
+    height: 20px;
+    line-height: 20px;
+}
 .mod-marquee .marquee-nav li.cur {
-    width: 30px;
+    /*width: 30px;*/
+    background-color: #e68417;
+    color: #fff;
+    border-color: #e68417;
 }
 
 .mod-share {
