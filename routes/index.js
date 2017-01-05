@@ -81,6 +81,8 @@ router.get('/article/id/:id', function (req, res, next) {
 });
 //栏目
 router.get('/article/column/:id', function (req, res, next) {
+    var perPage = req.query.perPage ? req.query.perPage : 15, curPage = req.query.page ? req.query.page : 1;
+
     var type1 = parseInt(req.params.id / 10), type2 = req.params.id % 10;
     type2 = type2 == 0 ? 1 : type2;
     var type_tit =
@@ -89,27 +91,38 @@ router.get('/article/column/:id', function (req, res, next) {
                 type1 == 3 ? '案例展示' :
                     type1 == 4 ? '业务板块' :
                         type1 == 5 ? '联系我们' : '';
-    Article.find({column_type: '' + type1 + type2,'is_top': true})
+    Article.find({column_type: '' + type1 + type2, 'is_top': true})
         .sort({'is_top_create_at': -1, 'create_at': -1})
+
         .exec(function (err, articles) {
             if (err) {
                 return false;
             }
-            Article.find({column_type: '' + type1 + type2,'is_top': false})
+            Article.find({column_type: '' + type1 + type2, 'is_top': false})
                 .sort({'is_top_create_at': -1, 'create_at': -1})
                 .exec(function (err, article) {
                     if (err) {
                         return false;
                     }
-                    articles=articles.concat(article);
-                    res.render('article2', {
-                        article: articles,
-                        type1: type1,
-                        type2: type2,
-                        type_tit: type_tit,
-                        column_list: colunm_name_zh[type1 - 1],
-                        user: req.session.user
+                    articles = articles.concat(article).slice((curPage - 1) * perPage,curPage * perPage);
+
+                    Article.count({column_type: '' + type1 + type2}, function (err, count) {
+                        var totalPages = Math.ceil(count / perPage);
+                        res.render('article2', {
+                            article: articles,
+                            type1: type1,
+                            type2: type2,
+                            type_tit: type_tit,
+                            column_list: colunm_name_zh[type1 - 1],
+                            user: req.session.user,
+                            perPage: perPage,
+                            curPage: curPage,
+                            totalPages: totalPages,
+                            _url: '/article/column/' + req.params.id + '?_t=1',
+                            cur: 'list'
+                        });
                     });
+
                 });
         });
 });
@@ -227,7 +240,7 @@ router.post('/article/editor/:id', adminRequired, function (req, res, next) {
 
 //搜索
 router.post('/article/search', adminRequired, function (req, res, next) {
-    var perPage = req.query.perPage ? req.query.perPage : 10, curPage = req.query.page ? req.query.page : 1;
+    var perPage = req.query.perPage ? req.query.perPage : 15, curPage = req.query.page ? req.query.page : 1;
     var regex = new RegExp(req.body.key, 'i');
     Article.find({$or: [{title: regex}, {age: regex}]})
         .sort({'create_at': -1})
@@ -244,7 +257,7 @@ router.post('/article/search', adminRequired, function (req, res, next) {
                     perPage: perPage,
                     curPage: curPage,
                     totalPages: totalPages,
-                    _url: '/admin/article/list',
+                    _url: '/admin/article/list?_t=1',
                     search: req.body.key
                 });
             });
@@ -266,7 +279,7 @@ router.get('/admin/article/column', adminRequired, function (req, res, next) {
     req.query.type = req.query.type ? req.query.type : 11;
     var type1 = parseInt(req.query.type / 10), type2 = req.query.type % 10;
     type2 = type2 == 0 ? 1 : type2;
-    var perPage = req.query.perPage ? req.query.perPage : 10, curPage = req.query.page ? req.query.page : 1;
+    var perPage = req.query.perPage ? req.query.perPage : 15, curPage = req.query.page ? req.query.page : 1;
     Article.find({column_type: '' + type1 + type2})
         .sort({'is_top_create_at': -1, 'create_at': -1})
         .skip((curPage - 1) * perPage)
@@ -283,7 +296,7 @@ router.get('/admin/article/column', adminRequired, function (req, res, next) {
                     totalPages: totalPages,
                     type: '' + type1 + type2,
                     search: null,
-                    _url: ''
+                    _url: '/admin/article/column?type=' + req.query.type
                 });
             });
         });
