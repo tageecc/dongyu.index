@@ -1043,12 +1043,15 @@ html, body {
     width: 100px;
     height: 30px;
     border-radius: 5px;
-    border:1px solid #e68417;
+    border: 1px solid #e68417;
     color: #e68417;
     text-align: center;
     line-height: 30px;
-    margin:20px auto;
     transition: all .25s;
+    position: fixed;
+    left: 50%;
+    bottom: 40px;
+    margin-left: 530px;
 }
 .btn-histroy:hover{
     color: #fff;
