@@ -7,9 +7,10 @@
     <meta content="always" name="referrer">
     <meta name="keywords" content="东娱传媒">
     <meta name="description" content="东娱传媒">
-    <meta name="viewport" content="width=1000" />
+    <meta name="viewport" content="width=1200" />
     <meta name="apple-mobile-web-app-capable" content="yes" />
     <meta name="format-detection" content="telephone=no" />
+    <link rel="stylesheet" href="/lib/layui/css/layui.css">
     <link rel="stylesheet" href="/lib/font-awesome/css/font-awesome.min.css">
     <link rel='stylesheet' href='/css/style.css'/>
 
@@ -64,7 +65,7 @@
                                 class="date"><%=v.date%></span></li>
                         <%})%>
                     </ul>
-                    <a href="/article/list" class="more" target="_blank">更多 >></a>
+                    <a href="/article/column/20" class="more">更多 >></a>
                 </div>
             </div>
             <div class="mod-marquee">
@@ -120,6 +121,7 @@
         autoplay: false,
         afterSlide: function () {
             this.target.html(this.target.html());
+            this.target.find('video')[0].play();
         },
         loop: 1,
         mode: 1

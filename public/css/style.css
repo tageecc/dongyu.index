@@ -198,7 +198,7 @@ html, body {
 }
 
 .nav-list li {
-    width: 100px;
+    width: 110px;
     float: left;
     text-align: center;
     position: relative;
@@ -207,7 +207,7 @@ html, body {
 .nav-list a {
     display: block;
     color: #333;
-    font: 18px/125px "Microsoft YaHei";
+    font: 16px/127px "Microsoft YaHei";
     text-shadow: 1px 1px 1px #ececec;
     transition: .23s all;
 }
@@ -222,7 +222,7 @@ html, body {
     display: none;
     background-color: #fff;
     position: absolute;
-    width: 100px;
+    width: 110px;
     border-radius: 0 0 10px 10px;
     box-shadow: 0 4px 0 0 #ccc;
 }
@@ -311,7 +311,7 @@ html, body {
 }
 
 .mod-glob .mod-hd {
-    padding: 10px 0 20px 28px;
+    padding: 10px 0 0 28px;
 }
 
 .mod-glob .mod-hd .tit {
@@ -369,9 +369,14 @@ html, body {
 }
 
 .mod-news .cnt-txtlist {
-    margin-left: 30px;
+    margin: -10px 0 0 10px;
 }
-
+.mod-news .cnt-txtlist li{
+    padding-bottom:3px;
+}
+.mod-news .cnt-txtlist a{
+    width: 275px;
+}
 .mod-news .more {
     float: right;
     margin-right: 18px;
@@ -391,10 +396,12 @@ html, body {
     width: 140px;
     height: 190px;
 }
-
+.cnt-txtlist{
+    padding: 20px;
+}
 .cnt-txtlist li {
     overflow: hidden;
-    width: 380px;
+    /*width: 380px;*/
     border-bottom: 1px dotted #ccc;
     padding: 0 0 5px 20px;
     margin-bottom: 5px;
@@ -414,7 +421,7 @@ html, body {
     float: left;
     color: #333;
     font: 14px/1.5 "Microsoft YaHei";
-    width: 300px;
+    width: 660px;
     overflow: hidden;
     text-overflow: ellipsis;
     white-space: nowrap;
@@ -453,14 +460,13 @@ html, body {
 
 .mod-marquee .marquee-nav {
     position: absolute;
-    bottom: -20px;
+    bottom: -30px;
     right: -10px;
 }
 
 .mod-marquee .marquee-list li {
     float: left;
 }
-
 .mod-marquee .marquee-list .tit {
     position: absolute;
     bottom: 0;
@@ -477,17 +483,34 @@ html, body {
 
 .mod-marquee .marquee-nav li {
     float: left;
-    width: 10px;
-    height: 10px;
+    width: 20px;
+    height: 20px;
     cursor: pointer;
-    border-radius: 5px;
+    border-radius: 50%;
     margin-right: 10px;
     transition: all .25s;
-    background-color: #e68417;
+    border:2px solid #e68417;
+    font-family: "Microsoft YaHei";
+    background-color: #fff;
+    font-weight:700;
+    counter-increment: chapter;
+    counter-reset: section;
+    position: relative;
+    color: #e68417;
 }
-
+.mod-marquee .marquee-nav li:before{
+    content: counter(chapter);
+    position: absolute;
+    text-align: center;
+    width: 20px;
+    height: 20px;
+    line-height: 20px;
+}
 .mod-marquee .marquee-nav li.cur {
-    width: 30px;
+    /*width: 30px;*/
+    background-color: #e68417;
+    color: #fff;
+    border-color: #e68417;
 }
 
 .mod-share {
@@ -551,7 +574,7 @@ html, body {
 }
 
 .mod-article span {
-    background-color: #f1f1f1 !important;
+    /*background-color: #f1f1f1 !important;*/
 }
 
 .mod-article img {
@@ -614,6 +637,7 @@ html, body {
     margin-left: 10px;
     padding: 10px;
     position: relative;
+    min-height: 808px;
 }
 
 .frm-side {
@@ -1013,6 +1037,25 @@ html, body {
     border-radius: 6px;
     transition: .25s all;
     margin-top: 20px;
+}
+.btn-histroy{
+    display: block;
+    width: 100px;
+    height: 30px;
+    border-radius: 5px;
+    border: 1px solid #e68417;
+    color: #e68417;
+    text-align: center;
+    line-height: 30px;
+    transition: all .25s;
+    position: fixed;
+    left: 50%;
+    bottom: 40px;
+    margin-left: 530px;
+}
+.btn-histroy:hover{
+    color: #fff;
+    background-color: #e68417;
 }
 /*移动适配*/
 /*@media screen and ( max-width: 480px ) {*/

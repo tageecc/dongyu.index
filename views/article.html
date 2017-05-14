@@ -1,10 +1,10 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>东娱传媒 | <%=article.title%></title>
+    <title>东娱传媒</title>
     <meta charset="utf-8">
     <meta name="renderer" content="webkit|ie-comp|ie-stand">
-    <meta content="always" name="referrer">
+    <meta name="referrer" content="never">
     <meta name="keywords" content="东娱传媒">
     <meta name="description" content="东娱传媒">
     <meta name="viewport" content="width=1000" />
@@ -22,12 +22,12 @@
     <div class="mod-article">
         <%if(article.type!=5){%>
         <h1 class="title"><%=article.title%></h1>
-        <p class="txtinfo">发布时间： <%=article.date%> &nbsp;&nbsp;&nbsp;&nbsp;浏览量：<%=article.view%></p>
+        <p class="txtinfo">发布时间： <%=article.date%></p>
         <%}%>
         <p class="content"><%-article.content%></p>
     </div>
+    <a href="javascript:window.history.go(-1);" class="btn-histroy">返回上级</a>
 </div>
-
 <% include footer.html%>
 
 </body>

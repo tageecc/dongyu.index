@@ -13,6 +13,10 @@ var adminRequired = function (req, res, next) {
     next()
 };
 
+//首页栏目名
+var colunm_name = [['gsjj', 'zzjg', 'gsry', 'gsys'], ['gsxw'], ['yszp', 'yrdy', 'ychhd'], ['mxjj', 'bqhz', 'ggdl', 'ggzr'], ['lxfs', 'rczp', 'xmtg']];
+var colunm_name_zh = [['公司简介', '组织架构', '公司荣誉', '公司优势'], ['公司新闻'], ['影视作品', '艺人代言', '演唱会、活动'], ['明星经纪', '版权合作', '广告代理', '广告植入'], ['联系方式', '人才招聘', '项目投稿']];
+
 //首页
 router.get('/', function (req, res, next) {
     var article = [], banner = [], marquee = [], ysjz = [];
@@ -65,16 +69,6 @@ router.get('/', function (req, res, next) {
         });
 
 });
-// 获取顶部列表
-router.get('/get/article/top/', function (req, res, next) {
-    Article.find({'type': 5})
-        .populate('sub_article')
-        .sort({'order': 1})
-        .exec(function (err, articles) {
-            if (err) return false;
-            res.json({code: 1, article: articles})
-        });
-});
 
 //详情页
 router.get('/article/id/:id', function (req, res, next) {
@@ -85,43 +79,83 @@ router.get('/article/id/:id', function (req, res, next) {
         res.render('article', {article: article, cur: 'index'});
     });
 });
-router.get('/article/title/:title', function (req, res, next) {
-    // var _tit = '';
-    // if (req.params.title == 'zjdy') _tit = '走进东娱';
-    // else if (req.params.title == 'ywbk') _tit = '业务板块';
-    // else _tit = '案例展示';
-    Article.findOneAndUpdate({_id: req.params.title, type: 5}, {'$inc': {view: 1}})
-        .populate('sub_article')
+//栏目
+router.get('/article/column/:id', function (req, res, next) {
+    var perPage = req.query.perPage ? req.query.perPage : 15, curPage = req.query.page ? req.query.page : 1;
+
+    var type1 = parseInt(req.params.id / 10), type2 = req.params.id % 10;
+    type2 = type2 == 0 ? 1 : type2;
+    var type_tit =
+        type1 == 1 ? '走进东娱' :
+            type1 == 2 ? '东娱新闻' :
+                type1 == 3 ? '案例展示' :
+                    type1 == 4 ? '业务板块' :
+                        type1 == 5 ? '联系我们' : '';
+    Article.find({column_type: '' + type1 + type2, 'is_top': true})
+        .sort({'is_top_create_at': -1, 'create_at': -1})
+
         .exec(function (err, articles) {
             if (err) {
                 return false;
             }
-            res.render('article2', {article: articles, user: req.session.user});
+            Article.find({column_type: '' + type1 + type2, 'is_top': false})
+                .sort({'is_top_create_at': -1, 'create_at': -1})
+                .exec(function (err, article) {
+                    if (err) {
+                        return false;
+                    }
+                    articles = articles.concat(article).slice((curPage - 1) * perPage,curPage * perPage);
+
+                    Article.count({column_type: '' + type1 + type2}, function (err, count) {
+                        var totalPages = Math.ceil(count / perPage);
+                        res.render('article2', {
+                            article: articles,
+                            type1: type1,
+                            type2: type2,
+                            type_tit: type_tit,
+                            column_list: colunm_name_zh[type1 - 1],
+                            user: req.session.user,
+                            perPage: perPage,
+                            curPage: curPage,
+                            totalPages: totalPages,
+                            _url: '/article/column/' + req.params.id + '?_t=1',
+                            cur: 'list'
+                        });
+                    });
+
+                });
         });
 });
 //列表页
 router.get('/article/list', function (req, res, next) {
     var perPage = req.query.perPage ? req.query.perPage : 10, curPage = req.query.page ? req.query.page : 1;
-    Article.find({type: 1})
-        .sort({'is_top_create_at': -1,'create_at': -1})
+    Article.find({type: 1, 'is_top': true})
+        .sort({'is_top_create_at': -1, 'create_at': -1})
         .skip((curPage - 1) * perPage)
         .limit(perPage)
         .exec(function (err, articles) {
             if (err)return false;
 
-            Article.count({}, function (err, count) {
-                var totalPages = Math.ceil(count / perPage);
-                res.render('list', {
-                    article: articles,
-                    perPage: perPage,
-                    curPage: curPage,
-                    totalPages: totalPages,
-                    _url: '/article/list',
-                    cur: 'list'
+            Article.find({type: 1, 'is_top': false})
+                .sort({'is_top_create_at': -1, 'create_at': -1})
+                .skip((curPage - 1) * perPage)
+                .limit(perPage)
+                .exec(function (err, article) {
+                    if (err)return false;
+                    articles = articles.concat(article);
+                    Article.count({type: 1}, function (err, count) {
+                        var totalPages = Math.ceil(count / perPage);
+                        res.render('list', {
+                            article: articles,
+                            perPage: perPage,
+                            curPage: curPage,
+                            totalPages: totalPages,
+                            _url: '/article/list',
+                            cur: 'list'
+                        });
+                    });
                 });
-            });
         });
-
 });
 //登陆页
 router.get('/login', function (req, res, next) {
@@ -140,7 +174,7 @@ router.post('/login', function (req, res, next) {
         }
         if (user) {
             req.session.user = user;
-            res.redirect('/admin/article/list');
+            res.redirect('/admin/article/column');
             return false;
         }
         res.render('error', {message: '用户名或密码错误，请重试！'});
@@ -172,7 +206,7 @@ router.post('/article/add', adminRequired, function (req, res, next) {
 router.get('/article/editor/:id', adminRequired, function (req, res, next) {
     Article.findOne({_id: req.params.id}, function (err, article) {
         if (err) return false;
-        res.render('admin/editor', {cur: 'article_editor', article: article, user: req.session.user});
+        res.render('admin/editor', {type: 'article_editor', article: article, user: req.session.user});
     });
 });
 router.get('/article/editor/title/:title', adminRequired, function (req, res, next) {
@@ -206,7 +240,7 @@ router.post('/article/editor/:id', adminRequired, function (req, res, next) {
 
 //搜索
 router.post('/article/search', adminRequired, function (req, res, next) {
-    var perPage = req.query.perPage ? req.query.perPage : 10, curPage = req.query.page ? req.query.page : 1;
+    var perPage = req.query.perPage ? req.query.perPage : 15, curPage = req.query.page ? req.query.page : 1;
     var regex = new RegExp(req.body.key, 'i');
     Article.find({$or: [{title: regex}, {age: regex}]})
         .sort({'create_at': -1})
@@ -218,12 +252,12 @@ router.post('/article/search', adminRequired, function (req, res, next) {
             Article.count({$or: [{title: regex}]}, function (err, count) {
                 var totalPages = Math.ceil(count / perPage);
                 res.render('admin/list', {
-                    cur: 'article_list',
+                    type: 'article_list',
                     article: articles,
                     perPage: perPage,
                     curPage: curPage,
                     totalPages: totalPages,
-                    _url: '/admin/article/list',
+                    _url: '/admin/article/list?_t=1',
                     search: req.body.key
                 });
             });
@@ -240,111 +274,40 @@ router.post('/article/remove/:id', adminRequired, function (req, res, next) {
     })
 });
 
-//后台编辑页面
-router.get('/admin/editor', adminRequired, function (req, res, next) {
-    res.render('admin/editor', {cur: 'article_editor', article: null, user: req.session.user});
-});
-router.get('/admin', function (req, res, next) {
-    res.redirect('/admin/article/list');
-});
-//后台文章列表
-router.get('/admin/article/list', adminRequired, function (req, res, next) {
-    var perPage = req.query.perPage ? req.query.perPage : 10,
-        curPage = req.query.page ? req.query.page : 1,
-        type = req.query.type ? req.query.type : 1;
-    var _cur = '';
-    if (type == 1) _cur = 'article_xwdt';
-    else if (type == 2) _cur = 'article_dyzp';
-    else if (type == 3) _cur = 'article_sytt';
-    else if (type == 6) _cur = 'article_sjlmy';
-    else _cur = 'article_tplb';
-    Article.find({type: type})
-        .sort({'create_at': -1})
+//后台列表
+router.get('/admin/article/column', adminRequired, function (req, res, next) {
+    req.query.type = req.query.type ? req.query.type : 11;
+    var type1 = parseInt(req.query.type / 10), type2 = req.query.type % 10;
+    type2 = type2 == 0 ? 1 : type2;
+    var perPage = req.query.perPage ? req.query.perPage : 15, curPage = req.query.page ? req.query.page : 1;
+    Article.find({column_type: '' + type1 + type2})
+        .sort({'is_top_create_at': -1, 'create_at': -1})
         .skip((curPage - 1) * perPage)
         .limit(perPage)
         .exec(function (err, articles) {
             if (err)return false;
 
-            Article.count({type: type}, function (err, count) {
+            Article.count({column_type: '' + type1 + type2}, function (err, count) {
                 var totalPages = Math.ceil(count / perPage);
                 res.render('admin/list', {
-                    cur: _cur,
                     article: articles,
                     perPage: perPage,
                     curPage: curPage,
                     totalPages: totalPages,
-                    _url: '',
-                    search: null
+                    type: '' + type1 + type2,
+                    search: null,
+                    _url: '/admin/article/column?type=' + req.query.type
                 });
             });
         });
 });
 
-// 三级栏目归档
-router.get('/article/column/column_avg', adminRequired, function (req, res, next) {
-    Article.find({"type": {"$in": [5, 6]}})
-        .populate('sub_article')
-        .sort({'order': 1})
-        .exec(function (err, articles) {
-            if (err)return false;
-            var main_artivcle = [], sub_article = [];
-            articles.map(function (v, i) {
-                if (v.type == 5) main_artivcle.push(v);
-                if (v.type == 6) sub_article.push(v);
-            });
 
-            //删除已归档
-            main_artivcle.map(function (v, i) {
-                v.sub_article.map(function (vv, ii) {
-                    sub_article.map(function (sub, index) {
-
-                        if (sub._id + '' == vv._id + '') {
-                            sub_article.splice(index, 1);
-                            return false;
-                        }
-                    })
-                })
-            });
-
-            res.render('admin/column', {
-                cur: 'column_avg',
-                main_artivcle: main_artivcle,
-                sub_article: sub_article,
-                _url: '',
-                search: null
-            });
-
-        });
+//后台编辑页面
+router.get('/admin/editor', adminRequired, function (req, res, next) {
+    res.render('admin/editor', {type: 'article_editor', article: null, user: req.session.user});
 });
-// 三级栏目归档
-router.post('/article/column/avg', adminRequired, function (req, res, next) {
-    var ep = new eventproxy();
-    ep.after('update_column', req.body.node.length, function () {
-        res.json({code: 1, msg: 'aa'});
-    });
-
-    req.body.node.map(function (v, i) {
-        if (v.child) {
-            var ep2 = new eventproxy();
-            ep2.after('node_article', v.child.length, function (nodes) {
-                Article.update({_id: v.parent}, {'$set': {'sub_article': nodes, 'order': v.order}}, function (err) {
-                    if (err) console.log(res);
-                    else ep.emit('update_column');
-                })
-            });
-
-            v.child.map(function (vv, ii) {
-                Article.findOne({_id: vv}, function (err, article) {
-                    ep2.emit('node_article', article);
-                })
-            });
-        }
-        else {
-            Article.update({_id: v.parent}, {'$set': {'sub_article': [], 'order': v.order}}, function (err) {
-                if (err) console.log(res);
-                else ep.emit('update_column');
-            })
-        }
-    });
+router.get('/admin', function (req, res, next) {
+    res.redirect('/admin/article/column');
 });
 module.exports = router;
