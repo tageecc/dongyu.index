@@ -13,13 +13,13 @@ var index = require('./routes/index');
 var app = express();
 
 mongoose.Promise = global.Promise;
-mongoose.connect('mongodb://localhost/dongyu');//连接mongodb数据库
+mongoose.connect('mongodb://localhost/yangti');//连接mongodb数据库
 
 //提供会话支持，设置 store 参数为 MongoStore 实例，把会话信息存储到数据库中
 app.use(session({
     secret: 'tageetagee',
     store: new MongoStore({
-        url: 'mongodb://localhost/dongyu',
+        url: 'mongodb://localhost/yangti',
         collection: 'sessions'
     }),
     resave: false,

@@ -1,29 +1,62 @@
-<div class="footer">
-    <div class="wrapper clearfix">
-        <div class="foot">
-            <a class="logo" href="/"><img src="/images/logo2.png" alt="东娱传媒"></a>
-            <div class="site-info">
-                <p class="tit">东娱（福建）文化传媒有限公司 Copyright © 2015-2016 All Rights Reserved.</p>
-                <p class="tit">地址：厦门市集美区杏林湾营运中心10号楼13层</p>
-                <p class="tit">北京分公司地址：北京市朝阳区高碑店乡高碑店村华夏民俗文化园西区南一排5-A号四合院</p>
-                <p class="txt"></p>
-                <p class="tit">邮编 \ 362100&nbsp;&nbsp;&nbsp;电话 \ 0592-3367777&nbsp;&nbsp;&nbsp;传真 \ 0592-3319965</p>
-            </div>
-        </div>
-        <div class="foot mod-share">
-            <ul class="tab-nav clearfix">
-                <li class="nav1 weixin"><i class="fa fa-weixin" aria-hidden="true"></i></li>
-                <li class="nav3"><a target="_blank" href="http://weibo.com/dongyuchuanmei"><i class="fa fa-weibo" aria-hidden="true"></i></a></li>
-            </ul>
-            <div class="content">
-                <img src="/images/qr.jpg" alt="">
-            </div>
+<footer>
+    <div class="wrapper">
+        <img class="logo" src="/images/logo.jpg" height="68" alt="体育梦工厂">
+        <ul class="nav-list clearfix j-nav-list">
+            <li><a href="/article/column/10">走进央体</a>
+                <ul class="sub-list clearfix">
+                    <li><a href="/article/column/21">公司简介</a></li>
+                </ul>
+            </li>
+            <li><a href="/article/column/20">央体新闻</a>
+                <ul class="sub-list clearfix">
+                    <li><a href="/article/column/21">公司新闻</a></li>
+                </ul>
+            </li>
+            <li><a href="/article/column/30">业务板块</a>
+                <ul class="sub-list clearfix">
+                    <li><a href="/article/column/31">体育营销</a></li>
+                    <li><a href="/article/column/32">体育经纪</a></li>
+                    <li><a href="/article/column/33">体育培训</a></li>
+                    <li><a href="/article/column/34">体育投资</a></li>
+                </ul>
+            </li>
+            <li><a href="/article/column/40">联系我们</a>
+                <ul class="sub-list clearfix">
+                    <li><a href="/article/column/41">联系方式</a></li>
+                    <li><a href="/article/column/42">人才招聘</a></li>
+                </ul>
+            </li>
+        </ul>
+        <div class="share">
+            <img src="/images/qrcode.png" alt="">
+            <p>关注我们</p>
         </div>
     </div>
-</div>
-
-<script>
-    $('.weixin').hover(function () {
-        $('.mod-share .content').toggleClass('content2');
-    })
-</script>
+    <p class="copy">© Copyright 2005-2015 All rights reserved 沪ICP备14022480号-1 电话：021-32513943 传真：021-32513949
+        邮箱：desports@desports.com.cn</p>
+    <script src="../lib/jquery.min.js"></script>
+    <script>
+        $(function () {
+            var gym = window.gym = {
+                init: function () {
+                    var _this = this;
+                    _this._animate();
+                },
+                _animate: function () {
+                    $(window).on("scroll", function () {
+                        var y = $(this).scrollTop();
+                        switch (true) {
+                            case y >= 600:
+                                $("#j-newlist").find("li").show().addClass("fadeInUp");
+                                break;
+                            case y >= 100:
+                                $("#j-piclist").find("li").show().addClass("zoomIn");
+                                break;
+                        }
+                    });
+                }
+            };
+            gym.init()
+        });
+    </script>
+</footer>

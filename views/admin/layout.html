@@ -1,16 +1,17 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>东娱传媒 | 后台管理</title>
+    <title>体育梦工厂 | 后台管理</title>
     <meta name="renderer" content="webkit">
-    <link rel='stylesheet' href='/css/style.css'/>
     <link rel="stylesheet" href="/lib/font-awesome/css/font-awesome.min.css">
+    <link rel='stylesheet' href='/css/style.css'/>
+    <link rel='stylesheet' href='/css/css.css'/>
     <script src="/lib/jquery.min.js"></script>
 </head>
 <body>
-<div class="header header-active por">
-    <% include ../header.html%>
-</div>
+
+<% include ../header.html%>
+
 <div class="wrapper mt20">
     <div class="frm-side">
         <div class="mod-side-nav">
@@ -22,51 +23,31 @@
                             <li><a class="<%if(type=='article_editor'){%>cur<%}%>" href="/admin/editor">新建文章</a></li>
                         </ul>
                     </li>
-                    <li><h3 class="tit">走进东娱 <b></b></h3>
+                    <li><h3 class="tit">走进央体 <b></b></h3>
                         <ul class="sub-nav-list">
                             <li><a class="<%if(type==11){%>cur<%}%>"
                                    href="/admin/article/column?type=11">公司简介</a></li>
-                            <li><a class="<%if(type==12){%>cur<%}%>"
-                                   href="/admin/article/column?type=12">组织架构</a></li>
-                            <li><a class="<%if(type==13){%>cur<%}%>"
-                                   href="/admin/article/column?type=13">公司荣誉</a></li>
-                            <li><a class="<%if(type==14){%>cur<%}%>"
-                                   href="/admin/article/column?type=14">公司优势</a></li>
                         </ul>
                     </li>
-                    <li><h3 class="tit">东娱新闻 <b></b></h3>
+                    <li><h3 class="tit">央体新闻 <b></b></h3>
                         <ul class="sub-nav-list">
                             <li><a class="<%if(type==21){%>cur<%}%>" href="/admin/article/column?type=21">公司新闻</a></li>
                         </ul>
                     </li>
-                    <li><h3 class="tit">案例展示 <b></b></h3>
-                        <ul class="sub-nav-list">
-                            <li><a class="<%if(type==31){%>cur<%}%>" href="/admin/article/column?type=31">影视作品</a></li>
-                            <li><a class="<%if(type==32){%>cur<%}%>" href="/admin/article/column?type=32">艺人代言</a>
-                            </li>
-                            <li><a class="<%if(type==33){%>cur<%}%>" href="/admin/article/column?type=33">演唱会、活动</a>
-                            </li>
-                        </ul>
-                    </li>
                     <li><h3 class="tit">业务板块 <b></b></h3>
                         <ul class="sub-nav-list">
-                            <li><a class="<%if(type==41){%>cur<%}%>" href="/admin/article/column?type=41">明星经纪</a>
-                            </li>
-                            <li><a class="<%if(type==42){%>cur<%}%>" href="/admin/article/column?type=42">版权合作</a>
-                            </li>
-                            <li><a class="<%if(type==43){%>cur<%}%>" href="/admin/article/column?type=43">广告代理</a>
-                            </li>
-                            <li><a class="<%if(type==44){%>cur<%}%>" href="/admin/article/column?type=44">广告植入</a>
+                            <li><a class="<%if(type==31){%>cur<%}%>" href="/admin/article/column?type=31">体育营销</a></li>
+                            <li><a class="<%if(type==32){%>cur<%}%>" href="/admin/article/column?type=32">体育经纪</a></li>
+                            <li><a class="<%if(type==32){%>cur<%}%>" href="/admin/article/column?type=33">体育培训</a></li>
+                            <li><a class="<%if(type==32){%>cur<%}%>" href="/admin/article/column?type=34">体育投资</a></li>
                             </li>
                         </ul>
                     </li>
                     <li><h3 class="tit">联系我们 <b></b></h3>
                         <ul class="sub-nav-list">
-                            <li><a class="<%if(type==51){%>cur<%}%>" href="/admin/article/column?type=51">联系方式</a>
+                            <li><a class="<%if(type==41){%>cur<%}%>" href="/admin/article/column?type=41">联系方式</a>
                             </li>
-                            <li><a class="<%if(type==52){%>cur<%}%>" href="/admin/article/column?type=52">人才招聘</a>
-                            </li>
-                            <li><a class="<%if(type==53){%>cur<%}%>" href="/admin/article/column?type=53">项目投稿</a>
+                            <li><a class="<%if(type==42){%>cur<%}%>" href="/admin/article/column?type=42">人才招聘</a>
                             </li>
                         </ul>
                     </li>
@@ -79,9 +60,9 @@
     </div>
 </div>
 <script>
-//    $('.side-nav-list .tit').on('click',function () {
-//        $(this).parent().addClass('cur').siblings().removeClass('cur');
-//    });
+    //    $('.side-nav-list .tit').on('click',function () {
+    //        $(this).parent().addClass('cur').siblings().removeClass('cur');
+    //    });
 </script>
 </body>
 </html>

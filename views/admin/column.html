@@ -51,7 +51,7 @@
             $(v).find('li').map(function (_i, _v) {
                 tempNode.push($(_v).attr('data-id'))
             });
-            parentNode.push({parent: $(v).attr('data-id'),order:$(v).index(), child: tempNode});
+            parentNode.push({parent: $(v).attr('data-id'), order: $(v).index(), child: tempNode});
         });
         $.ajax({
             url: '/article/column/avg',

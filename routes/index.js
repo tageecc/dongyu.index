@@ -14,8 +14,8 @@ var adminRequired = function (req, res, next) {
 };
 
 //首页栏目名
-var colunm_name = [['gsjj', 'zzjg', 'gsry', 'gsys'], ['gsxw'], ['yszp', 'yrdy', 'ychhd'], ['mxjj', 'bqhz', 'ggdl', 'ggzr'], ['lxfs', 'rczp', 'xmtg']];
-var colunm_name_zh = [['公司简介', '组织架构', '公司荣誉', '公司优势'], ['公司新闻'], ['影视作品', '艺人代言', '演唱会、活动'], ['明星经纪', '版权合作', '广告代理', '广告植入'], ['联系方式', '人才招聘', '项目投稿']];
+var colunm_name = [['gsjj'], ['gsxw'], ['tyyx', 'tyjj', 'typx', 'tytz'], ['lxfs', 'rczp']];
+var colunm_name_zh = [['公司简介'], ['公司新闻'], ['体育营销', '体育竞技', '体育培训', '体育投资'], ['联系方式', '人才招聘']];
 
 //首页
 router.get('/', function (req, res, next) {
@@ -50,7 +50,7 @@ router.get('/', function (req, res, next) {
                     if (err) return false;
                     if (articles && articles.length > 0) {
                         articles.forEach(function (v, i) {
-                            if (v.type == 1 && article.length < 6) {
+                            if (v.type == 1 && article.length < 3) {
                                 article.push(v);
                             }
                             else if (v.type == 2 /*&& ysjz.length < 6*/) {
@@ -86,11 +86,10 @@ router.get('/article/column/:id', function (req, res, next) {
     var type1 = parseInt(req.params.id / 10), type2 = req.params.id % 10;
     type2 = type2 == 0 ? 1 : type2;
     var type_tit =
-        type1 == 1 ? '走进东娱' :
-            type1 == 2 ? '东娱新闻' :
-                type1 == 3 ? '案例展示' :
-                    type1 == 4 ? '业务板块' :
-                        type1 == 5 ? '联系我们' : '';
+        type1 == 1 ? '走进央体' :
+            type1 == 2 ? '央体新闻' :
+                type1 == 3 ? '业务板块' :
+                    type1 == 4 ? '联系我们' : '';
     Article.find({column_type: '' + type1 + type2, 'is_top': true})
         .sort({'is_top_create_at': -1, 'create_at': -1})
 
@@ -104,7 +103,7 @@ router.get('/article/column/:id', function (req, res, next) {
                     if (err) {
                         return false;
                     }
-                    articles = articles.concat(article).slice((curPage - 1) * perPage,curPage * perPage);
+                    articles = articles.concat(article).slice((curPage - 1) * perPage, curPage * perPage);
 
                     Article.count({column_type: '' + type1 + type2}, function (err, count) {
                         var totalPages = Math.ceil(count / perPage);
@@ -211,7 +210,7 @@ router.get('/article/editor/:id', adminRequired, function (req, res, next) {
 });
 router.get('/article/editor/title/:title', adminRequired, function (req, res, next) {
     var _tit = '';
-    if (req.params.title == 'column_zjdy') _tit = '走进东娱';
+    if (req.params.title == 'column_zjyt') _tit = '走进央体';
     else if (req.params.title == 'column_ywbk') _tit = '业务板块';
     else if (req.params.title == 'column_lxwm') _tit = '联系我们';
     else _tit = '案例展示';

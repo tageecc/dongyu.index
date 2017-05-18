@@ -1,24 +1,25 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>东娱传媒</title>
+    <title>体育梦工厂</title>
     <meta charset="utf-8">
     <meta name="renderer" content="webkit|ie-comp|ie-stand">
     <meta content="always" name="referrer">
-    <meta name="keywords" content="东娱传媒">
-    <meta name="description" content="东娱传媒">
-    <meta name="viewport" content="width=1200" />
-    <meta name="apple-mobile-web-app-capable" content="yes" />
-    <meta name="format-detection" content="telephone=no" />
+    <meta name="keywords" content="体育梦工厂">
+    <meta name="description" content="体育梦工厂">
+    <meta name="viewport" content="width=1200"/>
+    <meta name="apple-mobile-web-app-capable" content="yes"/>
+    <meta name="format-detection" content="telephone=no"/>
     <link rel="stylesheet" href="/lib/layui/css/layui.css">
     <link rel="stylesheet" href="/lib/font-awesome/css/font-awesome.min.css">
     <link rel='stylesheet' href='/css/style.css'/>
+    <link rel='stylesheet' href='/css/css.css'/>
 
 </head>
 <body>
-<div class="header">
-    <% include header.html%>
-</div>
+
+<% include header.html%>
+
 <div class="banner">
     <ul class="banner-list clearfix">
         <%banner&&banner.forEach(function(v,i){%>
@@ -30,66 +31,74 @@
     <a href="javascript:" class="btn-prev">上一页</a>
     <a href="javascript:" class="btn-next">下一页</a>
 </div>
-<div class="main">
-    <div class="wrapper">
-        <div class="box-bg"></div>
-        <div class="mod-ysjz mod-glob">
-            <div class="mod-hd">
-                <h3 class="tit">东娱作品 · <span>FILM AND TELEVISION</span></h3>
-            </div>
-            <div class="mod-bd">
-                <div class="marquee-holder">
-                    <ul class="cnt-imglist clearfix">
-                        <%ysjz&&ysjz.forEach(function(v,i){%>
-                        <li>
-                            <a target="_blank" href="/article/id/<%=v._id%>" title="<%=v.title%>">
-                                <img src="<%=v.headimg%>" alt="<%=v.title%>">
-                            </a>
-                        </li>
-                        <%})%>
-                    </ul>
-                </div>
-                <a href="javascript:" class="btn-prev"><i class="fa fa-chevron-left" aria-hidden="true"></i></a>
-                <a href="javascript:" class="btn-next"><i class="fa fa-chevron-right" aria-hidden="true"></i></a>
-            </div>
-        </div>
-        <div class="clearfix">
-            <div class="mod-news mod-glob">
-                <div class="mod-hd">
-                    <h3 class="tit">新闻动态 · <span>NEWS</span></h3>
-                </div>
-                <div class="mod-bd">
-                    <ul class="cnt-txtlist">
-                        <%article&&article.forEach(function(v,i){%>
-                        <li><a target="_blank" title="<%=v.title%>" href="/article/id/<%=v._id%>"><%=v.title%></a><span
-                                class="date"><%=v.date%></span></li>
-                        <%})%>
-                    </ul>
-                    <a href="/article/column/20" class="more">更多 >></a>
-                </div>
-            </div>
-            <div class="mod-marquee">
-                <div class="marquee-holder">
-                    <ul class="marquee-list clearfix">
-                        <%marquee&&marquee.forEach(function(v,i){%>
-                        <li>
-                            <a target="_blank" href="/article/id/<%=v._id%>" title="<%=v.title%>">
-                                <%-v.video%>
-                            </a>
-                        </li>
-                        <%})%>
-                    </ul>
-                </div>
 
-                <ul class="marquee-nav clearfix">
-                    <%marquee&&marquee.forEach(function(v,i){%>
-                    <li></li>
-                    <%})%>
-                </ul>
-            </div>
+<div class="picScroll-left">
+    <div class="hd">
+        <a class="btn-next next"></a>
+        <a class="btn-prev prev"></a>
+    </div>
+    <div class="bd">
+        <div class="tempWrap">
+            <ul class="picList" id="j-piclist">
+
+                <li>
+                    <a href="">
+                        <img src="http://www.desports.com.cn/UpImage/Relate/20151013175109.png">
+                        <span class="title">体育营销</span>
+                    </a>
+                </li>
+
+                <li>
+                    <a href="">
+                        <img src="http://www.desports.com.cn/UpImage/Relate/20150925164947.png">
+                        <span class="title">体育经纪</span>
+                    </a>
+                </li>
+
+                <li>
+                    <a href="">
+                        <img src="http://www.desports.com.cn/UpImage/Relate/20150925165015.png">
+                        <span class="title">体育培训</span>
+                    </a>
+                </li>
+
+                <li>
+                    <a href="">
+                        <img src="http://www.desports.com.cn/UpImage/Relate/20160317150748.png">
+                        <span class="title">体育投资</span>
+                    </a>
+                </li>
+
+            </ul>
         </div>
     </div>
 </div>
+
+<div class="g-news">
+    <div class="wrapper">
+        <ul class="newlist clearfix" id="j-newlist">
+            <%article&&article.forEach(function(v,i){%>
+            <li>
+                <span class="img-box">
+                    <img src="<%=v.headimg%>" alt=""
+                         class="h-img">
+                </span>
+                <span class="date"><%=v.date%></span>
+                <a target="_blank" title="<%=v.title%>" href="/article/id/<%=v._id%>"><%=v.title%></a>
+                <span class="txt">7月27日的重庆，比天气更火热的是足球迷的激情。丽笙世嘉酒店大牌云集，重庆足协主席兼体育局副局长张欣，力帆实业董事长尹明善，西甲联盟主席哈维尔·特巴斯·梅德拉诺（Javier
+                        Tebas
+                        Medrano），体育营销公司desports总裁、格拉纳达足球俱乐部主席蒋立章，重庆力帆足球俱乐部主教练张外龙、新任体育总监托尼·亚当斯（Tony
+                        Adams），以及前国足著名前锋郝海东等，国内外各届人士共同见证了“有一种足球叫做红——DEFA2.0发布会暨中超重庆力帆与西甲格拉纳达战略合作签约仪式”。</span>
+            </li>
+            <%})%>
+        </ul>
+        <a href="/article/column/20" class="more">更多 >></a>
+    </div>
+
+</div>
+
+<div class="g-static"></div>
+
 <%include footer.html%>
 <script src="/lib/ks.marquee.js"></script>
 <script>
