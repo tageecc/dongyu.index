@@ -96,13 +96,15 @@
     });
     function post() {
         var txt = ue.getContent(), img = '', video = '',
+            description = $('#description').val(),
             type = $('#type').val(),
             column_type = $('#column_type').val(), title = $('#title').val(), is_top = $('#isTop').is(':checked');
         //文章内容或标题
-        if ($.trim(txt) == '' || $.trim(title) == '') {
-            alert('文章内容或标题不能为空！');
+        if ($.trim(txt) == '' || $.trim(title) == '' || $.trim(description) == '') {
+            alert('文章内容或标题描述不能为空！');
             return false;
         }
+
         if (column_type == 0) {
             alert('请选择栏目！');
             return false;
@@ -124,6 +126,7 @@
             column_type: column_type,
             type: type,
             content: txt,
+            description: description,
             headimg: img,
             video: video,
             is_top: is_top

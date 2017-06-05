@@ -586,7 +586,7 @@ html, body {
     font: 20px/1.5 "Microsoft YaHei";
     padding-bottom: 10px;
     margin-bottom: 10px;
-    border-bottom: 1px solid #B31800;
+    border-bottom: 1px solid #e60013;
 }
 
 .mod-article .txtinfo {
@@ -689,7 +689,7 @@ html, body {
 
 .mod-side-nav .sub-nav-list a.cur, .mod-side-nav .sub-nav-list a:hover {
     text-decoration: none;
-    color: #B31800;
+    color: #e60013;
 }
 
 .mod-article-post label {
@@ -727,10 +727,10 @@ html, body {
     position: absolute;
     padding: 10px 20px;
     display: block;
-    box-shadow: inset 0 -4px 0 #af630e;
+    box-shadow: inset 0 -4px 0 #308d8d;
     border: 0;
     color: #fff;
-    background-color: #e68417;
+    background-color: #40bcbc;
     font-size: 18px;
     line-height: 1.3333333;
     border-radius: 6px;
@@ -938,7 +938,7 @@ html, body {
 
 .mod-search .submit:hover {
     color: #fcfcfc;
-    background-color: #B31800;
+    background-color: #e60013;
 }
 
 .mod-search .tip {
@@ -946,7 +946,7 @@ html, body {
 }
 
 .mod-search .tip span {
-    color: #B31800;
+    color: #e60013;
 }
 
 .mod-txtlist {

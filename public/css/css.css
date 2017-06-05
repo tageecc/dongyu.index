@@ -11,7 +11,7 @@ html {
     color: #000;
     -webkit-text-size-adjust: 100%;
     -ms-text-size-adjust: 100%;
-    font-family: "Arial","Microsoft YaHei","黑体","宋体",sans-serif;
+    font-family: "Arial", "Microsoft YaHei", "黑体", "宋体", sans-serif;
 }
 
 /*内外边距通常让各个浏览器样式的表现位置不同*/
@@ -172,11 +172,17 @@ html, body {
     height: 100%;
     width: 100%;
 }
-
 header {
-    height: 85px;
+    position: fixed;
+    top: 0;
+    left: 50%;
+    transform: translate(-50%, 0);
+    -webkit-transform: translate(-50%, 0);
     background-color: #fff;
-    box-shadow: 0 0 4px 0 #ccc;
+    width:100%;
+    height: 85px;
+    z-index:1000;
+    box-shadow: 0 0 5px 0 #ccc;
 }
 
 header a, header span {
@@ -184,7 +190,7 @@ header a, header span {
 }
 
 header a:hover, header a:hover span {
-    color: #B31800;
+    color: #e60013;
 }
 
 header .logo {
@@ -223,7 +229,7 @@ header .logo span {
 .nav-list .cur a, .header .nav-list a:hover {
     color: #fff;
     text-shadow: none;
-    background-color: #B31800;
+    background-color: #e60013;
 }
 
 .nav-list .sub-list {
@@ -376,27 +382,31 @@ header .logo span {
     -o-animation-fill-mode: forwards;
     animation-fill-mode: forwards;
 }
-.picScroll-left .bd ul li:nth-child(2){
+
+.picScroll-left .bd ul li:nth-child(2) {
     -webkit-animation-delay: 0.2s;
     -moz-animation-delay: 0.2s;
     -o-animation-delay: 0.2s;
     -ms-animation-delay: 0.2s;
     animation-delay: 0.2s;
 }
-.picScroll-left .bd ul li:nth-child(3){
+
+.picScroll-left .bd ul li:nth-child(3) {
     -webkit-animation-delay: 0.4s;
     -moz-animation-delay: 0.4s;
     -o-animation-delay: 0.4s;
     -ms-animation-delay: 0.4s;
     animation-delay: 0.4s;
 }
-.picScroll-left .bd ul li:nth-child(4){
+
+.picScroll-left .bd ul li:nth-child(4) {
     -webkit-animation-delay: 0.6s;
     -moz-animation-delay: 0.6s;
     -o-animation-delay: 0.6s;
     -ms-animation-delay: 0.6s;
     animation-delay: 0.6s;
 }
+
 .picScroll-left .bd ul li a {
     display: block;
     text-align: center;
@@ -407,6 +417,7 @@ header .logo span {
     transition: all 0.3s linear;
     position: relative;
 }
+
 .picScroll-left .bd ul li a:hover {
     -moz-transform: scale(1.1, 1.1);
     -webkit-transform: scale(1.1, 1.1);
@@ -418,12 +429,12 @@ header .logo span {
     -o-transition: all 0.3s linear;
     transition: all 0.3s linear;
 }
+
 .picScroll-left .bd ul li img {
     width: 150px;
     height: auto;
     border-radius: 50%;
 }
-
 
 .picScroll-left .bd ul li a:after {
     content: '';
@@ -442,7 +453,7 @@ header .logo span {
     border-color: #999;
 }
 
-.picScroll-left .bd ul li .title{
+.picScroll-left .bd ul li .title {
     display: block;
     line-height: 24px;
     position: absolute;
@@ -474,16 +485,19 @@ header .logo span {
     background-color: #ffffff;
     padding: 80px 0;
 }
+
 .g-news ul {
     margin-right: -50px;
     height: 350px;
     overflow: hidden;
 }
-.g-news .more{
+
+.g-news .more {
     position: relative;
     left: 95%;
     top: 10px;
 }
+
 .g-news li {
     display: none;
     float: left;
@@ -501,28 +515,33 @@ header .logo span {
     -o-animation-fill-mode: forwards;
     animation-fill-mode: forwards;
 }
-.g-news li:nth-child(2){
+
+.g-news li:nth-child(2) {
     -webkit-animation-delay: 0.2s;
     -moz-animation-delay: 0.2s;
     -o-animation-delay: 0.2s;
     -ms-animation-delay: 0.2s;
     animation-delay: 0.2s;
 }
-.g-news li:nth-child(3){
+
+.g-news li:nth-child(3) {
     -webkit-animation-delay: 0.4s;
     -moz-animation-delay: 0.4s;
     -o-animation-delay: 0.4s;
     -ms-animation-delay: 0.4s;
     animation-delay: 0.4s;
 }
-.g-news li a{
+
+.g-news li a {
     display: block;
 }
-.g-news li .img-box{
+
+.g-news li .img-box {
     width: 340px;
     height: 202px;
     overflow: hidden;
 }
+
 .g-news li .h-img {
     width: 340px;
     height: 202px;
@@ -532,7 +551,8 @@ header .logo span {
     -o-transition: all 0.3s linear;
     transition: all 0.3s linear;
 }
-.g-news li a:hover .h-img{
+
+.g-news li a:hover .h-img {
     -webkit-transition: all 0.2s linear;
     -moz-transition: all 0.2s linear;
     -ms-transition: all 0.2s linear;
@@ -543,6 +563,7 @@ header .logo span {
     -o-transform: scale(1.02, 1.02);
     transform: scale(1.02, 1.02);
 }
+
 .g-news li .title {
     display: block;
     font-size: 18px;
@@ -573,20 +594,24 @@ header .logo span {
     width: 100%;
     height: 400px;
     background: url(../images/pic/a.png) center center no-repeat;
-    background-size:100%;
+    background-size: 100%;
 }
-footer{
+
+footer {
     background: #fff;
 }
-footer .wrapper{
+
+footer .wrapper {
     padding-top: 30px;
     height: 200px;
 }
-footer .logo{
+
+footer .logo {
     float: left;
     height: 120px;
     margin: 30px 0 0 150px;
 }
+
 footer .nav-list {
     float: left;
     margin-left: 70px;
@@ -596,11 +621,13 @@ footer .nav-list a {
     display: inline;
     font: 14px/50px "Microsoft YaHei";
 }
-footer .nav-list a:hover,footer .nav-list .sub-list a:hover{
-    color: #B31800;
+
+footer .nav-list a:hover, footer .nav-list .sub-list a:hover {
+    color: #e60013;
 }
+
 footer .nav-list li {
-    width:120px;
+    width: 120px;
 }
 
 footer .nav-list > li > a {
@@ -613,42 +640,49 @@ footer .nav-list .sub-list {
     box-shadow: none;
     background: none;
 }
-footer .nav-list .sub-list li{
+
+footer .nav-list .sub-list li {
     line-height: 40px;
 }
+
 footer .nav-list .sub-list a {
     font-size: 14px;
     line-height: 30px !important;
     color: #ccc;
 }
-footer .share{
+
+footer .share {
     float: left;
     width: 120px;
-    margin:40px 0 0 40px;
+    margin: 40px 0 0 40px;
 }
-footer .share img{
+
+footer .share img {
     width: 120px;
     height: 120px;
     border-radius: 3px;
     border: 1px solid #ccc;
     transition: .3s all;
 }
-footer .share img:hover{
-    box-shadow:0 0 10px 0 #ccc;
+
+footer .share img:hover {
+    box-shadow: 0 0 10px 0 #ccc;
 }
-footer .share p{
+
+footer .share p {
     text-align: center;
-    font-size:14px;
+    font-size: 14px;
     color: #333;
 }
 
-footer .copy{
+footer .copy {
     text-align: center;
-    padding:8px 0;
+    padding: 8px 0;
     margin-top: 30px;
     color: #999;
-    border-top:1px solid #ccc;
+    border-top: 1px solid #ccc;
 }
+
 /*动画*/
 @-webkit-keyframes zoomIn {
     0% {
@@ -677,6 +711,7 @@ footer .copy{
     -webkit-animation-name: zoomIn;
     animation-name: zoomIn
 }
+
 @-webkit-keyframes fadeInUp {
     0% {
         opacity: 0;
