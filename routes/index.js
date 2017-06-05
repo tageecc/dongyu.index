@@ -15,7 +15,7 @@ var adminRequired = function (req, res, next) {
 
 //首页栏目名
 var colunm_name = [['gsjj'], ['gsxw'], ['tyyx', 'tyjj', 'typx', 'tytz'], ['lxfs', 'rczp']];
-var colunm_name_zh = [['公司简介'], ['公司新闻'], ['体育营销', '体育竞技', '体育培训', '体育投资'], ['联系方式', '人才招聘']];
+var colunm_name_zh = [['公司简介'], ['公司新闻'], ['体育营销', '体育经济', '体育培训', '体育投资'], ['联系方式', '人才招聘']];
 
 //首页
 router.get('/', function (req, res, next) {
