@@ -6,6 +6,11 @@
         <input class="title" name="title" id="title" type="text" placeholder="请输入标题"
                value="<%if(article){%><%=article.title%><%}%>" required>
     </div>
+    <div class="form-group clearfix">
+        <label class="title" for="description">简介 : </label>
+        <textarea class="title" name="description" id="description" type="text" placeholder="请输入简介"
+                  value="<%if(article){%><%=article.title%><%}%>"></textarea>
+    </div>
     <div class="layui-form-item form-group clearfix">
         <label class="layui-form-label">所属栏目 : </label>
         <div class="layui-input-inline">
@@ -64,6 +69,7 @@
             <option value="0" selected="selected">---选择模块---</option>
             <option value="1">新闻动态</option>
             <option value="3">首页头图</option>
+            <option value="4">其他</option>
         </select>
         <%}%>
     </div>
@@ -107,8 +113,8 @@
             img = $(this).attr("src");
             return false;
         });
-        if (img == '' && type == 3) {
-            alert('首页头图需文章内有图片！');
+        if (img == '') {
+            alert('文章内需有图片！');
             return false;
         }
         //提交

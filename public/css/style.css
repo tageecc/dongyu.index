@@ -705,7 +705,7 @@ html, body {
     padding-left: 6px;
 }
 
-.mod-article-post input, .mod-article-post select {
+.mod-article-post input, .mod-article-post textarea,.mod-article-post select {
     width: 600px;
     padding: 3px 10px;
     border: 1px solid #ccc;
@@ -843,7 +843,7 @@ html, body {
 
 .mod-login input {
     border: none;
-    border-bottom: 1px solid #e68417;
+    border-bottom: 1px solid #5a7e60;
     width: 200px;
     margin-left: 10px;
     padding: 3px 10px;
@@ -855,9 +855,9 @@ html, body {
     padding: 3px;
     margin-left: 20px;
     border-radius: 4px;
-    background-color: #e68417;
+    background-color: #5a7e60;
     color: #fefefe;
-    border: 1px solid #e68317;
+    border: 1px solid #7bac83;
 }
 
 .mod-pager, .mod-pager ul {
@@ -914,6 +914,8 @@ html, body {
     line-height: 20px;
     color: #555;
     border: 1px solid #ccc;
+    border-left: 0;
+
 }
 
 .mod-search .input {
@@ -924,16 +926,19 @@ html, body {
 }
 
 .mod-search .submit {
-    background-color: #e68417;
-    border-color: #eea236;
-    color: #fefefe;
+    background-color: #ebebeb;
+    border-color: #ccc;
+    color: #999;
     cursor: pointer;
     border-radius: 3px 0 0 3px;
     margin-right: -4px;
+    transition: all .23s;
+    border-left: 1px solid #ccc;
 }
 
 .mod-search .submit:hover {
-    background-color: #eea236;
+    color: #fcfcfc;
+    background-color: #B31800;
 }
 
 .mod-search .tip {
@@ -941,7 +946,7 @@ html, body {
 }
 
 .mod-search .tip span {
-    color: #e68417;
+    color: #B31800;
 }
 
 .mod-txtlist {
