@@ -586,7 +586,7 @@ html, body {
     font: 20px/1.5 "Microsoft YaHei";
     padding-bottom: 10px;
     margin-bottom: 10px;
-    border-bottom: 1px solid #e60013;
+    border-bottom: 1px solid #e5e5e5;
 }
 
 .mod-article .txtinfo {
@@ -855,7 +855,7 @@ html, body {
     padding: 3px;
     margin-left: 20px;
     border-radius: 4px;
-    background-color: #5a7e60;
+    background-color: #40bcbc;
     color: #fefefe;
     border: 1px solid #7bac83;
 }
