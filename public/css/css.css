@@ -673,6 +673,7 @@ footer .nav-list .sub-list {
     display: block;
     box-shadow: none;
     background: none;
+    top: auto;
 }
 
 footer .nav-list .sub-list li {
