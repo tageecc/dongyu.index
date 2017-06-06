@@ -551,7 +551,9 @@ header .logo span {
     -o-transition: all 0.3s linear;
     transition: all 0.3s linear;
 }
-
+.g-news li .h-img:hover{
+    box-shadow: 0 0 10px 0 #ccc;
+}
 .g-news li a:hover .h-img {
     -webkit-transition: all 0.2s linear;
     -moz-transition: all 0.2s linear;
