@@ -16,7 +16,7 @@
     <link rel='stylesheet' href='/css/css.css'/>
 
 </head>
-<body>
+<body style="padding-top: 85px;">
 
 <% include header.html%>
 
@@ -34,8 +34,8 @@
 
 <div class="picScroll-left">
     <div class="hd">
-        <a class="btn-next next"></a>
-        <a class="btn-prev prev"></a>
+        <!--<a class="btn-next next"></a>-->
+        <!--<a class="btn-prev prev"></a>-->
     </div>
     <div class="bd">
         <div class="tempWrap">
@@ -80,19 +80,15 @@
             <%article&&article.forEach(function(v,i){%>
             <li>
                 <span class="img-box">
-                    <img src="<%=v.headimg%>" alt=""
-                         class="h-img">
+                    <a target="_blank" title="<%=v.title%>" href="/article/id/<%=v._id%>"><img src="<%=v.headimg%>" alt="" class="h-img"></a>
                 </span>
                 <span class="date"><%=v.date%></span>
                 <a target="_blank" title="<%=v.title%>" href="/article/id/<%=v._id%>"><%=v.title%></a>
-                <span class="txt">7月27日的重庆，比天气更火热的是足球迷的激情。丽笙世嘉酒店大牌云集，重庆足协主席兼体育局副局长张欣，力帆实业董事长尹明善，西甲联盟主席哈维尔·特巴斯·梅德拉诺（Javier
-                        Tebas
-                        Medrano），体育营销公司desports总裁、格拉纳达足球俱乐部主席蒋立章，重庆力帆足球俱乐部主教练张外龙、新任体育总监托尼·亚当斯（Tony
-                        Adams），以及前国足著名前锋郝海东等，国内外各届人士共同见证了“有一种足球叫做红——DEFA2.0发布会暨中超重庆力帆与西甲格拉纳达战略合作签约仪式”。</span>
+                <span class="txt"><%=v.description%></span>
             </li>
             <%})%>
         </ul>
-        <a href="/article/column/20" class="more">更多 >></a>
+        <a href="http://sportsdream.com/article/list" class="more">更多 >></a>
     </div>
 
 </div>
@@ -148,14 +144,6 @@
         autoplay: false,
         loop: 1,
         mode: 1
-    });
-
-    $(document).scroll(function () {
-        if ($(document).scrollTop() != 0) {
-            $('.header').addClass('header-active');
-        } else {
-            $('.header').removeClass('header-active');
-        }
     });
 
 </script>
