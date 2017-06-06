@@ -219,7 +219,7 @@ header .nav-list li .list-item{
     overflow: hidden;
     width: 110px;
 }
-header .nav-list a {
+header .nav-list .list-item>a {
     position: absolute;
     display: block;
     width: 110px;
@@ -250,7 +250,7 @@ header .nav-list a .en-txt{
     color: #fff;
     background-color: #e60013;
 }
-header .nav-list .cur a,.nav-list a:hover {
+header .nav-list .cur a,.nav-list .list-item>a:hover {
     -webkit-transition: all 0.3s ease;
     -moz-transition: all 0.3s ease;
     -ms-transition: all 0.3s ease;
@@ -264,6 +264,8 @@ header .nav-list .cur a,.nav-list a:hover {
     background-color: #fff;
     position: absolute;
     width: 110px;
+    top: 85px;
+    left: 0;
     border-radius: 0 0 10px 10px;
     box-shadow: 0 4px 0 0 #ccc;
 }
@@ -275,6 +277,9 @@ header .nav-list .cur a,.nav-list a:hover {
 .nav-list .sub-list a {
     line-height: 50px;
     font-size: 16px;
+    position: relative;
+    top: 0;
+    height: auto;
 }
 
 .banner {

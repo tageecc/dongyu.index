@@ -66,12 +66,12 @@
 </header>
 
 
-<!--<script src="/lib/jquery.min.js"></script>-->
-<!--<script>-->
-    <!--$('.nav-list>li').mouseenter(function () {-->
-        <!--$(this).find('.sub-list').stop().slideDown('fast');-->
-        <!--$(this).siblings().find('.sub-list').stop().slideUp('fast');-->
-    <!--}).mouseleave(function () {-->
-        <!--$(this).find('.sub-list').stop().slideUp('fast');-->
-    <!--});-->
-<!--</script>-->
+<script src="/lib/jquery.min.js"></script>
+<script>
+    $('.nav-list>li').mouseenter(function () {
+        $(this).find('.sub-list').show();
+        $(this).siblings().find('.sub-list').hide();
+    }).mouseleave(function () {
+        $(this).find('.sub-list').hide();
+    });
+</script>
