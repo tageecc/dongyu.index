@@ -80,8 +80,7 @@
             <%article&&article.forEach(function(v,i){%>
             <li>
                 <span class="img-box">
-                    <img src="<%=v.headimg%>" alt=""
-                         class="h-img">
+                    <a target="_blank" title="<%=v.title%>" href="/article/id/<%=v._id%>"><img src="<%=v.headimg%>" alt="" class="h-img"></a>
                 </span>
                 <span class="date"><%=v.date%></span>
                 <a target="_blank" title="<%=v.title%>" href="/article/id/<%=v._id%>"><%=v.title%></a>

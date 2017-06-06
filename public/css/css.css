@@ -489,7 +489,7 @@ header .logo span {
 .g-news ul {
     margin-right: -50px;
     height: 350px;
-    overflow: hidden;
+    /*overflow: hidden;*/
 }
 
 .g-news .more {
