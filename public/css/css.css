@@ -249,6 +249,9 @@ header .nav-list a span{
 header .nav-list a .en-txt{
     color: #fff;
     background-color: #e60013;
+    font-size: 12px;
+    text-shadow: none;
+    text-transform:Uppercase;
 }
 header .nav-list .cur a,.nav-list .list-item>a:hover {
     -webkit-transition: all 0.3s ease;
