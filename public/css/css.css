@@ -263,7 +263,7 @@ header .nav-list .cur a,.nav-list .list-item>a:hover {
     display: none;
     background-color: #fff;
     position: absolute;
-    width: 110px;
+    width: 120px;
     top: 85px;
     left: 0;
     border-radius: 0 0 10px 10px;
