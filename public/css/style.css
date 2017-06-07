@@ -639,6 +639,7 @@ html, body {
     padding: 10px;
     position: relative;
     min-height: 808px;
+    margin-bottom: 20px;
 }
 
 .frm-side {
