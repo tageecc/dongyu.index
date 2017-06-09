@@ -569,6 +569,10 @@ header .nav-list .cur a,.nav-list .list-item>a:hover {
 
 .g-news li a {
     display: block;
+    width: 340px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
 }
 
 .g-news li .img-box {
