@@ -208,7 +208,7 @@ header .logo span {
 }
 
 .nav-list li {
-    width: 110px;
+    width: 120px;
     float: left;
     text-align: center;
     position: relative;
@@ -217,17 +217,17 @@ header .nav-list li .list-item{
     position: relative;
     height: 85px;
     overflow: hidden;
-    width: 110px;
+    width: 120px;
 }
 header .nav-list .list-item>a {
     position: absolute;
     display: block;
-    width: 110px;
+    width: 120px;
     height: 170px;
     left: 0;
     top: -85px;
     color: #333;
-    font: 20px/85px "fzxkt";
+    font: 22px/85px "fzxkt";
     text-shadow: 1px 1px 1px #ececec;
     -webkit-transition: all 0.3s ease;
     -moz-transition: all 0.3s ease;
@@ -249,6 +249,9 @@ header .nav-list a span{
 header .nav-list a .en-txt{
     color: #fff;
     background-color: #e60013;
+    font-size: 16px;
+    text-shadow: none;
+    text-transform:Uppercase;
 }
 header .nav-list .cur a,.nav-list .list-item>a:hover {
     -webkit-transition: all 0.3s ease;
@@ -263,7 +266,7 @@ header .nav-list .cur a,.nav-list .list-item>a:hover {
     display: none;
     background-color: #fff;
     position: absolute;
-    width: 110px;
+    width: 120px;
     top: 85px;
     left: 0;
     border-radius: 0 0 10px 10px;
@@ -566,6 +569,10 @@ header .nav-list .cur a,.nav-list .list-item>a:hover {
 
 .g-news li a {
     display: block;
+    width: 340px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
 }
 
 .g-news li .img-box {
