@@ -77,6 +77,10 @@
         <%}%>
     </div>
     <div class="form-group clearfix">
+        <label for="background">背景：</label>
+        <input class="background" name="background" id="background" type="text" <%if(article&&article.background){%><%=article.background%><%}%>>
+    </div>
+    <div class="form-group clearfix">
         <label for="isTop">文章置顶 : </label>
         <input class="isTop" name="isTop" id="isTop" type="checkbox" <%if(article&&article.is_top){%>checked<%}%>>
     </div>
@@ -97,6 +101,23 @@
         autoHeightEnabled: false,
         initialFrameHeight: 690
     });
+
+    var thumb_img= new UE.ui.Editor(),d;
+    $("#background").on("click",function () {
+        d = thumb_img.getDialog("insertimage");
+        d.render();
+        d.open();
+    });
+
+    thumb_img.render('background');
+    thumb_img.ready(function(){
+        thumb_img.setDisabled();
+        thumb_img.hide();
+        thumb_img.addListener('beforeInsertImage',function(t, arg){
+            $("#background").val(arg[0].src);
+        });
+    });
+
     function post() {
         var txt = ue.getContent(), img = '', video = '',
             description = $('#description').val(),

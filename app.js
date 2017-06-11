@@ -56,6 +56,7 @@ app.use("/ueditor", ueditor(path.join(__dirname, 'public'), function (req, res, 
     //客户端发起图片列表请求
     else if (ActionType === 'listimage') {
         var dir_url = '/images/ueditor/';
+        console.log('/images/ueditor/');
         res.ue_list(dir_url);  // 客户端会列出 dir_url 目录下的所有图片
     }
     // 客户端发起其它请求
