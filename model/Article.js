@@ -9,6 +9,7 @@ var ArticleSchema = new mongoose.Schema({
     headimg: String,// 图片
     video: String,// 视频标签
     description: String,
+    background:String,
     order: { //排序
         type: Number,
         default: 0

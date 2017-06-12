@@ -14,7 +14,7 @@
     <link rel='stylesheet' href='/css/style.css'/>
     <link rel='stylesheet' href='/css/css.css'/>
 </head>
-<body>
+<body <%if(article.background){%>style="background: url(<%=article.background%>) center top / 100% 100% no-repeat"<%}%>>
 
 <% include header.html%>
 
