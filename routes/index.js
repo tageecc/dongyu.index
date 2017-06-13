@@ -14,8 +14,8 @@ var adminRequired = function (req, res, next) {
 };
 
 //首页栏目名
-var colunm_name = [['gsjj','hxys','cstd','gsyj'], ['gsxw'], ['tyyx', 'tyjj', 'typx', 'tytz'], ['lxfs', 'rczp']];
-var colunm_name_zh = [['公司简介','核心优势','创始团队','公司愿景'], ['公司新闻'], ['体育营销', '体育经纪', '体育培训', '体育投资'], ['联系方式', '人才招聘']];
+var colunm_name = [['gsjj','hxys','cstd','gsyj'], ['gsxw'], ['tyyx', 'tyjj', 'typx', 'tytz'],['alzs'], ['lxfs', 'rczp']];
+var colunm_name_zh = [['公司简介','核心优势','创始团队','公司愿景'], ['公司新闻'], ['体育营销', '体育经纪', '体育培训', '体育投资'],['案例展示'], ['联系方式', '人才招聘']];
 
 //首页
 router.get('/', function (req, res, next) {
@@ -89,7 +89,7 @@ router.get('/article/column/:id', function (req, res, next) {
         type1 == 1 ? '走进央体' :
             type1 == 2 ? '央体新闻' :
                 type1 == 3 ? '业务板块' :
-                    type1 == 4 ? '联系我们' : '';
+                    type1 == 4 ? '案例展示' : '联系我们';
     Article.find({column_type: '' + type1 + type2, 'is_top': true})
         .sort({'is_top_create_at': -1, 'create_at': -1})
 

@@ -223,7 +223,7 @@ header .nav-list .list-item>a {
     left: 0;
     top: -85px;
     color: #333;
-    font: 22px/85px "宋体";
+    font: 18px/85px "宋体";
     text-shadow: 1px 1px 1px #ececec;
     -webkit-transition: all 0.3s ease;
     -moz-transition: all 0.3s ease;
@@ -275,9 +275,10 @@ header .nav-list .cur a,.nav-list .list-item>a:hover {
 
 .nav-list .sub-list a {
     line-height: 50px;
-    font-size: 16px;
+    font-size: 18px;
     position: relative;
     top: 0;
+    font-family:宋体;
     height: auto;
 }
 
