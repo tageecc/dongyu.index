@@ -295,6 +295,7 @@ header .nav-list .cur a,.nav-list .list-item>a:hover {
 
 .banner-list img {
     height: 100%;
+    margin-top: -100px;
 }
 
 .btn-prev, .btn-next {
