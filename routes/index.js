@@ -28,7 +28,7 @@ router.get('/', function (req, res, next) {
             if (articles && articles.length > 0) {
                 articles.forEach(function (v, i) {
 
-                    if (v.type == 1 && article.length < 6) {
+                    if (v.type == 1 && article.length < 3) {
                         article.push(v);
                     }
                     else if (v.type == 2 /*&& ysjz.length < 6*/) {
