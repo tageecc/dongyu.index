@@ -25,6 +25,10 @@
         <%banner&&banner.forEach(function(v,i){%>
         <li>
             <a target="_blank" href="/article/id/<%=v._id%>" title="<%=v.title%>"><img src="<%=v.headimg%>" alt=""></a>
+            <div class="intro">
+                <h3><%=v.title%></h3>
+                <p><%=v.description%></p>
+            </div>
         </li>
         <%})%>
     </ul>
@@ -39,6 +43,7 @@
     </div>
     <div class="bd">
         <div class="tempWrap">
+            <h3 class="plate-title">业务板块 <span>/ BUSINESS</span></h3>
             <ul class="picList" id="j-piclist">
 
                 <li>
@@ -76,6 +81,7 @@
 
 <div class="g-news">
     <div class="wrapper">
+        <h3 class="plate-title">新闻中心 <span>/ NEWS</span></h3>
         <ul class="newlist clearfix" id="j-newlist">
             <%article&&article.forEach(function(v,i){%>
             <li>

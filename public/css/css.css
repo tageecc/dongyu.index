@@ -18,9 +18,11 @@ body, div, dl, dt, dd, ul, ol, li, h1, h2, h3, h4, h5, h6, pre, code, form, fiel
     padding: 0;
     margin: 0;
 }
-body{
+
+body {
     padding-top: 100px;
 }
+
 table {
     border-collapse: collapse;
     border-spacing: 0;
@@ -173,6 +175,7 @@ html, body {
     height: 100%;
     width: 100%;
 }
+
 header {
     position: fixed;
     top: 0;
@@ -180,11 +183,12 @@ header {
     transform: translate(-50%, 0);
     -webkit-transform: translate(-50%, 0);
     background-color: rgba(255, 255, 255, 0.92);
-    width:100%;
+    width: 100%;
     height: 85px;
-    z-index:1000;
+    z-index: 1000;
     box-shadow: 0 0 5px 0 #ccc;
 }
+
 header .logo {
     float: left;
     margin-top: 8px;
@@ -209,13 +213,20 @@ header .logo span {
     text-align: center;
     position: relative;
 }
-header .nav-list li .list-item{
+
+.nav-list .sprite {
+    width: auto;
+    margin-top: 29px;
+}
+
+header .nav-list li .list-item {
     position: relative;
     height: 85px;
     overflow: hidden;
     width: 120px;
 }
-header .nav-list .list-item>a {
+
+header .nav-list .list-item > a {
     position: absolute;
     display: block;
     width: 120px;
@@ -223,7 +234,7 @@ header .nav-list .list-item>a {
     left: 0;
     top: -85px;
     color: #333;
-    font: 18px/85px "宋体";
+    font: 16px/85px "Microsoft YaHei";
     text-shadow: 1px 1px 1px #ececec;
     -webkit-transition: all 0.3s ease;
     -moz-transition: all 0.3s ease;
@@ -231,6 +242,7 @@ header .nav-list .list-item>a {
     -o-transition: all 0.3s ease;
     transition: all 0.3s ease;
 }
+
 .nav-list a {
     display: block;
     width: 110px;
@@ -238,18 +250,21 @@ header .nav-list .list-item>a {
     color: #333;
     font: 16px/85px "宋体";
 }
-header .nav-list a span{
+
+header .nav-list a span {
     display: block;
     height: 85px;
 }
-header .nav-list a .en-txt{
+
+header .nav-list a .en-txt {
     color: #fff;
     background-color: #e60013;
-    font-size: 16px;
+    font-size: 13px;
     text-shadow: none;
-    text-transform:Uppercase;
+    text-transform: Uppercase;
 }
-header .nav-list .cur a,.nav-list .list-item>a:hover {
+
+header .nav-list .cur a, .nav-list .list-item > a:hover {
     -webkit-transition: all 0.3s ease;
     -moz-transition: all 0.3s ease;
     -ms-transition: all 0.3s ease;
@@ -278,7 +293,7 @@ header .nav-list .cur a,.nav-list .list-item>a:hover {
     font-size: 18px;
     position: relative;
     top: 0;
-    font-family:宋体;
+    font-family: 宋体;
     height: auto;
 }
 
@@ -291,6 +306,7 @@ header .nav-list .cur a,.nav-list .list-item>a:hover {
 .banner-list li {
     float: left;
     width: 100%;
+    position: relative;
 }
 
 .banner-list img {
@@ -298,6 +314,30 @@ header .nav-list .cur a,.nav-list .list-item>a:hover {
     margin-top: -65px;
 }
 
+.banner-list .intro {
+    width: 700px;
+    background-color: rgba(0, 0, 0, .3);
+    position: absolute;
+    top: 400px;
+    right: 12.66%;
+    color: #FFFFFF;
+    text-align: center;
+    padding:20px 30px;
+}
+
+.banner-list .intro h3 {
+    font-size: 2em;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+.banner-list .intro p{
+    white-space: normal;
+    margin-top: 5px;
+    text-align: left;
+    height: 60px;
+    overflow: hidden;
+}
 .btn-prev, .btn-next {
     position: absolute;
     right: 20px;
@@ -316,7 +356,15 @@ header .nav-list .cur a,.nav-list .list-item>a:hover {
 .btn-next {
     background-position: -19px -34px;
 }
-
+.plate-title{
+    text-align: center;
+    font-size:24px;
+    margin:10px 0 20px;
+}
+.plate-title span{
+    color: #999;
+    font-size: 14px;
+}
 .picScroll-left {
     width: 1200px; /*1200px*/;
     overflow: hidden;
@@ -380,11 +428,9 @@ header .nav-list .cur a,.nav-list .list-item>a:hover {
 .picScroll-left .bd { /*padding:10px;*/
     width: 87.916%;
     margin: 0 auto;
-    overflow: hidden
 }
 
 .picScroll-left .bd ul {
-    overflow: hidden;
     zoom: 1;
     padding: 12px 0 12px 2px !important;
     min-height: 212px;
@@ -464,8 +510,8 @@ header .nav-list .cur a,.nav-list .list-item>a:hover {
 }
 
 .picScroll-left .bd ul li img {
-    width: 160px;
-    height: 160px;
+    width: 170px;
+    height: 170px;
     border-radius: 50%;
 }
 
@@ -500,7 +546,6 @@ header .nav-list .cur a,.nav-list .list-item>a:hover {
 
 .picScroll-left .bd .tempWrap {
     margin: 0 auto;
-    overflow: hidden;
     position: relative;
     width: 868px
 }
@@ -509,7 +554,6 @@ header .nav-list .cur a,.nav-list .list-item>a:hover {
     width: 868px;
     left: 0;
     position: relative;
-    overflow: hidden;
     padding: 0;
     margin: 0;
 }
@@ -588,9 +632,11 @@ header .nav-list .cur a,.nav-list .list-item>a:hover {
     -o-transition: all 0.3s linear;
     transition: all 0.3s linear;
 }
-.g-news li .h-img:hover{
+
+.g-news li .h-img:hover {
     box-shadow: 0 0 10px 0 #ccc;
 }
+
 .g-news li a:hover .h-img {
     -webkit-transition: all 0.2s linear;
     -moz-transition: all 0.2s linear;
