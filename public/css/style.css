@@ -206,9 +206,9 @@ html, body {
 
 .nav-list a {
     display: block;
-    color: #333;
+    color: #fff;
     font: 16px/127px "Microsoft YaHei";
-    text-shadow: 1px 1px 1px #ececec;
+    /*text-shadow: 1px 1px 1px #ececec;*/
     transition: .23s all;
 }
 

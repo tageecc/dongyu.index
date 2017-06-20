@@ -182,7 +182,7 @@ header {
     left: 50%;
     transform: translate(-50%, 0);
     -webkit-transform: translate(-50%, 0);
-    background-color: rgba(255, 255, 255, 0.92);
+    background-color: rgba(0, 0, 0, 0.92);
     width: 100%;
     height: 85px;
     z-index: 1000;
@@ -216,6 +216,7 @@ header .logo span {
 
 .nav-list .sprite {
     width: auto;
+    color: #fff;
     margin-top: 29px;
 }
 
@@ -233,9 +234,9 @@ header .nav-list .list-item > a {
     height: 170px;
     left: 0;
     top: -85px;
-    color: #333;
-    font: 16px/85px "Microsoft YaHei";
-    text-shadow: 1px 1px 1px #ececec;
+    color: #fff;
+    font: 20px/85px "Microsoft YaHei";
+    /*text-shadow: 1px 1px 1px #ececec;*/
     -webkit-transition: all 0.3s ease;
     -moz-transition: all 0.3s ease;
     -ms-transition: all 0.3s ease;
@@ -247,7 +248,7 @@ header .nav-list .list-item > a {
     display: block;
     width: 110px;
     height: 170px;
-    color: #333;
+    color: #c8c8c8;
     font: 16px/85px "宋体";
 }
 
@@ -275,13 +276,13 @@ header .nav-list .cur a, .nav-list .list-item > a:hover {
 
 .nav-list .sub-list {
     display: none;
-    background-color: #fff;
+    background-color: rgba(0, 0, 0, 0.78);
     position: absolute;
     width: 120px;
     top: 85px;
     left: 0;
     border-radius: 0 0 10px 10px;
-    box-shadow: 0 4px 0 0 #ccc;
+    box-shadow: 0 4px 0 0 #1f1f1f;
 }
 
 .nav-list .sub-list li {
@@ -571,7 +572,7 @@ header .nav-list .cur a, .nav-list .list-item > a:hover {
 
 .g-cooperation ul {
     margin: 0 auto;
-    width: 1200px;
+    width: 915px;
     padding-top: 10px;
 }
 
@@ -709,7 +710,7 @@ header .nav-list .cur a, .nav-list .list-item > a:hover {
 }
 
 footer {
-    background: #fff;
+    background: rgba(0, 0, 0, 0.92);
 }
 
 footer .wrapper {
@@ -784,7 +785,7 @@ footer .share img:hover {
 footer .share p {
     text-align: center;
     font-size: 14px;
-    color: #333;
+    color: #f5f5f5;
 }
 
 footer .copy {
