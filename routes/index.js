@@ -107,7 +107,8 @@ router.get('/article/column/:id', function (req, res, next) {
 
                     Article.count({column_type: '' + type1 + type2}, function (err, count) {
                         var totalPages = Math.ceil(count / perPage);
-                        res.render('article2', {
+                        var tmplate = req.params.id==21||20?'article_list':'article2';
+                        res.render(tmplate, {
                             article: articles,
                             type1: type1,
                             type2: type2,

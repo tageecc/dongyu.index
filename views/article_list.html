@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>体育梦工厂</title>
+    <meta charset="utf-8">
+    <meta name="renderer" content="webkit|ie-comp|ie-stand">
+    <meta content="always" name="referrer">
+    <meta name="keywords" content="体育梦工厂">
+    <meta name="description" content="体育梦工厂">
+    <meta name="viewport" content="width=1000" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="format-detection" content="telephone=no" />
+    <link rel="stylesheet" href="/lib/font-awesome/css/font-awesome.min.css">
+    <link rel='stylesheet' href='/css/style.css'/>
+    <link rel='stylesheet' href='/css/css.css'/>
+</head>
+<body>
+
+<% include header.html%>
+<div class="wrapper clearfix article_column">
+    <div class="frm-side">
+        <div class="mod-side-nav">
+            <div class="mod-hd"><h2 class="tit"><i class="icon-dun"></i><%=type_tit%></h2></div>
+            <div class="mod-bd">
+                <ul class="side-nav-list">
+                    <li>
+                        <ul class="sub-nav-list">
+                            <%column_list.map(function(v,i){%>
+                            <li><a class="<%if(type2==i+1){%>cur<%}%>" href="/article/column/<%=type1+String(i+1)%>"><%=v%></a></li>
+                            <%})%>
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    <div class="frm-main">
+        <%if(article.length==1){ article=article[0];%>
+        <div class="mod-article">
+            <h1 class="title"><%=article.title%></h1>
+            <p class="txtinfo">发布时间： <%=article.date%></p>
+            <%-article.content%>
+        </div>
+        <%}else{%>
+        <ul class="cnt-txtlist cnt-txtlist2">
+            <%article.forEach(function(v,i){%>
+            <%if(v.type!=4){%>
+            <li>
+                <img src="<%=v.headimg%>" alt="" class="h-img">
+                <div class="article-intro">
+                    <a href="/article/id/<%=v._id%>" title="<%=v.title%>"><h3><%=v.title%></h3></a>
+                    <p><%=v.date%></p>
+                    <p class="txt"><%=v.description%></p>
+                    <a class="more" href="/article/id/<%=v._id%>" title="<%=v.title%>">详细阅读</a>
+                </div>
+            </li>
+            <%}%>
+            <%})%>
+        </ul>
+        <%}%>
+        <% include pager.html %>
+    </div>
+</div>
+
+<% include footer.html%>
+
+</body>
+</html>
