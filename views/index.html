@@ -86,7 +86,8 @@
             <%article&&article.forEach(function(v,i){%>
             <li>
                 <span class="img-box">
-                    <a target="_blank" title="<%=v.title%>" href="/article/id/<%=v._id%>"><img src="<%=v.headimg%>" alt="" class="h-img"></a>
+                    <a target="_blank" title="<%=v.title%>" href="/article/id/<%=v._id%>"><img src="<%=v.headimg%>"
+                                                                                               alt="" class="h-img"></a>
                 </span>
                 <span class="date"><%=v.date%></span>
                 <a target="_blank" title="<%=v.title%>" href="/article/id/<%=v._id%>"><%=v.title%></a>
@@ -99,8 +100,20 @@
 
 </div>
 
-<div class="g-static"></div>
-
+<!--<div class="g-static"></div>-->
+<div class="g-cooperation">
+    <h3 class="plate-title">合作伙伴 <span>/ COOPERATION</span></h3>
+    <ul class="clearfix">
+        <li><a target="_blank" href=""><img src="/images/logos/1.jpg" alt=""></a></li>
+        <li><a target="_blank" href=""><img src="/images/logos/2.jpg" alt=""></a></li>
+        <li><a target="_blank" href=""><img src="/images/logos/3.jpg" alt=""></a></li>
+        <li><a target="_blank" href=""><img src="/images/logos/4.jpg" alt=""></a></li>
+        <li><a target="_blank" href=""><img src="/images/logos/5.jpg" alt=""></a></li>
+        <li><a target="_blank" href=""><img src="/images/logos/6.jpg" alt=""></a></li>
+        <li><a target="_blank" href=""><img src="/images/logos/7.jpg" alt=""></a></li>
+        <li><a target="_blank" href=""><img src="/images/logos/8.jpg" alt=""></a></li>
+    </ul>
+</div>
 <%include footer.html%>
 <script src="/lib/ks.marquee.js"></script>
 <script>

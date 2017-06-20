@@ -322,7 +322,7 @@ header .nav-list .cur a, .nav-list .list-item > a:hover {
     right: 12.66%;
     color: #FFFFFF;
     text-align: center;
-    padding:20px 30px;
+    padding: 20px 30px;
 }
 
 .banner-list .intro h3 {
@@ -331,13 +331,15 @@ header .nav-list .cur a, .nav-list .list-item > a:hover {
     overflow: hidden;
     text-overflow: ellipsis;
 }
-.banner-list .intro p{
+
+.banner-list .intro p {
     white-space: normal;
     margin-top: 5px;
     text-align: left;
     height: 60px;
     overflow: hidden;
 }
+
 .btn-prev, .btn-next {
     position: absolute;
     right: 20px;
@@ -356,15 +358,18 @@ header .nav-list .cur a, .nav-list .list-item > a:hover {
 .btn-next {
     background-position: -19px -34px;
 }
-.plate-title{
+
+.plate-title {
     text-align: center;
-    font-size:24px;
-    margin:10px 0 20px;
+    font-size: 24px;
+    margin: 10px 0 20px;
 }
-.plate-title span{
+
+.plate-title span {
     color: #999;
     font-size: 14px;
 }
+
 .picScroll-left {
     width: 1200px; /*1200px*/;
     overflow: hidden;
@@ -556,6 +561,27 @@ header .nav-list .cur a, .nav-list .list-item > a:hover {
     position: relative;
     padding: 0;
     margin: 0;
+}
+
+.g-cooperation {
+    background-color: #fff;
+    padding:20px 0;
+    margin:10px 0;
+}
+
+.g-cooperation ul {
+    margin: 0 auto;
+    width: 1200px;
+    padding-top: 10px;
+}
+
+.g-cooperation li {
+    float: left;
+    margin-left: 30px;
+}
+
+.g-cooperation li img {
+    width: 120px;
 }
 
 .g-news {
