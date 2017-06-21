@@ -14,8 +14,8 @@ var adminRequired = function (req, res, next) {
 };
 
 //首页栏目名
-var colunm_name = [['gsjj','hxys','cstd','gsyj'], ['gsxw'], ['tyyx', 'tyjj', 'typx', 'tytz'],['alzs'], ['lxfs', 'rczp']];
-var colunm_name_zh = [['公司简介','核心优势','创始团队','公司愿景'], ['公司新闻'], ['体育营销', '体育经纪', '体育培训', '体育投资'],['案例展示'], ['联系方式', '人才招聘']];
+var colunm_name = [['gsjj','hzhb','cstd','gsyj'], ['gsxw'], ['tyyx', 'tyjj', 'typx', 'tytz'],['alzs'], ['lxfs', 'rczp']];
+var colunm_name_zh = [['公司简介','合作伙伴','创始团队','公司愿景'], ['公司新闻'], ['体育营销', '体育经纪', '体育培训', '体育投资'],['案例展示'], ['联系方式', '人才招聘']];
 
 //首页
 router.get('/', function (req, res, next) {
