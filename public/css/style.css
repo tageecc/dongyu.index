@@ -700,7 +700,14 @@ html, body {
     width: 150px;
     display: none;
 }
-
+.frm-side2,.frm-main2{
+    float: left;
+    display: block;
+}
+.frm-main2{
+    width: 920px;
+    margin:0 0 0 20px;
+}
 .mod-side-nav {
     text-align: center;
 }
@@ -762,7 +769,7 @@ html, body {
 }
 
 .mod-article-post input, .mod-article-post textarea, .mod-article-post select {
-    width: 600px;
+    width: 700px;
     padding: 3px 10px;
     border: 1px solid #ccc;
     border-radius: 3px;

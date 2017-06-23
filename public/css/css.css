@@ -286,8 +286,11 @@ header .nav-list .cur a, .nav-list .list-item > a:hover {
 
 .nav-list .sub-list li {
     line-height: 50px;
+    transition: 0.23s all;
 }
-
+.nav-list .sub-list li:hover{
+    background: #727272;
+}
 .nav-list .sub-list a {
     line-height: 50px;
     font-size: 18px;
@@ -296,7 +299,10 @@ header .nav-list .cur a, .nav-list .list-item > a:hover {
     font-family: 宋体;
     height: auto;
 }
+.nav-list .sub-list a:hover{
+    color: #fff;
 
+}
 .banner {
     position: relative;
     height: 700px;
@@ -367,10 +373,10 @@ header .nav-list .cur a, .nav-list .list-item > a:hover {
 }
 .plate-title:after{
     content:'';
-    width:173px;
+    width:1115px;
     height: 2px;
     overflow: hidden;
-    background-color: #000;
+    background-color: #8d8d8d;
     position: absolute;
     top:46px;
     left:50%;
