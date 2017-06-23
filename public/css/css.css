@@ -6,7 +6,7 @@ Author:		tagee
 */
 /* CSS reset */
 html {
-    background: #f1f1f1;
+    background: #fff;
     color: #000;
     -webkit-text-size-adjust: 100%;
     -ms-text-size-adjust: 100%;
@@ -374,7 +374,7 @@ header .nav-list .cur a, .nav-list .list-item > a:hover {
 .plate-title:after{
     content:'';
     width:1115px;
-    height: 2px;
+    height: 1px;
     overflow: hidden;
     background-color: #8d8d8d;
     position: absolute;
@@ -560,9 +560,10 @@ header .nav-list .cur a, .nav-list .list-item > a:hover {
     top: 45%;
     width: 100%;
     text-align: center;
-    color: #fff;
+    color: #625f5f;
     font-size: 24px;
-    font-weight: 500
+    font-weight: 500;
+    margin-top: 160px;
 }
 
 .picScroll-left .bd .tempWrap {
