@@ -320,7 +320,7 @@ header .nav-list .cur a, .nav-list .list-item > a:hover {
 }
 
 .banner-list img {
-    height: 100%;
+    height: auto !important;
     margin-top: -65px;
 }
 
@@ -589,7 +589,8 @@ header .nav-list .cur a, .nav-list .list-item > a:hover {
 .g-cooperation {
     background-color: #fff;
     padding: 20px 0;
-    margin: 10px 0;
+    margin: 10px auto;
+    width: 87.916%;
 }
 
 .g-cooperation ul {
@@ -902,9 +903,15 @@ footer .copy {
     -webkit-animation-name: fadeInUp;
     animation-name: fadeInUp
 }
-
+.menu {
+    display: none;
+}
 /*移动适配*/
 @media screen and ( max-width: 480px ) {
+    .j-nav-list {
+        display: none;
+    }
+
     .wrapper {
         width: 87.916% !important;
     }
