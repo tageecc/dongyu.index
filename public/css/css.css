@@ -1118,4 +1118,8 @@ footer .copy {
         float: none;
         width: 100%;
     }
+    .g-news li .h-img{
+        width:100%;
+        height:auto;
+    }
 }
