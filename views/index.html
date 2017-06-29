@@ -7,11 +7,12 @@
     <meta content="always" name="referrer">
     <meta name="keywords" content="体育梦工场">
     <meta name="description" content="体育梦工场">
-    <meta name="viewport" content="width=1200"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
     <meta name="apple-mobile-web-app-capable" content="yes"/>
     <meta name="format-detection" content="telephone=no"/>
     <link rel="stylesheet" href="/lib/layui/css/layui.css">
     <link rel="stylesheet" href="/lib/font-awesome/css/font-awesome.min.css">
+    <link rel="stylesheet" href="/lib/swiper/css/swiper.min.css">
     <link rel='stylesheet' href='/css/style.css'/>
     <link rel='stylesheet' href='/css/css.css'/>
 
@@ -20,10 +21,10 @@
 
 <% include header.html%>
 
-<div class="banner">
-    <ul class="banner-list clearfix">
+<div class="banner swiper-container">
+    <ul class="banner-list clearfix swiper-wrapper">
         <%banner&&banner.forEach(function(v,i){%>
-        <li>
+        <li class="swiper-slide">
             <a target="_blank" href="/article/id/<%=v._id%>" title="<%=v.title%>"><img src="<%=v.headimg%>" alt=""></a>
             <div class="intro">
                 <h3><%=v.title%></h3>
@@ -113,56 +114,11 @@
     </ul>
 </div>
 <%include footer.html%>
-<script src="/lib/ks.marquee.js"></script>
+<script src="/lib/swiper/js/swiper.min.js"></script>
 <script>
-    (function () {
-        var w = $(window).width() < 1000 ? 1000 : $(window).width();
-        $('.banner .banner-list li').width(w);
-    })();
-    ue.marquee({
-        target: '.banner .banner-list',
-        items: '.banner .banner-list li',
-        delay: 4000,
-        speed: 500,
-        prevbtn: '.banner .btn-prev',
-        nextbtn: '.banner .btn-next',
-        scrollnum: 1,
-        autoplay: true,
-        beforeSlide: function () {
-        },
-        loop: 1,
-        mode: 1
-    });
-    ue.marquee({
-        target: ".mod-marquee .marquee-list",
-        items: ".mod-marquee .marquee-list li",
-        delay: 4000,
-        speed: 500,
-        gotobtn: ".mod-marquee .marquee-nav li",
-        scrollnum: 1,
-        autoplay: false,
-        afterSlide: function () {
-            this.target.html(this.target.html());
-            this.target.find('video')[0].play();
-        },
-        loop: 1,
-        mode: 1
-    });
-    $('.mod-marquee .marquee-nav li:eq(1)').trigger('click');
-
-    ue.marquee({
-        target: ".mod-ysjz .cnt-imglist",
-        items: ".mod-ysjz .cnt-imglist li",
-        delay: 4000,
-        speed: 500,
-        prevbtn: '.mod-ysjz .btn-prev',
-        nextbtn: '.mod-ysjz .btn-next',
-        scrollnum: 1,
-        autoplay: false,
-        loop: 1,
-        mode: 1
-    });
-
+    var mySwiper = new Swiper('.swiper-container', {
+        autoplay: 5000,//可选选项，自动滑动
+    })
 </script>
 </body>
 </html>

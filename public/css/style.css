@@ -436,9 +436,11 @@ html, body {
     float: right;
     font: 14px/1.5 "Microsoft YaHei";
 }
-.cnt-txtlist2 a{
+
+.cnt-txtlist2 a {
     float: none;
 }
+
 .cnt-txtlist2 li {
     background: none;
     overflow: hidden;
@@ -452,6 +454,7 @@ html, body {
 .cnt-txtlist2 li:hover .more {
     color: #fff;
 }
+
 .cnt-txtlist2 .h-img {
     height: 132px;
     width: 175px;
@@ -691,7 +694,7 @@ html, body {
     padding: 10px;
     position: relative;
     min-height: 808px;
-    margin:10px auto 20px auto;
+    margin: 10px auto 20px auto;
 
 }
 
@@ -700,14 +703,17 @@ html, body {
     width: 150px;
     display: none;
 }
-.frm-side2,.frm-main2{
+
+.frm-side2, .frm-main2 {
     float: left;
     display: block;
 }
-.frm-main2{
+
+.frm-main2 {
     width: 920px;
-    margin:0 0 0 20px;
+    margin: 0 0 0 20px;
 }
+
 .mod-side-nav {
     text-align: center;
 }
@@ -1135,211 +1141,11 @@ html, body {
     background-color: #e68417;
 }
 
-/*移动适配*/
-/*@media screen and ( max-width: 480px ) {*/
-/*.wrapper {*/
-/*width: 100%;*/
-/*}*/
+.menu {
+    display: none;
+}
 
-/*.main .wrapper {*/
-/*padding-bottom: 0;*/
-/*}*/
+.j-nav-list {
+    display: none;
+}
 
-/*.main {*/
-/*margin-bottom: 0;*/
-/*margin-top: 0;*/
-/*}*/
-
-/*.header {*/
-/*height: 70px;*/
-/*position: absolute;*/
-/*}*/
-
-/*.header .logo {*/
-/*margin: 16px;*/
-/*}*/
-
-/*.header .logo img {*/
-/*width: 130px;*/
-/*}*/
-
-/*.mod-menu {*/
-/*display: block;*/
-/*position: absolute;*/
-/*right: 10%;*/
-/*top: 16px;*/
-/*}*/
-
-/*.mod-menu .line {*/
-/*width: 30px;*/
-/*height: 2px;*/
-/*background-color: #f1cd81;*/
-/*display: block;*/
-/*margin: 5px auto;*/
-/*-webkit-transition: all 0.3s ease-in-out;*/
-/*-o-transition: all 0.3s ease-in-out;*/
-/*transition: all 0.3s ease-in-out;*/
-/*}*/
-
-/*.mod-menu.is-active .line:nth-child(1) {*/
-/*-webkit-transform: translateY(10px) rotate(45deg);*/
-/*-ms-transform: translateY(10px) rotate(45deg);*/
-/*-o-transform: translateY(10px) rotate(45deg);*/
-/*transform: translateY(10px) rotate(45deg);*/
-/*}*/
-
-/*.mod-menu.is-active .line:nth-child(2) {*/
-/*opacity: 0;*/
-/*}*/
-
-/*.mod-menu.is-active .line:nth-child(3) {*/
-/*-webkit-transform: translateY(-5) rotate(-45deg);*/
-/*-ms-transform: translateY(-5px) rotate(-45deg);*/
-/*-o-transform: translateY(-5px) rotate(-45deg);*/
-/*transform: translateY(-5px) rotate(-45deg);*/
-/*}*/
-
-/*.main .wrapper .box-bg {*/
-/*display: none;*/
-/*}*/
-
-/*.header .nav-list {*/
-/*display: none;*/
-/*width: 100%;*/
-/*padding: 20px 0 20px;*/
-/*background-color: #fff;*/
-/*}*/
-
-/*.nav-list li {*/
-/*width: 100%;*/
-/*}*/
-
-/*.banner {*/
-/*height: 300px;*/
-/*}*/
-
-/*.banner-list li img {*/
-/*margin: 0;*/
-/*width: auto;*/
-/*height: 300px;*/
-/*}*/
-
-/*.nav-list a {*/
-/*font: 20px/75px "Microsoft YaHei";*/
-/*}*/
-
-/*.mod-glob .mod-hd .tit {*/
-/*font-size: 1rem;*/
-/*}*/
-
-/*.mod-glob .mod-hd {*/
-/*padding-bottom: 10px;*/
-/*}*/
-
-/*.mod-glob .mod-hd .tit span {*/
-/*font-size: .75rem;*/
-/*}*/
-
-/*.footer {*/
-/*text-align: center;*/
-/*}*/
-
-/*.footer .wrapper {*/
-/*width: 320px;*/
-/*}*/
-
-/*.footer .foot {*/
-/*display: inline-block;*/
-/*}*/
-
-/*.footer .foot1 {*/
-/*width: 150px;*/
-/*margin-left: 15px;*/
-/*}*/
-
-/*.footer .foot1 .tit {*/
-/*font-size: 12px;*/
-/*}*/
-
-/*.footer .foot1 .txt {*/
-/*font-size: 10px;*/
-/*}*/
-
-/*.footer .foot1 .logo img {*/
-/*width: 100px;*/
-/*}*/
-
-/*.footer .foot2 {*/
-/*display: none;*/
-/*!*width: 42%;*!*/
-/*!*margin-top: 20px;*!*/
-/*}*/
-
-/*.mod-share {*/
-/*margin-top: 47px;*/
-/*margin-left: 15px;*/
-/*}*/
-
-/*.mod-share .tab-nav li {*/
-/*width: 40px;*/
-/*height: 30px;*/
-/*font: 17px/30px "Microsoft YaHei";*/
-/*}*/
-
-/*.mod-share .content1 .tit {*/
-/*font-size: 12px;*/
-/*margin: 3px 2px;*/
-/*}*/
-
-/*.mod-share .tab-contents img {*/
-/*width: 80px;*/
-/*}*/
-
-/*.mod-share .content {*/
-/*padding: 10px 0;*/
-/*}*/
-
-/*.mod-news {*/
-/*width: 100%;*/
-/*}*/
-
-/*.mod-news .cnt-txtlist {*/
-/*margin-left: 10px;*/
-/*}*/
-
-/*.cnt-txtlist li {*/
-/*width: 90%;*/
-/*padding-bottom: 1px;*/
-/*}*/
-
-/*.cnt-txtlist a {*/
-/*font-size: 12px;*/
-/*}*/
-
-/*.cnt-txtlist .date {*/
-/*font-size: 12px;*/
-/*}*/
-
-/*.mod-marquee {*/
-/*margin: 0;*/
-/*width: 100%;*/
-/*}*/
-
-/*.mod-ysjz .marquee-holder {*/
-/*height: 110px;*/
-/*width: 88%;*/
-/*}*/
-
-/*.cnt-imglist li {*/
-/*margin: 0 2px 0;*/
-/*}*/
-
-/*.cnt-imglist li img {*/
-/*width: 70px;*/
-/*height: 95px;*/
-/*}*/
-
-/*.mod-txtlist .cnt-txtlist li {*/
-/*margin: 0 10px;*/
-/*}*/
-/*}*/
