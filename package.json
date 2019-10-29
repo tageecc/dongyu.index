@@ -20,6 +20,6 @@
     "ueditor": "^1.2.0"
   },
   "devDependencies": {
-    "mongoose": "^4.7.0"
+    "mongoose": "^5.7.7"
   }
 }
